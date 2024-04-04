@@ -1,4 +1,4 @@
-import CurrentPagintaionButton from "../CurrentPaginationButton";
+import CurrentPagintaionButton from "./CurrentPaginationButton";
 import PaginationButton from "./PaginationButton";
 
 interface infosType {
