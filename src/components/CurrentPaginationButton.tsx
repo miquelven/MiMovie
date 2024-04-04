@@ -7,7 +7,5 @@ interface currentPagintionButtonType {
 export default function CurrentPagintaionButton({
   children,
 }: currentPagintionButtonType) {
-  return (
-    <button style={{ fontSize: "48px", fontWeight: "bold" }}>{children}</button>
-  );
+  return <button>{children}</button>;
 }
