@@ -12,18 +12,19 @@ const options = {
   },
 };
 
-const getMovieData = async () => {
+const getMovieData = async (page) => {
   const data = await axios.get(
-    "https://api.themoviedb.org/3/movie/popular?language=pt-BR&page=1",
+    `https://api.themoviedb.org/3/movie/popular?language=pt-BR&page=${page}`,
     options
   );
   return data.data;
 };
 
-const useGetMovie = () =>
-  useQuery({
-    queryKey: ["movie-data"],
-    queryFn: getMovieData,
+const useGetMovie = (page) => {
+  return useQuery({
+    queryKey: ["movie-data", page],
+    queryFn: () => getMovieData(page),
   });
+};
 
 export default useGetMovie;

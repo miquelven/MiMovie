@@ -1,27 +1,31 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import useGetMovie from "./hooks/useGetMovie";
+import Pagination from "./components/pagination";
 
 const baseImgUrl = "https://image.tmdb.org/t/p";
 const size = "w200";
 
 function App() {
-  const { data, isPending } = useGetMovie();
-  const [movieData, setMovieData] = useState([]);
+  const [pageSelected, setPageSelected] = useState(1);
+  const { data, isPending } = useGetMovie(pageSelected);
 
-  useEffect(() => {
-    if (data?.results) {
-      setMovieData(data.results);
-      console.log(data);
-    }
-  }, [data]);
+  const setPage = (value) => {
+    setPageSelected(value);
+  };
 
   return (
     <>
-      {isPending && <>Carregando</>}
-      {!isPending && (
+      <Pagination infos={{ isPending, setPage, pageSelected }} />
+
+      {isPending ? (
+        <>Carregando</>
+      ) : (
         <>
-          {movieData.map((movie) => (
-            <img src={`${baseImgUrl}/${size}${movie["poster_path"]}`} />
+          {data.results.map((movie) => (
+            <div key={movie.key}>
+              <img src={`${baseImgUrl}/${size}${movie["poster_path"]}`} />
+              <p>{movie.title}</p>
+            </div>
           ))}
         </>
       )}
