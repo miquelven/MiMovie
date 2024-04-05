@@ -1,11 +1,7 @@
-import CarouselPopularMovie from "./components/Carousel/CarouselPopularMovie";
+import { Outlet } from "react-router-dom";
 
 function App() {
-  return (
-    <>
-      <CarouselPopularMovie />
-    </>
-  );
+  return <Outlet />;
 }
 
 export default App;
