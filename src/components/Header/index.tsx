@@ -12,6 +12,7 @@ import {
   InputGroup,
   InputRightElement,
   Slide,
+  Spacer,
 } from "@chakra-ui/react";
 import { Input } from "@chakra-ui/react";
 import { useState } from "react";
@@ -21,19 +22,14 @@ export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <Container maxW="1440px" py="10">
+    <Container maxW="1580px" py="10">
       <header>
         <Flex
           minWidth="max-content"
           alignItems={"center"}
           justifyContent={"space-between"}
         >
-          <Heading
-            as="h1"
-            size={["xs", null, null, "lg"]}
-            color="#c7c7c7"
-            className="w-1/5"
-          >
+          <Heading as="h1" size={["xs", null, null, "lg"]} color="#c7c7c7">
             MiMovies
           </Heading>
           <InputGroup
