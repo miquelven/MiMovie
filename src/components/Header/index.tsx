@@ -12,14 +12,18 @@ import {
   InputGroup,
   InputRightElement,
   Slide,
-  Spacer,
 } from "@chakra-ui/react";
 import { Input } from "@chakra-ui/react";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
+
+  const location = useLocation();
+  const { pathname } = location;
+
+  console.log(pathname);
 
   return (
     <Container maxW="1580px" py="10">
@@ -97,22 +101,30 @@ export default function Header() {
                 justifyContent={"center"}
               >
                 <Center>
-                  <Flex flexDirection="column" alignItems="center" gap="72px">
+                  <Flex
+                    onClick={() => setIsOpen(false)}
+                    flexDirection="column"
+                    alignItems="center"
+                    gap="72px"
+                  >
                     <Link to="/uncoming">
                       <Heading
                         as="h3"
+                        _hover={{ opacity: "50%" }}
                         position={"relative"}
-                        opacity={"50%"}
+                        opacity={pathname == "/uncoming" ? "50%" : ""}
                         fontSize={["24px", null, null, "30px"]}
                       >
                         Lançamentos
                         <Divider
                           position={"absolute"}
-                          left={"-12px"}
+                          left={pathname == "/uncoming" ? "-12px" : "-100vw"}
                           top="50%"
                           borderWidth={["2px", null, null, "3px"]}
                           rounded={"xl"}
-                          width={"calc(100% + 20px)"}
+                          width={
+                            pathname == "/uncoming" ? "calc(100% + 20px)" : ""
+                          }
                         />
                       </Heading>
                     </Link>
@@ -120,40 +132,102 @@ export default function Header() {
                       <Heading
                         transition={"all ease-in-out 250ms"}
                         _hover={{ opacity: "50%" }}
+                        position={"relative"}
+                        opacity={pathname == "/best" ? "50%" : ""}
                         as="h3"
                         fontSize={["24px", null, null, "30px"]}
                       >
                         Melhores da Semana
+                        <Divider
+                          position={"absolute"}
+                          left={pathname == "/best" ? "-12px" : "-100vw"}
+                          top="50%"
+                          borderWidth={
+                            pathname == "/latestView"
+                              ? ["2px", null, null, "3px"]
+                              : ""
+                          }
+                          rounded={"xl"}
+                          width={pathname == "/best" ? "calc(100% + 20px)" : ""}
+                        />
                       </Heading>
                     </Link>
                     <Link to="/category">
                       <Heading
                         transition={"all ease-in-out 250ms"}
                         _hover={{ opacity: "50%" }}
+                        position={"relative"}
+                        opacity={pathname == "/category" ? "50%" : ""}
                         as="h3"
                         fontSize={["24px", null, null, "30px"]}
                       >
                         Categorias
+                        <Divider
+                          position={"absolute"}
+                          left={pathname == "/categories" ? "-12px" : "-100vw"}
+                          top="50%"
+                          borderWidth={
+                            pathname == "/categories"
+                              ? ["2px", null, null, "3px"]
+                              : ""
+                          }
+                          rounded={"xl"}
+                          width={
+                            pathname == "/categories" ? "calc(100% + 20px)" : ""
+                          }
+                        />
                       </Heading>
                     </Link>
-                    <Link to="/favoritos">
+                    <Link to="/favorites">
                       <Heading
                         transition={"all ease-in-out 250ms"}
                         _hover={{ opacity: "50%" }}
+                        position={"relative"}
+                        opacity={pathname == "/favorites" ? "50%" : ""}
                         as="h3"
                         fontSize={["24px", null, null, "30px"]}
                       >
                         Favoritos
+                        <Divider
+                          position={"absolute"}
+                          left={pathname == "/favorites" ? "-12px" : "-100vw"}
+                          top="50%"
+                          borderWidth={
+                            pathname == "/favorites"
+                              ? ["2px", null, null, "3px"]
+                              : ""
+                          }
+                          rounded={"xl"}
+                          width={
+                            pathname == "/favorites" ? "calc(100% + 20px)" : ""
+                          }
+                        />
                       </Heading>
                     </Link>
                     <Link to="/latestView">
                       <Heading
                         transition={"all ease-in-out 250ms"}
                         _hover={{ opacity: "50%" }}
+                        position={"relative"}
+                        opacity={pathname == "/best" ? "50%" : ""}
                         as="h3"
                         fontSize={["24px", null, null, "30px"]}
                       >
                         Assistir Mais Tarde
+                        <Divider
+                          position={"absolute"}
+                          left={pathname == "/latestView" ? "-12px" : "-100vw"}
+                          top="50%"
+                          borderWidth={
+                            pathname == "/latestView"
+                              ? ["2px", null, null, "3px"]
+                              : ""
+                          }
+                          rounded={"xl"}
+                          width={
+                            pathname == "/latestView" ? "calc(100% + 20px)" : ""
+                          }
+                        />
                       </Heading>
                     </Link>
                   </Flex>
