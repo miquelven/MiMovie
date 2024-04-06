@@ -7,8 +7,6 @@ const size = "w200";
 export default function CarouselPopularMovie() {
   const { data, isError, isPending } = usePopularMovieData(1);
 
-  if (!isPending) console.log(data.results);
-
   return (
     <div>
       {isError && <>Erro ao obter os dados</>}
