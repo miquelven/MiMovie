@@ -12,7 +12,7 @@ const options = {
   },
 };
 
-const getPopularMovieData = async (page) => {
+const getPopularMovieData = async (page: number) => {
   const data = await axios.get(
     `https://api.themoviedb.org/3/movie/popular?language=pt-BR&page=${page}`,
     options
@@ -21,7 +21,7 @@ const getPopularMovieData = async (page) => {
   return data.data;
 };
 
-const usePopularMovieData = (page) => {
+const usePopularMovieData = (page: number) => {
   return useQuery({
     queryKey: ["movie-data", page],
     queryFn: () => getPopularMovieData(page),
