@@ -1,4 +1,4 @@
-import usePopularMovieData from "../../hooks/usePopularMovieData";
+import usePopularMovieData from "../../hooks/useGetMovies";
 import movieType from "../../types/movieType";
 
 const baseImgUrl = "https://image.tmdb.org/t/p";
