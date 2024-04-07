@@ -26,12 +26,17 @@ export default function Header() {
   console.log(pathname);
 
   return (
-    <Container maxW="1580px" py="10">
-      <header>
+    <Container maxW="1580px" px="10px" position="relative">
+      <header className="absolute top-0 left-0 right-0 mt-10">
         <Flex
+          px={"20px"}
           minWidth="max-content"
           alignItems={"center"}
           justifyContent={"space-between"}
+          position="relative"
+          style={{
+            zIndex: 20,
+          }}
         >
           <Heading as="h1" size={["xs", null, null, "lg"]} color="#c7c7c7">
             MiMovies
