@@ -11,3 +11,6 @@
   color: #fff;
   font-family: "Lato", sans-serif;
 }
+body {
+  overflow-x: hidden;
+}
