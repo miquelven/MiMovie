@@ -120,7 +120,7 @@ export default function CaptionCarousel() {
                   {/* opacity */}
                   <div className="absolute inset-0 bg-black/70 z-10 "></div>
                   <div className="absolute h-[5%] w-full top-0 bg-gradient-to-b from-[#131722] via-white/0 to-white/0 z-20"></div>
-                  <div className="absolute h-[10%] w-full top-[76%] bg-gradient-to-t  from-[#131722] via-white/0 to-white/0 z-20"></div>
+                  <div className="absolute h-[10%] w-full top-[76%] bg-gradient-to-t  from-[#0a0d14] via-white/0 to-white/0 z-20"></div>
                   <Container
                     height="600px"
                     px="0px !important"
@@ -175,7 +175,10 @@ export default function CaptionCarousel() {
                         <Link
                           mt="30px"
                           color="#cfcfcf"
-                          _hover={{ color: "#eee" }}
+                          _hover={{
+                            color: "#eee",
+                            textDecoration: "underline",
+                          }}
                         >
                           Ver Mais Informações
                         </Link>
