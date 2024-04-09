@@ -28,10 +28,11 @@ export default function CarouselTrailers() {
         slidesPerView={"auto"}
         navigation={true}
         modules={[EffectFlip, Navigation]}
+        data-swiperTrailer
       >
         {!isPending &&
           keys?.map((key) => (
-            <SwiperSlide key={key}>
+            <SwiperSlide data-swiperSlideTrailer key={key}>
               <iframe
                 width="100%"
                 height="100%"
