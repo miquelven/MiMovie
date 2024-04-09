@@ -51,21 +51,12 @@ export default function CaptionCarousel() {
   const navigate = useNavigate();
 
   const setIdsLocalStorage = () => {
+    const idsValue = [];
     if (!isPending) {
       for (let i = 0; i < 3; i++) {
-        const oldValue =
-          JSON.parse(localStorage.getItem("idsForTrailers")!) || [];
-        if (oldValue.length == 3) return;
-        if (oldValue.length > 0) {
-          oldValue.push(data.results[i].id);
-          localStorage.setItem("idsForTrailers", JSON.stringify(oldValue));
-        } else {
-          localStorage.setItem(
-            "idsForTrailers",
-            JSON.stringify([data.results[i].id])
-          );
-        }
+        idsValue.push(data.results[i].id);
       }
+      localStorage.setItem("idsForTrailers", JSON.stringify(idsValue));
     }
   };
 
