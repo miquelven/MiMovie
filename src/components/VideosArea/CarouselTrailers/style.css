@@ -1,11 +1,11 @@
-.swiper {
+[data-swiperTrailer] {
   width: 100%;
   height: 490px;
   padding: 50px 0;
   transition: all ease 700ms !important;
 }
 
-.swiper-slide {
+[data-swiperSlideTrailer] {
   background-position: center;
   background-size: cover;
   width: 800px;
@@ -13,13 +13,13 @@
   transition: all ease 700ms !important;
 }
 
-.swiper-slide-next,
-.swiper-slide-prev {
+[data-swiperSlideTrailer].swiper-slide-next,
+[data-swiperSlideTrailer].swiper-slide-prev {
   transform: scale(0.8) !important;
   transition: all ease 700ms !important;
 }
 
-.swiper-slide-active {
+[data-swiperSlideTrailer].swiper-slide-active {
   transform: scale(1.2) !important;
   transition: all ease 700ms !important;
 }
@@ -31,23 +31,23 @@
 }
 
 @media screen and (max-width: 1600px) {
-  .swiper-slide {
+  [data-swiperSlideTrailer] {
     width: 600px;
   }
 }
 
 @media screen and (max-width: 1240px) {
-  .swiper-slide {
+  [data-swiperSlideTrailer] {
     width: 400px;
     height: 300px;
   }
 }
 
 @media screen and (max-width: 640px) {
-  .swiper-slide-active {
+  [data-swiperSlideTrailer].swiper-slide-active {
     transform: scale(1) !important;
   }
-  .swiper-slide {
+  [data-swiperSlideTrailer] {
     width: 100%;
     height: 200px;
   }
@@ -59,7 +59,7 @@
 }
 
 @media screen and (max-width: 440px) {
-  .swiper {
+  [data-swiperTrailer] {
     padding: 0;
   }
 
