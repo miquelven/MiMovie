@@ -1,5 +1,3 @@
-import { motion } from "framer-motion";
-
 import {
   ArrowBackIcon,
   ArrowForwardIcon,
@@ -18,7 +16,7 @@ import {
   Button,
   Text,
 } from "@chakra-ui/react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 // And react-slick as our Carousel Lib
 import Slider from "react-slick";
 import useGetMovies from "../../hooks/useGetMovies";
@@ -51,6 +49,29 @@ export default function CaptionCarousel() {
   );
 
   const navigate = useNavigate();
+
+  const setIdsLocalStorage = () => {
+    if (!isPending) {
+      for (let i = 0; i < 3; i++) {
+        const oldValue =
+          JSON.parse(localStorage.getItem("idsForTrailers")!) || [];
+        if (oldValue.length == 3) return;
+        if (oldValue.length > 0) {
+          oldValue.push(data.results[i].id);
+          localStorage.setItem("idsForTrailers", JSON.stringify(oldValue));
+        } else {
+          localStorage.setItem(
+            "idsForTrailers",
+            JSON.stringify([data.results[i].id])
+          );
+        }
+      }
+    }
+  };
+
+  useEffect(() => {
+    setIdsLocalStorage();
+  }, [isPending]);
 
   return (
     <Container maxW="100vw" p={"0"} position="relative">
@@ -109,7 +130,6 @@ export default function CaptionCarousel() {
               <>
                 <Box
                   height={"6xl"}
-                  position="relative"
                   background={`url(https://image.tmdb.org/t/p/original${data.results[vIndex]["backdrop_path"]})`}
                   backgroundPosition={["left", null, "center"]}
                   backgroundRepeat="no-repeat"
@@ -118,14 +138,14 @@ export default function CaptionCarousel() {
                   key={vIndex}
                 >
                   {/* opacity */}
-                  <div className="absolute inset-0 bg-black/70 z-10 "></div>
-                  <div className="absolute h-[5%] w-full top-0 bg-gradient-to-b from-[#131722] via-white/0 to-white/0 z-20"></div>
-                  <div className="absolute h-[10%] w-full top-[76%] bg-gradient-to-t  from-[#0a0d14] via-white/0 to-white/0 z-20"></div>
+                  <div className="absolute inset-0 bg-black/20 z-10 "></div>
+                  <div className="absolute h-[5%] w-full top-[0] bg-gradient-to-b from-[#0a0d1445] via-white/0 to-white/0 z-20"></div>
+                  <div className="absolute h-[20%] w-full bottom-[10%] bg-gradient-to-t  from-[#0a0d14b0] via-white/0 to-white/0 z-20"></div>
+
                   <Container
-                    height="600px"
+                    height="100vh"
                     px="0px !important"
                     maxWidth={["300px", "700px", null, null, "1000px"]}
-                    // width={{ md: "800px", lg: "1000px" }}
                     position="relative"
                     style={{ zIndex: 20 }}
                   >
@@ -133,7 +153,7 @@ export default function CaptionCarousel() {
                       height="400px"
                       width="100%"
                       position="absolute"
-                      top="70%"
+                      top="50%"
                       transform="translate(0, -50%)"
                     >
                       <Flex flexDir="column" gap="40px">
@@ -147,7 +167,9 @@ export default function CaptionCarousel() {
                         </Heading>
                         <Text
                           lineHeight={"32px"}
-                          fontSize={{ sm: "md", xl: "lg" }}
+                          fontSize={{ base: "sm", xl: "lg" }}
+                          width={{ base: "100%", sm: "80%" }}
+                          mx="auto"
                           textAlign="center"
                           noOfLines={4}
                           color="#cfcfcf"
@@ -156,46 +178,44 @@ export default function CaptionCarousel() {
                         </Text>
                       </Flex>
                     </Stack>
+
+                    <Center
+                      style={{ zIndex: 20 }}
+                      position="absolute"
+                      right="0"
+                      left="0"
+                      bottom="0"
+                    >
+                      <Flex
+                        flexDir={"column"}
+                        alignItems={"center"}
+                        position={"relative"}
+                        style={{ zIndex: 30 }}
+                        height="100%"
+                        paddingBottom={{ base: "150px", sm: "80px" }}
+                      >
+                        <Button
+                          variant="unstyled"
+                          onClick={() =>
+                            navigate(`movie/${data.results[vIndex].id}`)
+                          }
+                        >
+                          <Link
+                            color="#cfcfcf"
+                            fontSize={{ base: "small", sm: "unset" }}
+                            _hover={{
+                              color: "#eee",
+                              textDecoration: "underline",
+                            }}
+                          >
+                            Ver Mais Informações
+                          </Link>
+                        </Button>
+                        <ArrowRightIcon style={{ rotate: "90deg" }} />
+                      </Flex>
+                    </Center>
                   </Container>
                   {/* rating */}
-                  <Center
-                    style={{ zIndex: 20 }}
-                    position="absolute"
-                    right="0"
-                    left="0"
-                    top="60%"
-                  >
-                    <Flex flexDir={"column"} alignItems={"center"}>
-                      <Button
-                        variant="unstyled"
-                        onClick={() =>
-                          navigate(`movie/${data.results[vIndex].id}`)
-                        }
-                      >
-                        <Link
-                          mt="30px"
-                          color="#cfcfcf"
-                          _hover={{
-                            color: "#eee",
-                            textDecoration: "underline",
-                          }}
-                        >
-                          Ver Mais Informações
-                        </Link>
-                      </Button>
-                      <motion.div
-                        whileInView={{ marginTop: "10px" }}
-                        transition={{
-                          duration: 1,
-                          ease: "circIn",
-                          repeat: Infinity,
-                          repeatType: "loop",
-                        }}
-                      >
-                        <ArrowRightIcon style={{ rotate: "90deg" }} />
-                      </motion.div>
-                    </Flex>
-                  </Center>
                 </Box>
               </>
             ))}
