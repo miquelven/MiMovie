@@ -48,6 +48,8 @@ export default function CaptionCarousel() {
     1
   );
 
+  console.log(data);
+
   const navigate = useNavigate();
 
   const setIdsLocalStorage = () => {
@@ -71,6 +73,7 @@ export default function CaptionCarousel() {
 
   useEffect(() => {
     setIdsLocalStorage();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isPending]);
 
   return (
@@ -126,6 +129,7 @@ export default function CaptionCarousel() {
           autoplaySpeed={4000}
         >
           {!isPending &&
+            data.results &&
             [0, 1, 2].map((vIndex) => (
               <>
                 <Box

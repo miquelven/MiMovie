@@ -25,11 +25,12 @@ const getTrailerMovieData = async (action: string) => {
     case "home":
       for (let i = 0; i < ids.length; i++) {
         const { data } = await http(`movie/${ids[i]}/videos`, options);
-        console.log(data);
-        const dataTrailer = data.results.find((item: dataType) => {
-          return item.type == "Trailer";
-        });
-
+        let dataTrailer = [];
+        if (data) {
+          dataTrailer = data.results.find((item: dataType) => {
+            return item.type == "Trailer";
+          });
+        }
         dataValue.push(dataTrailer.key);
       }
 
