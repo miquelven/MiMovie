@@ -3,7 +3,7 @@ import CarouselTrailers from "./CarouselTrailers/index.tsx";
 
 export default function VideosArea() {
   return (
-    <section className="pt-20 pb-44 mb-20 w-full bg-[#0a0d14] max-sm:pb-0 max-sm:pt-28">
+    <section className="pt-20 pb-32 w-full bg-[#0a0d14] max-md:pb-20 max-sm:pb-0 max-sm:pt-28">
       <Container
         maxW="1580px"
         px={{ base: "30px", lg: "10px" }}
