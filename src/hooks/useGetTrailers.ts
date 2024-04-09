@@ -18,6 +18,10 @@ const options = {
 
 const getTrailerMovieData = async (action: string) => {
   const ids = JSON.parse(localStorage.getItem("idsForTrailers")!);
+  if (ids) {
+    localStorage.setItem("idsForTrailers", JSON.stringify([]));
+  }
+
   const dataValue = [];
   switch (action) {
     case "details":
