@@ -48,8 +48,6 @@ export default function CaptionCarousel() {
     1
   );
 
-  console.log(data);
-
   const navigate = useNavigate();
 
   const setIdsLocalStorage = () => {
@@ -144,7 +142,7 @@ export default function CaptionCarousel() {
                   {/* opacity */}
                   <div className="absolute inset-0 bg-black/20 z-10 "></div>
                   <div className="absolute h-[5%] w-full top-[0] bg-gradient-to-b from-[#0a0d1445] via-white/0 to-white/0 z-20"></div>
-                  <div className="absolute h-[20%] w-full bottom-[10%] bg-gradient-to-t  from-[#0a0d14b0] via-white/0 to-white/0 z-20"></div>
+                  <div className="absolute h-[20%] w-full bottom-0 bg-gradient-to-t  from-[#0a0d14] via-[#0a0d14] to-white/0 z-50"></div>
 
                   <Container
                     height="100vh"
@@ -215,7 +213,9 @@ export default function CaptionCarousel() {
                             Ver Mais Informações
                           </Link>
                         </Button>
-                        <ArrowRightIcon style={{ rotate: "90deg" }} />
+                        <Box opacity={{ base: 0, md: 1 }}>
+                          <ArrowRightIcon style={{ rotate: "90deg" }} />
+                        </Box>
                       </Flex>
                     </Center>
                   </Container>
