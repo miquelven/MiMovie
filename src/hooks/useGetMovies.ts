@@ -4,8 +4,8 @@ import http from "../helpers/http";
 
 const value = import.meta.env.VITE_API_KEY;
 
-interface valueType {
-  genre_ids: number;
+interface itemType {
+  genre_ids: number[];
 }
 
 const options = {
@@ -16,24 +16,16 @@ const options = {
   },
 };
 
-const setIds = (values: valueType[]) => {
-  if (localStorage.getItem("genresIds")) return;
-  if (values) {
-    values.map((item) => {
-      if (localStorage.getItem("genresIds")) {
-        const idsValue = JSON.parse(localStorage.getItem("genresIds")!);
-        idsValue.push(item.genre_ids);
-        localStorage.setItem("genresIds", JSON.stringify(idsValue));
-      } else {
-        localStorage.setItem("genresIds", JSON.stringify(item.genre_ids));
-      }
-    });
-  }
-};
-
 const getMovieData = async (url: string, page?: number) => {
   const data = await http(`${url}${page}`, options);
-  setIds(data.data.results);
+
+  // setLocalStorage genreIds value
+  const genresData: number[][] = [];
+  data.data.results.map((item: itemType) => {
+    genresData.push(item.genre_ids);
+  });
+  localStorage.setItem("genresIds", JSON.stringify(genresData));
+
   return data.data;
 };
 
