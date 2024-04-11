@@ -2,6 +2,7 @@ import Banner from "../components/Banner/index.tsx";
 import LatestMovies from "../components/LatestMovies/index.tsx";
 import VideosArea from "../components/VideosArea/index.tsx";
 import FeaturesArea from "../components/FeaturesArea/index.tsx";
+import PopularMovies from "../components/PopularMovies/index.tsx";
 
 export default function Home() {
   return (
@@ -10,6 +11,7 @@ export default function Home() {
       <VideosArea />
       <LatestMovies />
       <FeaturesArea />
+      <PopularMovies />
     </div>
   );
 }
