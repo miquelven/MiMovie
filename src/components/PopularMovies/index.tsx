@@ -2,6 +2,7 @@ import {
   Box,
   Center,
   Container,
+  Flex,
   Grid,
   GridItem,
   Heading,
@@ -26,25 +27,59 @@ export default function PopularMovies() {
   return (
     <section className="py-32">
       <Container maxW="1580px" px="10px" position="relative">
-        <Grid templateColumns={"repeat(7, 1fr)"} gap="24px">
-          <GridItem colSpan={2}>
-            <Center h="100%">
-              <Box>
-                <Heading as="h3">Filmes Populares para Assistir Agora</Heading>
-                <Text>Filmes mais assistidos</Text>
+        <Flex
+          justifyContent={"center"}
+          alignItems={"center"}
+          flexDir={"column"}
+        >
+          <Grid
+            templateColumns={{
+              base: "repeat(1, 300px)",
+              sm: "repeat(2, 200px)",
+              md: "repeat(3, 200px)",
+              lg: "repeat(5, 150px)",
+              xl: "repeat(6, 200px)",
+              "2xl": "repeat(7, 1fr)",
+            }}
+            gap="24px"
+            maxH={{ base: "2370px", sm: "auto" }}
+            overflow="hidden"
+          >
+            <GridItem
+              colSpan={{ base: 1, sm: 2, md: 3, lg: 2 }}
+              mb={{ base: "32px" }}
+            >
+              <Center h="100%">
+                <Flex flexDir={"column"} gap="52px" color="#fff9">
+                  <Box>
+                    <Heading as="h3" color="#fff">
+                      Filmes Populares para Assistir Agora
+                    </Heading>
+                    <Text mt="16px">Filmes mais assistidos</Text>
+                  </Box>
 
-                <Link className="border-t block border-white/30" to="#">
-                  Ver Mais
-                </Link>
-              </Box>
-            </Center>
-          </GridItem>
-          {!isPending &&
-            data.results.map(
-              (item: itemType, index: number) =>
-                index < 12 && <CardMovie key={index} data={item} />
-            )}
-        </Grid>
+                  <Link
+                    className="transition-all duration-300 border-t block border-white/30 hover:text-white max-sm:hidden"
+                    to="#ol"
+                  >
+                    Ver Mais
+                  </Link>
+                </Flex>
+              </Center>
+            </GridItem>
+            {!isPending &&
+              data.results.map(
+                (item: itemType, index: number) =>
+                  index < 12 && <CardMovie key={index} data={item} />
+              )}
+          </Grid>
+          <Link
+            className="transition-all duration-300 text-white/60 mt-14 hover:text-white hover:underline  sm:hidden"
+            to="#ol"
+          >
+            Ver Mais
+          </Link>
+        </Flex>
       </Container>
     </section>
   );
