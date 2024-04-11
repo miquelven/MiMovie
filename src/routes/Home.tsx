@@ -40,13 +40,13 @@ export default function Home() {
 
       <IconButton
         onClick={scrollTop}
-        fontSize="36px"
+        fontSize={{ base: "28px", sm: "36px" }}
         colorScheme="transparent"
         aria-label="To Top"
         color="#fff9"
         position="fixed"
         bottom="32px"
-        right="32px"
+        right={{ base: "12px", lg: "32px" }}
         style={{
           transition: "all ease 500ms",
           opacity: showScroll ? "1" : "0",
