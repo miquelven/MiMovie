@@ -64,7 +64,7 @@ export default function Header() {
           <Button
             variant="unstyle"
             onClick={() => setIsOpen(!isOpen)}
-            style={{ zIndex: 20 }}
+            style={{ zIndex: 40 }}
             position={"relative"}
           >
             <Fade in={!isOpen}>
@@ -97,7 +97,7 @@ export default function Header() {
               />
             </Fade>
           </Button>
-          <Slide direction="top" in={isOpen} style={{ zIndex: 10 }}>
+          <Slide direction="top" in={isOpen} style={{ zIndex: 30 }}>
             <Box bg="#0a0d14" height="100vh">
               <Flex
                 width={"100vw"}
