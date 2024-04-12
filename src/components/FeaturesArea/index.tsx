@@ -10,7 +10,7 @@ import { featureData } from "../../data/featuresData";
 
 export default function FeaturesArea() {
   return (
-    <section className="bg-[#0a0d14] py-10">
+    <section className="bg-[#0a0d14] py-10 mb-40">
       <Container
         maxW="1580px"
         px={{ base: "30px", md: "10px" }}
