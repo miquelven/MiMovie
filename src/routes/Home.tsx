@@ -1,6 +1,6 @@
-// import Banner from "../components/Banner/index.tsx";
-// import LatestMovies from "../components/LatestMovies/index.tsx";
-// import VideosArea from "../components/VideosArea/index.tsx";
+import Banner from "../components/Banner/index.tsx";
+import LatestMovies from "../components/LatestMovies/index.tsx";
+import VideosArea from "../components/VideosArea/index.tsx";
 import FeaturesArea from "../components/FeaturesArea/index.tsx";
 import PopularMovies from "../components/PopularMovies/index.tsx";
 import { IconButton } from "@chakra-ui/react";
@@ -32,9 +32,9 @@ export default function Home() {
 
   return (
     <main className="relative">
-      {/* <Banner />
+      <Banner />
       <VideosArea />
-      <LatestMovies /> */}
+      <LatestMovies />
       <FeaturesArea />
       <PopularMovies />
 
