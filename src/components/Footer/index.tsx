@@ -89,7 +89,9 @@ export default function Footer() {
                   color="#fff9"
                   _hover={{ color: "#fff" }}
                 >
-                  <Link to={`/${genre.name}`}>{genre.name}</Link>
+                  <Link to={`/${genre.name.split(" ").join("-")}`}>
+                    {genre.name}
+                  </Link>
                 </GridItem>
               ))}
           </Grid>
