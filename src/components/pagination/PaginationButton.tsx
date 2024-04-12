@@ -14,15 +14,25 @@ export default function PaginationButton({
   infos,
   children,
 }: paginationButtonType) {
+  const scrollTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
+  const handleClick = () => {
+    scrollTop();
+
+    setTimeout(() => {
+      infos.setPage(
+        infos.type == "prev" ? infos.pageSelected - 1 : infos.pageSelected + 1
+      );
+    }, 500);
+  };
+
   return (
     <button
+      className="transition-all duration-300 hover:text-[#fff9]"
       disabled={infos.isPending}
-      style={{ fontSize: "48px", fontWeight: "bold" }}
-      onClick={() =>
-        infos.setPage(
-          infos.type == "prev" ? infos.pageSelected - 1 : infos.pageSelected + 1
-        )
-      }
+      onClick={handleClick}
     >
       {children}
     </button>
