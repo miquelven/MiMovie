@@ -42,9 +42,11 @@ export default function Header() {
             zIndex: 20,
           }}
         >
-          <Heading as="h1" size={["xs", null, null, "lg"]} color="#c7c7c7">
-            MiMovies
-          </Heading>
+          <Link to="/">
+            <Heading as="h1" size={["xs", null, null, "lg"]} color="#c7c7c7">
+              MiMovies
+            </Heading>
+          </Link>
           <InputGroup
             width={[1 / 3, null, null, 5 / 12]}
             size={["sm", null, null, "md"]}
@@ -116,125 +118,134 @@ export default function Header() {
                     alignItems="center"
                     gap="72px"
                   >
-                    <Link to="/uncoming">
+                    <Link to="/populares">
                       <Heading
                         as="h3"
                         _hover={{ opacity: "50%" }}
                         position={"relative"}
-                        opacity={pathname == "/uncoming" ? "50%" : ""}
+                        opacity={pathname == "/populares" ? "50%" : ""}
                         fontSize={["24px", null, null, "30px"]}
                       >
-                        Lançamentos
+                        Populares
                         <Divider
                           position={"absolute"}
-                          left={pathname == "/uncoming" ? "-12px" : "-100vw"}
+                          zIndex={50}
+                          left={pathname == "/populares" ? "-12px" : "-100vw"}
                           top="50%"
                           borderWidth={["2px", null, null, "3px"]}
                           rounded={"xl"}
                           width={
-                            pathname == "/uncoming" ? "calc(100% + 20px)" : ""
+                            pathname == "/populares" ? "calc(100% + 20px)" : ""
                           }
                         />
                       </Heading>
                     </Link>
-                    <Link to="/best">
+                    <Link to="/melhores">
                       <Heading
                         transition={"all ease-in-out 250ms"}
                         _hover={{ opacity: "50%" }}
                         position={"relative"}
-                        opacity={pathname == "/best" ? "50%" : ""}
+                        opacity={pathname == "/melhores" ? "50%" : ""}
                         as="h3"
                         fontSize={["24px", null, null, "30px"]}
                       >
                         Melhores da Semana
                         <Divider
                           position={"absolute"}
-                          left={pathname == "/best" ? "-12px" : "-100vw"}
+                          left={pathname == "/melhores" ? "-12px" : "-100vw"}
                           top="50%"
                           borderWidth={
-                            pathname == "/latestView"
+                            pathname == "/assistirMaisTarde"
                               ? ["2px", null, null, "3px"]
                               : ""
                           }
                           rounded={"xl"}
-                          width={pathname == "/best" ? "calc(100% + 20px)" : ""}
+                          width={
+                            pathname == "/melhores" ? "calc(100% + 20px)" : ""
+                          }
                         />
                       </Heading>
                     </Link>
-                    <Link to="/category">
+                    <Link to="/categorias">
                       <Heading
                         transition={"all ease-in-out 250ms"}
                         _hover={{ opacity: "50%" }}
                         position={"relative"}
-                        opacity={pathname == "/category" ? "50%" : ""}
+                        opacity={pathname == "/categorias" ? "50%" : ""}
                         as="h3"
                         fontSize={["24px", null, null, "30px"]}
                       >
                         Categorias
                         <Divider
                           position={"absolute"}
-                          left={pathname == "/categories" ? "-12px" : "-100vw"}
+                          left={pathname == "/categorias" ? "-12px" : "-100vw"}
                           top="50%"
                           borderWidth={
-                            pathname == "/categories"
+                            pathname == "/categorias"
                               ? ["2px", null, null, "3px"]
                               : ""
                           }
                           rounded={"xl"}
                           width={
-                            pathname == "/categories" ? "calc(100% + 20px)" : ""
+                            pathname == "/categorias" ? "calc(100% + 20px)" : ""
                           }
                         />
                       </Heading>
                     </Link>
-                    <Link to="/favorites">
+                    <Link to="/favoritos">
                       <Heading
                         transition={"all ease-in-out 250ms"}
                         _hover={{ opacity: "50%" }}
                         position={"relative"}
-                        opacity={pathname == "/favorites" ? "50%" : ""}
+                        opacity={pathname == "/favoritos" ? "50%" : ""}
                         as="h3"
                         fontSize={["24px", null, null, "30px"]}
                       >
                         Favoritos
                         <Divider
                           position={"absolute"}
-                          left={pathname == "/favorites" ? "-12px" : "-100vw"}
+                          left={pathname == "/favoritos" ? "-12px" : "-100vw"}
                           top="50%"
                           borderWidth={
-                            pathname == "/favorites"
+                            pathname == "/favoritos"
                               ? ["2px", null, null, "3px"]
                               : ""
                           }
                           rounded={"xl"}
                           width={
-                            pathname == "/favorites" ? "calc(100% + 20px)" : ""
+                            pathname == "/favoritos" ? "calc(100% + 20px)" : ""
                           }
                         />
                       </Heading>
                     </Link>
-                    <Link to="/latestView">
+                    <Link to="/assistirMaisTarde">
                       <Heading
                         transition={"all ease-in-out 250ms"}
                         _hover={{ opacity: "50%" }}
                         position={"relative"}
-                        opacity={pathname == "/best" ? "50%" : ""}
+                        opacity={pathname == "/assistirMaisTarde" ? "50%" : ""}
                         as="h3"
                         fontSize={["24px", null, null, "30px"]}
                       >
                         Assistir Mais Tarde
                         <Divider
                           position={"absolute"}
-                          left={pathname == "/latestView" ? "-12px" : "-100vw"}
+                          left={
+                            pathname == "/assistirMaisTarde"
+                              ? "-12px"
+                              : "-100vw"
+                          }
                           top="50%"
                           borderWidth={
-                            pathname == "/latestView"
+                            pathname == "/assistirMaisTarde"
                               ? ["2px", null, null, "3px"]
                               : ""
                           }
                           rounded={"xl"}
                           width={
-                            pathname == "/latestView" ? "calc(100% + 20px)" : ""
+                            pathname == "/assistirMaisTarde"
+                              ? "calc(100% + 20px)"
+                              : ""
                           }
                         />
                       </Heading>
