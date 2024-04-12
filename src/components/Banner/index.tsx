@@ -12,15 +12,13 @@ import {
   Container,
   Flex,
   Center,
-  Link,
-  Button,
   Text,
 } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 // And react-slick as our Carousel Lib
 import Slider from "react-slick";
 import useGetMovies from "../../hooks/useGetMovies";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 // Settings for the slider
 const settings = {
@@ -47,8 +45,6 @@ export default function CaptionCarousel() {
     "movie/popular?language=pt-BR&page=",
     1
   );
-
-  const navigate = useNavigate();
 
   const setIdsLocalStorage = () => {
     const idsValue = [];
@@ -187,23 +183,14 @@ export default function CaptionCarousel() {
                         height="100%"
                         paddingBottom={{ base: "150px", sm: "80px" }}
                       >
-                        <Button
-                          variant="unstyled"
-                          onClick={() =>
-                            navigate(`movie/${data.results[vIndex].id}`)
-                          }
+                        <Link
+                          to={`/${data.results[vIndex].title
+                            .split(" ")
+                            .join("-")}`}
+                          className="text-sm sm:text-base text-[#cfcfcf] hover:text-[#eee] hover:underline"
                         >
-                          <Link
-                            color="#cfcfcf"
-                            fontSize={{ base: "small", sm: "unset" }}
-                            _hover={{
-                              color: "#eee",
-                              textDecoration: "underline",
-                            }}
-                          >
-                            Ver Mais Informações
-                          </Link>
-                        </Button>
+                          Ver Mais Informações
+                        </Link>
                         <Box opacity={{ base: 0, md: 1 }}>
                           <ArrowRightIcon style={{ rotate: "90deg" }} />
                         </Box>

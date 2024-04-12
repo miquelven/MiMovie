@@ -79,7 +79,7 @@ export default function PopularMovies() {
           </Grid>
           <Link
             className="transition-all duration-300 text-white/60 mt-14 hover:text-white hover:underline  sm:hidden"
-            to="#ol"
+            to="/populares"
           >
             Ver Mais
           </Link>
