@@ -64,7 +64,7 @@ export default function PopularMovies() {
 
                   <Link
                     className="transition-all duration-300 border-t block border-white/30 hover:text-white max-sm:hidden"
-                    to="#ol"
+                    to={`/populares`}
                   >
                     Ver Mais
                   </Link>
