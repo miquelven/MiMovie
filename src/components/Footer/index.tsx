@@ -41,7 +41,11 @@ export default function Footer() {
 
   return (
     <footer className="bg-[#0a0d14] pt-10">
-      <Container maxW="1580px" px="30px" position="relative">
+      <Container
+        maxW="1580px"
+        px={{ base: "30px", md: "10px" }}
+        position="relative"
+      >
         <Flex alignItems={"center"} justifyContent={"space-between"}>
           <Heading as="h1" size={"lg"} color="#fff" mb="24px">
             MiMovies

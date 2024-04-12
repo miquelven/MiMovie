@@ -53,7 +53,7 @@ export default function CarouselMovies() {
           dynamicBullets: true,
         }}
         modules={[Pagination]}
-        className="w-full hover:cursor-grab hover:active:cursor-grabbing"
+        className="w-[100vw] overflow-hidden hover:cursor-grab hover:active:cursor-grabbing"
       >
         {!isPending &&
           data.results &&

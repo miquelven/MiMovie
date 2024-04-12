@@ -26,7 +26,11 @@ export default function Header() {
   console.log(pathname);
 
   return (
-    <Container maxW="1580px" px="10px" position="relative">
+    <Container
+      maxW="1580px"
+      px={{ base: "30px", md: "10px" }}
+      position="relative"
+    >
       <header className="absolute top-0 left-0 right-0 mt-10">
         <Flex
           px={"20px"}

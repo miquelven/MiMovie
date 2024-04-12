@@ -26,7 +26,11 @@ export default function PopularMovies() {
 
   return (
     <section className="py-32">
-      <Container maxW="1580px" px="10px" position="relative">
+      <Container
+        maxW="1580px"
+        px={{ base: "30px", md: "10px" }}
+        position="relative"
+      >
         <Flex
           justifyContent={"center"}
           alignItems={"center"}

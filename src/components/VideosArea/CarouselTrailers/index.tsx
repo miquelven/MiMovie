@@ -24,6 +24,7 @@ export default function CarouselTrailers() {
   return (
     <>
       <Swiper
+        style={{ overflow: "hidden" }}
         centeredSlides={true}
         slidesPerView={"auto"}
         navigation={true}

@@ -5,7 +5,11 @@ export default function LatestMovies() {
   return (
     <section className="relative min-h-72 pb-40">
       <div className="bg-[#131722] absolute left-0 top-[-30%] right-0 h-full max-xl:top-[-50%]"></div>
-      <Container position={"relative"} zIndex="10" maxW="1580px" px="10px">
+      <Container
+        maxW="1580px"
+        px={{ base: "30px", md: "10px" }}
+        position="relative"
+      >
         <Center>
           <Flex
             alignItems={"center"}

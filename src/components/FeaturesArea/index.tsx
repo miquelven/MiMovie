@@ -11,7 +11,11 @@ import { featureData } from "../../data/featuresData";
 export default function FeaturesArea() {
   return (
     <section className="bg-[#0a0d14] py-10">
-      <Container maxW="1580px" px="10px">
+      <Container
+        maxW="1580px"
+        px={{ base: "30px", md: "10px" }}
+        position="relative"
+      >
         <Grid
           templateColumns={{
             md: "repeat(2, 1fr)",
