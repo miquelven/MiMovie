@@ -32,9 +32,9 @@ export default function Home() {
 
   return (
     <main className="relative">
-      <Banner />
+      {/* <Banner />
       <VideosArea />
-      <LatestMovies />
+      <LatestMovies /> */}
       <FeaturesArea />
       <PopularMovies />
 
