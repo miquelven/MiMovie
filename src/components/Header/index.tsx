@@ -23,18 +23,18 @@ export default function Header() {
   const location = useLocation();
   const { pathname } = location;
 
-  console.log(pathname);
-
   return (
-    <Container
-      maxW="1580px"
-      px={{ base: "30px", md: "10px" }}
-      position="relative"
-    >
-      <header className="absolute top-0 left-0 right-0 mt-10">
+    <header className="relative">
+      <Container
+        maxW="1580px"
+        px={{ base: "30px", md: "10px" }}
+        position="absolute"
+        left="0"
+        right="0"
+        top="0"
+        mt="40px"
+      >
         <Flex
-          px={"20px"}
-          minWidth="max-content"
           alignItems={"center"}
           justifyContent={"space-between"}
           position="relative"
@@ -104,7 +104,7 @@ export default function Header() {
           <Slide direction="top" in={isOpen} style={{ zIndex: 30 }}>
             <Box bg="#0a0d14" height="100vh">
               <Flex
-                width={"100vw"}
+                width={"100%"}
                 height={"100vh"}
                 alignContent={"center"}
                 justifyContent={"center"}
@@ -245,7 +245,7 @@ export default function Header() {
             </Box>
           </Slide>
         </Flex>
-      </header>
-    </Container>
+      </Container>
+    </header>
   );
 }
