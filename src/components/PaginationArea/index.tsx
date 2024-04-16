@@ -26,7 +26,6 @@ export default function PaginationArea({ infos }: infosType) {
             </>
           )}
           <CurrentPaginationButton>
-            miquelven
             {infos.pageSelected}
           </CurrentPaginationButton>
           {infos.pageSelected < 500 && (
