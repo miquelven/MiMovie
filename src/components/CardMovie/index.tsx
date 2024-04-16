@@ -27,6 +27,7 @@ export default function CardMovie({ data, isLoading }: dataType) {
                   width="80%"
                   src={`https://image.tmdb.org/t/p/original${data.poster_path}`}
                   alt={`Imagem do filme ${data.title}`}
+                  className="mx-auto"
                 />
               </div>
               <Heading
