@@ -1,7 +1,6 @@
 import { Box, Center, Flex, Grid, Heading, Text } from "@chakra-ui/react";
 import useGetMovies from "../../hooks/useGetMovies";
 import CardMovie from "../CardMovie";
-// import Pagination from "../Pagination";
 import { useState } from "react";
 import PaginationArea from "../PaginationArea";
 
@@ -19,11 +18,11 @@ interface propType {
 
 export default function ListMovies({ title, desc, url }: propType) {
   console.log(url);
-  const [currentPage] = useState(1);
+  const [currentPage, setCurrentPage] = useState(1);
 
-  // const setPage = (newValue: number) => {
-  //   setCurrentPage(newValue);
-  // };
+  const setPage = (newValue: number) => {
+    setCurrentPage(newValue);
+  };
 
   const { data, isPending } = useGetMovies(url, currentPage);
 
@@ -63,8 +62,9 @@ export default function ListMovies({ title, desc, url }: propType) {
               )
           )}
       </Grid>
-      <PaginationArea />
-      {/* <Pagination infos={{ setPage, pageSelected: currentPage, isPending }} /> */}
+      <PaginationArea
+        infos={{ setPage, pageSelected: currentPage, isPending }}
+      />
     </section>
   );
 }
