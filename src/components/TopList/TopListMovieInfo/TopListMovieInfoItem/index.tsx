@@ -42,38 +42,42 @@ export default function TopListMovieInfoItem({ data }: dataProp) {
   }
 
   return (
-    <GridItem
-      _hover={{ background: "#2d323f", cursor: "pointer" }}
-      style={{
-        background: data.title == currentItem!.title ? "#2d323f" : "",
-      }}
-      onClick={() => setCurrentItem(data)}
-    >
-      <Flex alignItems={"center"} gap="24px">
-        <img
-          src={`https://image.tmdb.org/t/p/original${data.poster_path}`}
-          alt={`Imagem do filme ${data.title}`}
-          className="w-1/3"
-        />
-        <Flex flexDir={"column"} gap="24px">
-          <Box>
-            <Text fontSize={"14px"} color="#fff9">
-              {data.release_date.split("-")[0]}
-            </Text>
-            <Heading as="h6" fontSize={"20px"}>
-              {data.title}
-            </Heading>
-          </Box>
-          <Flex gap="12px" flexWrap={"wrap"}>
-            {genres &&
-              genres.map((genre, index) => (
-                <Text key={index} fontSize={"12px"} color={"#23a7d7"}>
-                  {genre}
+    <>
+      {data && currentItem && (
+        <GridItem
+          _hover={{ background: "#2d323f", cursor: "pointer" }}
+          style={{
+            background: data.title == currentItem!.title ? "#2d323f" : "",
+          }}
+          onClick={() => setCurrentItem(data)}
+        >
+          <Flex alignItems={"center"} gap="24px">
+            <img
+              src={`https://image.tmdb.org/t/p/original${data.poster_path}`}
+              alt={`Imagem do filme ${data.title}`}
+              className="w-1/3"
+            />
+            <Flex flexDir={"column"} gap="24px">
+              <Box>
+                <Text fontSize={"14px"} color="#fff9">
+                  {data.release_date.split("-")[0]}
                 </Text>
-              ))}
+                <Heading as="h6" fontSize={"20px"}>
+                  {data.title}
+                </Heading>
+              </Box>
+              <Flex gap="12px" flexWrap={"wrap"}>
+                {genres &&
+                  genres.map((genre, index) => (
+                    <Text key={index} fontSize={"12px"} color={"#23a7d7"}>
+                      {genre}
+                    </Text>
+                  ))}
+              </Flex>
+            </Flex>
           </Flex>
-        </Flex>
-      </Flex>
-    </GridItem>
+        </GridItem>
+      )}
+    </>
   );
 }

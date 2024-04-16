@@ -43,7 +43,7 @@ export default function TopListMovieInfo() {
                   </Text>
                   <Heading as="h3">{currentItem.title}</Heading>
                 </Box>
-                <Text>{currentItem.overview}</Text>
+                <Text noOfLines={3}>{currentItem.overview}</Text>
                 <Link
                   to={`#`}
                   className="text-sm sm:text-base text-[#fff8] hover:text-[#eee] hover:underline"

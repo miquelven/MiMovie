@@ -13,15 +13,14 @@ export default function BestWeek() {
   );
 
   const [items, setItems] = useLocalStorage("weekItems", []);
-  const [currentItem, setCurrentItem] = useLocalStorage("weekCurrentItem", {});
+  const [currentItem] = useLocalStorage("weekCurrentItem", []);
 
   useEffect(() => {
     if (!isPending) {
       setItems(data.results);
-      if (items.length > 0) {
-        setCurrentItem(items[0]);
-      }
+      console.log(items);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isPending]);
 
   console.log(currentItem);
