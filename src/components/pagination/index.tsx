@@ -1,5 +1,5 @@
 import { Box, Center, Flex } from "@chakra-ui/react";
-import CurrentPagintaionButton from "./CurrentPaginationButton";
+import CurrentPagintaionButton from "./CurrentPagination";
 import PaginationButton from "./PaginationButton";
 
 interface infosType {
