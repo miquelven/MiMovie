@@ -1,14 +1,14 @@
 import { Box, Center, Flex, Grid, Heading, Text } from "@chakra-ui/react";
-// import useGetMovies from "../../hooks/useGetMovies";
-// import CardMovie from "../CardMovie";
-// import Pagination from "../Pagination";
-// import { useState } from "react";
+import useGetMovies from "../../hooks/useGetMovies";
+import CardMovie from "../CardMovie";
+import Pagination from "../Pagination";
+import { useState } from "react";
 
-// interface itemType {
-//   poster_path: string;
-//   title: string;
-//   release_date: string;
-// }
+interface itemType {
+  poster_path: string;
+  title: string;
+  release_date: string;
+}
 
 interface propType {
   title: string;
@@ -18,13 +18,13 @@ interface propType {
 
 export default function ListMovies({ title, desc, url }: propType) {
   console.log(url);
-  // const [currentPage, setCurrentPage] = useState(1);
+  const [currentPage] = useState(1);
 
   // const setPage = (newValue: number) => {
   //   setCurrentPage(newValue);
   // };
 
-  // const { data, isPending } = useGetMovies(url, currentPage);
+  const { data, isPending } = useGetMovies(url, currentPage);
 
   return (
     <section className="h-[calc(100vh+550px)] relative">
@@ -54,15 +54,15 @@ export default function ListMovies({ title, desc, url }: propType) {
         rowGap={"80px"}
         mt="80px"
       >
-        {/* {!isPending &&
+        {!isPending &&
           data.results.map(
             (item: itemType, index: number) =>
               index < 12 && (
                 <CardMovie key={index} data={item} isLoading={isPending} />
               )
-          )} */}
+          )}
       </Grid>
-      {/* <Pagination infos={{ setPage, pageSelected: currentPage, isPending }} /> */}
+      <Pagination />
     </section>
   );
 }
