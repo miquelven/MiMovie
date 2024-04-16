@@ -51,7 +51,7 @@ export default function TopListMovieInfo() {
                     {currentItem.overview}
                   </Text>
                   <Link
-                    to={`#`}
+                    to={`/${currentItem.title.split(" ").join("-")}`}
                     className="text-sm md:text-sm xl:text-base text-[#fff8] hover:text-[#eee] hover:underline"
                   >
                     Ver Mais Informações
