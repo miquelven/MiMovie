@@ -4,14 +4,31 @@ import useGetAllGenres from "../../hooks/useGetAllGenres";
 import { categoryData } from "../../data/categoryData";
 import { Link } from "react-router-dom";
 import ListCategoriesItem from "./ListCategoriesItem";
+import { useLocalStorage } from "usehooks-ts";
+import { useEffect } from "react";
 
 interface genreType {
   id: number;
   name: string;
 }
 
+interface selectedGenreProp {
+  id: number;
+  name: string;
+}
+
 export default function ListCategories() {
   const { data: allGenres, isPending } = useGetAllGenres();
+
+  const [selectedGenre, setSelectedGenre] =
+    useLocalStorage<selectedGenreProp | null>("selectedGenre", null);
+
+  useEffect(() => {
+    if (selectedGenre) {
+      setSelectedGenre(null);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <Box mt="60px">
@@ -35,7 +52,10 @@ export default function ListCategories() {
                 (category) =>
                   category.genreName == genre.name && (
                     <Link
-                      to={`/categoria/${genre.name.split(" ").join("-")}`}
+                      onClick={() =>
+                        setSelectedGenre({ id: genre.id, name: genre.name })
+                      }
+                      to={`/categorias/${genre.name.split(" ").join("-")}`}
                       key={category.genreName}
                     >
                       <ListCategoriesItem category={category} />
