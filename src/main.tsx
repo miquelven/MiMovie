@@ -10,6 +10,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Home from "./routes/Home.tsx";
 import Popular from "./routes/Popular.tsx";
 import BestWeek from "./routes/BestWeeks.tsx";
+import Categories from "./routes/Categories.tsx";
 
 const router = createBrowserRouter([
   {
@@ -19,6 +20,7 @@ const router = createBrowserRouter([
       { path: "/", element: <Home /> },
       { path: "populares", element: <Popular /> },
       { path: "/melhores", element: <BestWeek /> },
+      { path: "/categorias", element: <Categories /> },
     ],
   },
 ]);
