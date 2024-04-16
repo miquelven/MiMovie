@@ -6,6 +6,7 @@ interface itemType {
   release_date: string;
   overview: string;
   genre_ids: number[];
+  poster_path: string;
 }
 
 interface PropsType {
@@ -18,12 +19,25 @@ export default function TopList({ data, isPending }: PropsType) {
   return (
     <>
       {!isPending && (
-        <Box flex={"1"} bg="#1c212e" p="20px" maxH={"1270px"}>
+        <Box
+          flex={"1"}
+          bg="#1c212e"
+          p="20px"
+          maxH={"100%"}
+          maxW="700px"
+          mx="auto"
+        >
           <Flex alignItems={"center"} justifyContent={"space-between"}>
-            <Heading as="h4" fontSize={"28px"} fontWeight={"medium"}>
+            <Heading
+              as="h4"
+              fontSize={{ base: "xl", sm: "2xl", xl: "3xl" }}
+              fontWeight={"medium"}
+            >
               Top 10 da Semana
             </Heading>
-            <span className="text-[#23a7d7] font-bold">Filmes</span>
+            <span className="text-[#23a7d7] font-bold text-xs sm:text-sm xl:text-base">
+              Filmes
+            </span>
           </Flex>
           <Divider mt="16px" mb="32px" borderColor={"#fff4"} />
           {data?.results.map(

@@ -59,17 +59,17 @@ export default function TopListMovieInfoItem({ data }: dataProp) {
             />
             <Flex flexDir={"column"} gap="24px">
               <Box>
-                <Text fontSize={"14px"} color="#fff9">
+                <Text fontSize={{ md: "xs", xl: "medium" }} color="#fff9">
                   {data.release_date.split("-")[0]}
                 </Text>
-                <Heading as="h6" fontSize={"20px"}>
+                <Heading as="h6" fontSize={{ md: "medium", xl: "xl" }}>
                   {data.title}
                 </Heading>
               </Box>
               <Flex gap="12px" flexWrap={"wrap"}>
                 {genres &&
                   genres.map((genre, index) => (
-                    <Text key={index} fontSize={"12px"} color={"#23a7d7"}>
+                    <Text key={index} fontSize={"xs"} color={"#23a7d7"}>
                       {genre}
                     </Text>
                   ))}

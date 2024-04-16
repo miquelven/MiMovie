@@ -33,7 +33,7 @@ export default function BestWeek() {
         mt={{ base: "170px", sm: "200px" }}
         mb="150px"
       >
-        <Flex maxW="1320px" mx="auto" gap="80px">
+        <Flex maxW="1320px" mx="auto" gap={{ md: "40px", "2xl": "80px" }}>
           <TopList data={data} isPending={isPending} />
           <TopListMovieInfo />
         </Flex>

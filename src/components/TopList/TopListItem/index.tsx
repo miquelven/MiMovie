@@ -1,14 +1,16 @@
-import { Box, Divider, Flex, Heading, Text } from "@chakra-ui/react";
+import { Box, Divider, Flex, Heading, Hide, Text } from "@chakra-ui/react";
 import useGetAllGenres from "../../../hooks/useGetAllGenres";
 import { useState, useEffect } from "react";
 
 import { useLocalStorage } from "usehooks-ts";
+import { Link } from "react-router-dom";
 
 interface itemType {
   title: string;
   release_date: string;
   overview: string;
   genre_ids: number[];
+  poster_path: string;
 }
 
 interface PropsType {
@@ -65,31 +67,56 @@ export default function TopListItem({ item, ranked }: PropsType) {
           }`}
           onClick={handleClick}
         >
-          <Flex gap="12px">
-            <Text fontSize="32px" p="14px" fontWeight={"bold"}>
-              {ranked}
-            </Text>
-            <Flex
-              flex="1"
-              flexDir={"column"}
-              justifyContent={"center"}
-              gap="8px"
-            >
-              <Text fontSize={"14px"} color="#fff9">
-                {item.release_date.split("-")[0]}
+          <Flex
+            flexDir={{ base: "column-reverse", sm: "row" }}
+            justifyContent={{ base: "flex-start", sm: "space-between" }}
+            gap="20px"
+            position={"relative"}
+          >
+            <Flex gap="12px" alignItems={"center"} flexWrap={"wrap"}>
+              <Text
+                fontSize={{ sm: "2xl", xl: "4xl" }}
+                p="14px"
+                fontWeight={"bold"}
+              >
+                {ranked}
               </Text>
-              <Heading as="h5" fontSize={"18px"}>
-                {item.title}
-              </Heading>
-              <Flex gap="8px">
-                {genres &&
-                  genres.map((genre, index) => (
-                    <Text key={index} fontSize={"12px"} color={"#fff8"}>
-                      {genre}
-                    </Text>
-                  ))}
+              <Flex
+                flex="1"
+                flexDir={"column"}
+                justifyContent={"center"}
+                gap="8px"
+              >
+                <Text
+                  fontSize={{ base: "xs", sm: "sm", xl: "medium" }}
+                  color="#fff9"
+                >
+                  {item.release_date.split("-")[0]}
+                </Text>
+                <Heading as="h5" fontSize={{ sm: "lg" }}>
+                  {item.title}
+                </Heading>
+                <Flex gap="8px" flexWrap={"wrap"}>
+                  {genres &&
+                    genres.map((genre, index) => (
+                      <Text key={index} fontSize={"xs"} color={"#fff8"}>
+                        {genre}
+                      </Text>
+                    ))}
+                </Flex>
               </Flex>
             </Flex>
+            <Hide above="lg">
+              <img
+                src={`https://image.tmdb.org/t/p/original${item.poster_path}`}
+                alt={`Imagem do filme ${item.title}`}
+                className=" object-cover w-20 self-center"
+              />
+            </Hide>
+            {/* redirect for movie path */}
+            <Hide above="lg">
+              <Link className="absolute inset-0" to={`#${item.title}`}></Link>
+            </Hide>
           </Flex>
           <Divider pt="20px" borderColor={"#fff4"} />
         </Box>
