@@ -1,7 +1,7 @@
 import { Box, Center, Flex, Grid, Heading, Text } from "@chakra-ui/react";
 import useGetMovies from "../../hooks/useGetMovies";
 import CardMovie from "../CardMovie";
-import Pagination from "../Pagination";
+import Pagination from "../Pagination/index.tsx";
 import { useState } from "react";
 
 interface itemType {
