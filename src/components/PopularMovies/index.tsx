@@ -74,7 +74,9 @@ export default function PopularMovies() {
             {!isPending &&
               data.results.map(
                 (item: itemType, index: number) =>
-                  index < 12 && <CardMovie key={index} data={item} />
+                  index < 12 && (
+                    <CardMovie key={index} data={item} isLoading={isPending} />
+                  )
               )}
           </Grid>
           <Link
