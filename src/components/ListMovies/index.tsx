@@ -1,8 +1,9 @@
 import { Box, Center, Flex, Grid, Heading, Text } from "@chakra-ui/react";
 import useGetMovies from "../../hooks/useGetMovies";
 import CardMovie from "../CardMovie";
-import Pagination from "../Pagination";
+// import Pagination from "../Pagination";
 import { useState } from "react";
+import PaginationArea from "../PaginationArea";
 
 interface itemType {
   poster_path: string;
@@ -62,7 +63,8 @@ export default function ListMovies({ title, desc, url }: propType) {
               )
           )}
       </Grid>
-      <Pagination />
+      <PaginationArea />
+      {/* <Pagination infos={{ setPage, pageSelected: currentPage, isPending }} /> */}
     </section>
   );
 }
