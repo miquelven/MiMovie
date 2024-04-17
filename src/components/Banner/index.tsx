@@ -19,6 +19,7 @@ import { useEffect, useState } from "react";
 import Slider from "react-slick";
 import useGetMovies from "../../hooks/useGetMovies";
 import { Link } from "react-router-dom";
+import { useLocalStorage } from "usehooks-ts";
 
 // Settings for the slider
 const settings = {
@@ -41,6 +42,8 @@ export default function CaptionCarousel() {
   const top = useBreakpointValue({ base: "90%", md: "50%" });
   const side = useBreakpointValue({ base: "30%", md: "40px" });
 
+  const [videoId, setVideoId] = useLocalStorage("idsForTrailers", []);
+
   const { data, isPending } = useGetMovies(
     "movie/popular?language=pt-BR&page=",
     1
@@ -58,6 +61,13 @@ export default function CaptionCarousel() {
 
   useEffect(() => {
     setIdsLocalStorage();
+    if (!isPending) {
+      const oldValue = videoId;
+      data.results.map((item) => {
+        oldValue.push(item.id);
+      });
+      setVideoId(oldValue);
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isPending]);
 
