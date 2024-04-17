@@ -11,6 +11,7 @@
   width: 800px;
   height: 400px;
   transition: all ease 700ms !important;
+  overflow: hidden;
 }
 
 [data-swiperSlideTrailer].swiper-slide-next,
