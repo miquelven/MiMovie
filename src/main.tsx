@@ -12,6 +12,7 @@ import Popular from "./routes/Popular.tsx";
 import BestWeek from "./routes/BestWeeks.tsx";
 import Categories from "./routes/Categories.tsx";
 import CategoryItems from "./routes/CategoryItems.tsx";
+import MovieInfo from "./routes/MovieInfo.tsx";
 
 const router = createBrowserRouter([
   {
@@ -26,6 +27,7 @@ const router = createBrowserRouter([
         element: <Categories />,
       },
       { path: "/categorias/:name", element: <CategoryItems /> },
+      { path: "/:name", element: <MovieInfo /> },
     ],
   },
 ]);
@@ -39,7 +41,8 @@ const client = new QueryClient({
   },
 });
 
-client.setQueryDefaults(["movie-data"], { staleTime: 3000 });
+client.setQueryDefaults(["movie-data"], { staleTime: 1000 });
+client.setQueryDefaults(["movie-detail"], { staleTime: 1000 });
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
