@@ -19,8 +19,9 @@ import "./style.css";
 import useGetTrailers from "../../../hooks/useGetTrailers";
 
 export default function CarouselTrailers() {
-  const { data: keys, isPending } = useGetTrailers("home");
+  const { data, isPending } = useGetTrailers();
 
+  console.log(data);
   return (
     <>
       <Swiper
@@ -32,21 +33,28 @@ export default function CarouselTrailers() {
         data-swiperTrailer
       >
         {!isPending &&
-          keys?.map((key) => (
-            <SwiperSlide data-swiperSlideTrailer key={key}>
-              <iframe
-                width="100%"
-                height="100%"
-                src={`https://www.youtube.com/embed/${key}`}
-                title="YouTube video player"
-                allow="accelerometer; 
+          data &&
+          data.map((itemData) => (
+            <SwiperSlide data-swiperSlideTrailer key={itemData.id}>
+              {itemData.results.map(
+                (item) =>
+                  item.type == "Trailer" && (
+                    <iframe
+                      key={item.key}
+                      width="100%"
+                      height="100%"
+                      src={`https://www.youtube.com/embed/${item.key}`}
+                      title="YouTube video player"
+                      allow="accelerometer; 
                     autoplay; 
                     clipboard-write; 
                     encrypted-media; 
                     gyroscope; 
                     picture-in-picture; 
                     web-share"
-              ></iframe>
+                    ></iframe>
+                  )
+              )}
             </SwiperSlide>
           ))}
       </Swiper>
