@@ -2,10 +2,6 @@ import { useQuery } from "@tanstack/react-query";
 
 import http from "../helpers/http";
 
-interface dataType {
-  type: string;
-}
-
 const value = import.meta.env.VITE_API_KEY;
 
 const options = {
@@ -16,36 +12,23 @@ const options = {
   },
 };
 
-const getTrailerMovieData = async (action: string) => {
+const getTrailerMovieData = async () => {
   const ids = JSON.parse(localStorage.getItem("idsForTrailers")!);
-  if (ids) {
-    localStorage.setItem("idsForTrailers", JSON.stringify([]));
+
+  const dataArray = [];
+
+  for (let i = 0; i < ids.length; i++) {
+    const { data } = await http(`movie/${ids[i]}/videos`, options);
+    dataArray.push(data);
   }
 
-  const dataValue = [];
-  switch (action) {
-    case "details":
-      break;
-    case "home":
-      for (let i = 0; i < ids.length; i++) {
-        const { data } = await http(`movie/${ids[i]}/videos`, options);
-        let dataTrailer = [];
-        if (data) {
-          dataTrailer = data.results.find((item: dataType) => {
-            return item.type == "Trailer";
-          });
-        }
-        dataValue.push(dataTrailer.key);
-      }
-
-      return dataValue;
-  }
+  return dataArray;
 };
 
-const useGetTrailers = (action: string) => {
+const useGetTrailers = () => {
   return useQuery({
     queryKey: ["trailer-data"],
-    queryFn: () => getTrailerMovieData(action),
+    queryFn: () => getTrailerMovieData(),
   });
 };
 
