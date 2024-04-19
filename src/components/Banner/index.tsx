@@ -42,7 +42,11 @@ export default function CaptionCarousel() {
   const top = useBreakpointValue({ base: "90%", md: "50%" });
   const side = useBreakpointValue({ base: "30%", md: "40px" });
 
-  const [videoId, setVideoId] = useLocalStorage("idsForTrailers", []);
+  const [videoId, setVideoId] = useLocalStorage<number[]>("idsForTrailers", [
+    0,
+  ]);
+
+  console.log(videoId);
 
   const { data, isPending } = useGetMovies(
     "movie/popular?language=pt-BR&page=",
@@ -51,25 +55,18 @@ export default function CaptionCarousel() {
 
   const setIdsLocalStorage = () => {
     const idsValue = [];
-    if (!isPending) {
+    if (!isPending && data) {
       for (let i = 0; i < 3; i++) {
         idsValue.push(data.results[i].id);
       }
-      localStorage.setItem("idsForTrailers", JSON.stringify(idsValue));
+      setVideoId(idsValue);
     }
   };
 
   useEffect(() => {
     setIdsLocalStorage();
-    if (!isPending) {
-      const oldValue = videoId;
-      data.results.map((item) => {
-        oldValue.push(item.id);
-      });
-      setVideoId(oldValue);
-    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isPending]);
+  }, []);
 
   return (
     <Container maxW="100vw" p={"0"} position="relative">
@@ -124,6 +121,7 @@ export default function CaptionCarousel() {
           autoplaySpeed={4000}
         >
           {!isPending &&
+            data &&
             data.results &&
             [0, 1, 2].map((vIndex) => (
               <>
