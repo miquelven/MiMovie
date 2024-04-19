@@ -4,6 +4,17 @@ import http from "../helpers/http";
 
 const value = import.meta.env.VITE_API_KEY;
 
+interface videoDataProp {
+  type: string;
+  id: number;
+  key: number;
+  name: string;
+}
+
+interface videosDataProp {
+  results: videoDataProp[];
+}
+
 const options = {
   method: "GET",
   headers: {
@@ -12,10 +23,10 @@ const options = {
   },
 };
 
-const getTrailerMovieData = async () => {
+const getTrailerMovieData = async (): Promise<videosDataProp[]> => {
   const ids = JSON.parse(localStorage.getItem("idsForTrailers")!);
 
-  const dataArray = [];
+  const dataArray: videosDataProp[] = [];
 
   for (let i = 0; i < ids.length; i++) {
     const { data } = await http(`movie/${ids[i]}/videos`, options);
