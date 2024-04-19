@@ -1,7 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 
 interface companieProp {
-  id: number;
   logo_path: string;
   name: string;
 }
