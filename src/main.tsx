@@ -36,13 +36,10 @@ const client = new QueryClient({
   defaultOptions: {
     queries: {
       refetchOnWindowFocus: false,
-      staleTime: 1000 * 60 * 30,
+      staleTime: 1,
     },
   },
 });
-
-client.setQueryDefaults(["movie-data"], { staleTime: 1000 });
-client.setQueryDefaults(["movie-detail"], { staleTime: 1000 });
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
