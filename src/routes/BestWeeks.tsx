@@ -6,17 +6,29 @@ import TopListMovieInfo from "../components/TopList/TopListMovieInfo";
 import { useEffect } from "react";
 import { useLocalStorage } from "usehooks-ts";
 
+interface movieType {
+  id: number;
+  title: string;
+  poster_path: string;
+  overview: string;
+  backdrop_path: string;
+  release_date: string;
+}
+
 export default function BestWeek() {
   const { data, isPending } = useGetMovies(
     "trending/movie/week?language=pt-BR",
     1
   );
 
-  const [items, setItems] = useLocalStorage("weekItems", []);
+  const [items, setItems] = useLocalStorage<movieType[] | never[]>(
+    "weekItems",
+    []
+  );
   const [currentItem] = useLocalStorage("weekCurrentItem", []);
 
   useEffect(() => {
-    if (!isPending) {
+    if (!isPending && data) {
       setItems(data.results);
       console.log(items);
     }
