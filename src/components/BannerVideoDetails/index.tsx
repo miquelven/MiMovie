@@ -2,8 +2,6 @@ import {
   Box,
   Button,
   Flex,
-  Grid,
-  GridItem,
   Heading,
   IconButton,
   Image,
@@ -18,7 +16,6 @@ import { CiHeart } from "react-icons/ci";
 // import { FaHeart } from "react-icons/fa";
 
 interface companieProp {
-  id: number;
   logo_path: string;
   name: string;
 }
@@ -207,31 +204,15 @@ export default function BannerVideoDetails({ data, isLoading }: propType) {
                     <span className="text-4xl">
                       {data?.vote_average.toFixed(1)}/10
                     </span>
-                    <Grid
-                      templateColumns={
-                        data?.production_companies.length == 1
-                          ? "repeat(1,1fr)"
-                          : "repeat(2, 1fr)"
-                      }
-                      alignItems={"center"}
-                    >
-                      {data?.production_companies.map(
-                        (companie, index) =>
-                          index < 2 &&
-                          companie.logo_path && (
-                            <>
-                              <GridItem key={companie.id}>
-                                <Image
-                                  src={`https://image.tmdb.org/t/p/w300/${companie.logo_path}`}
-                                  alt={`Imagem da companhia '${companie.name}'`}
-                                  objectFit="cover"
-                                  className="w-full h-full scale-50"
-                                />
-                              </GridItem>
-                            </>
-                          )
-                      )}
-                    </Grid>
+
+                    <Box>
+                      <Image
+                        src={`https://image.tmdb.org/t/p/w300/${data?.production_companies[0].logo_path}`}
+                        alt={`Imagem da companhia '${data?.production_companies[0].name}'`}
+                        objectFit="cover"
+                        className="w-full h-full scale-50"
+                      />
+                    </Box>
                     <Flex gap="40px">
                       <Button
                         colorScheme="gray"
