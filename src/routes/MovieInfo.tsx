@@ -56,7 +56,7 @@ export default function MovieInfo() {
           {!isPendingReviews && <ReviewsArea reviews={reviewsData!} />}
           {!isPendingCredits && <CreditsArea credits={creditsData!} />}
           {!isPendingSimilar && (
-            <SimilarMoviesArea similarMoviesData={similarMoviesData} />
+            <SimilarMoviesArea similarMoviesData={similarMoviesData!} />
           )}
         </Container>
       </Container>
