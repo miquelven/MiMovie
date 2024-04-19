@@ -21,7 +21,6 @@ import useGetTrailers from "../../../hooks/useGetTrailers";
 export default function CarouselTrailers() {
   const { data, isPending } = useGetTrailers();
 
-  console.log(data);
   return (
     <>
       <Swiper
