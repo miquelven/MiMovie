@@ -11,9 +11,24 @@ const options = {
   },
 };
 
-const getSimilarMovies = async (id: number) => {
+interface movieType {
+  id: number;
+  title: string;
+  poster_path: string;
+}
+interface similarMovieType {
+  results: movieType[];
+}
+
+const getSimilarMovies = async (
+  id: number
+): Promise<similarMovieType | undefined> => {
+  let dataValue: similarMovieType | null = null;
   const { data } = await http(`movie/${id}/similar`, options);
-  return data;
+  if (data !== null) {
+    dataValue = data;
+  }
+  return dataValue!;
 };
 
 const useGetSimilarMovies = (id: number) =>
