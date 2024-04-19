@@ -56,6 +56,7 @@ export default function CarouselMovies() {
         className="w-[100vw] overflow-hidden hover:cursor-grab hover:active:cursor-grabbing"
       >
         {!isPending &&
+          data &&
           data.results &&
           data.results.map((movie: movieType, index: number) => (
             <SwiperSlide data-swiperSlideMovie key={movie.id}>
