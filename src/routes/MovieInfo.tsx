@@ -41,18 +41,18 @@ export default function MovieInfo() {
     <main>
       <Container maxW="100vw" p={"0"} position="relative" mb="200px">
         <BannerVideoDetails data={data} isLoading={isPending} />
+        <CarouselVideosImages
+          videoData={videosData!}
+          isLoadingVideo={isPendingVideos}
+          imagesData={imagesData}
+          isLoadingImage={isPendingImages}
+        />
         <Container
           mt="280px"
           maxW="1580px"
           px={{ base: "30px", md: "10px" }}
           position="relative"
         >
-          <CarouselVideosImages
-            videoData={videosData!}
-            isLoadingVideo={isPendingVideos}
-            imagesData={imagesData}
-            isLoadingImage={isPendingImages}
-          />
           {!isPendingReviews && <ReviewsArea reviews={reviewsData!} />}
           {!isPendingCredits && <CreditsArea credits={creditsData!} />}
           {!isPendingSimilar && (
