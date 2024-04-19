@@ -3,13 +3,6 @@ import useGetMovies from "../../hooks/useGetMovies";
 import CardMovie from "../CardMovie";
 import { useState } from "react";
 import PaginationArea from "../PaginationArea";
-
-interface itemType {
-  poster_path: string;
-  title: string;
-  release_date: string;
-}
-
 interface propType {
   title: string;
   desc: string;
@@ -55,8 +48,9 @@ export default function ListMovies({ title, desc, url }: propType) {
         mt="80px"
       >
         {!isPending &&
+          data &&
           data.results.map(
-            (item: itemType, index: number) =>
+            (item, index: number) =>
               index < 12 && (
                 <CardMovie key={index} data={item} isLoading={isPending} />
               )
