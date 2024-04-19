@@ -46,25 +46,20 @@ export default function CaptionCarousel() {
     0,
   ]);
 
-  console.log(videoId);
-
   const { data, isPending } = useGetMovies(
     "movie/popular?language=pt-BR&page=",
     1
   );
 
-  const setIdsLocalStorage = () => {
+  useEffect(() => {
     const idsValue = [];
     if (!isPending && data) {
       for (let i = 0; i < 3; i++) {
         idsValue.push(data.results[i].id);
       }
       setVideoId(idsValue);
+      console.log(videoId);
     }
-  };
-
-  useEffect(() => {
-    setIdsLocalStorage();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
