@@ -9,7 +9,18 @@ import { Navigation, Pagination } from "swiper/modules";
 import { Box, Center, Heading } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 
-export default function SimilarMoviesArea({ similarMoviesData }) {
+interface movieType {
+  id: number;
+  title: string;
+  poster_path: string;
+}
+interface propType {
+  similarMoviesData: {
+    results: movieType[];
+  };
+}
+
+export default function SimilarMoviesArea({ similarMoviesData }: propType) {
   return (
     <>
       <Heading textAlign={"center"} mt="140px" mb="80px">
