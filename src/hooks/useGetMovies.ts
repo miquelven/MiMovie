@@ -16,17 +16,36 @@ const options = {
   },
 };
 
-const getMovieData = async (url: string, page?: number) => {
+interface movieType {
+  id: number;
+  title: string;
+  poster_path: string;
+  overview: string;
+  backdrop_path: string;
+}
+
+interface moviesType {
+  results: movieType[];
+}
+
+const getMovieData = async (
+  url: string,
+  page?: number
+): Promise<moviesType | undefined> => {
+  let dataValue: moviesType | null = null;
   const data = await http(`${url}${page}`, options);
 
-  // setLocalStorage genreIds value
-  const genresData: number[][] = [];
-  data.data.results.map((item: itemType) => {
-    genresData.push(item.genre_ids);
-  });
-  localStorage.setItem("genresIds", JSON.stringify(genresData));
+  if (data !== null) {
+    dataValue = data.data;
+    // setLocalStorage genreIds value
+    const genresData: number[][] = [];
+    data.data.results.map((item: itemType) => {
+      genresData.push(item.genre_ids);
+    });
+    localStorage.setItem("genresIds", JSON.stringify(genresData));
+  }
 
-  return data.data;
+  return dataValue!;
 };
 
 const useGetMovies = (url: string, page?: number) => {
