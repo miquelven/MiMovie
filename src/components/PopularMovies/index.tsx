@@ -72,6 +72,7 @@ export default function PopularMovies() {
               </Center>
             </GridItem>
             {!isPending &&
+              data &&
               data.results.map(
                 (item: itemType, index: number) =>
                   index < 12 && (
