@@ -34,8 +34,8 @@ export default function CarouselTrailers() {
       >
         {!isPending &&
           data &&
-          data.map((itemData) => (
-            <SwiperSlide data-swiperSlideTrailer key={itemData.id}>
+          data.map((itemData, index) => (
+            <SwiperSlide data-swiperSlideTrailer key={index}>
               {itemData.results.map(
                 (item) =>
                   item.type == "Trailer" && (
