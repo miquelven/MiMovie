@@ -62,25 +62,40 @@ export default function CarouselVideosImages({
         width="100%"
       >
         <Swiper
-          slidesPerView={3}
-          spaceBetween={30}
+          slidesPerView={1}
+          spaceBetween={0}
+          breakpoints={{
+            640: {
+              slidesPerView: 2,
+              spaceBetween: 20,
+            },
+            768: {
+              slidesPerView: 2,
+              spaceBetween: 40,
+            },
+            1024: {
+              slidesPerView: 3,
+              spaceBetween: 30,
+            },
+          }}
           loop={true}
           pagination={{
             clickable: true,
           }}
           navigation={true}
           modules={[Navigation]}
+          className="h-[200px] w-[90%] sm:w-full sm:h-[250px] 2xl:h-[300px] "
         >
           {videos &&
             videos.map((video) => (
-              <SwiperSlide key={video.id} className="h-[300px] ">
+              <SwiperSlide key={video.id} style={{ height: "100%" }}>
                 <iframe
                   key={video.key}
                   src={`https://www.youtube.com/embed/${video.key}`}
-                  height={"280px"}
-                  width={"100%"}
                   title={`${video.name}`}
+                  className="h-full w-full"
                   allow="accelerometer; 
+                  
               autoplay; 
               clipboard-write; 
               encrypted-media; 
@@ -93,19 +108,17 @@ export default function CarouselVideosImages({
           {images &&
             images.map(
               (image, index) =>
-                index < 10 && (
-                  <SwiperSlide key={index}>
-                    <Skeleton
-                      isLoaded={!isLoadingImage}
-                      startColor="#2d323f"
-                      endColor="#131722"
-                    >
-                      <img
-                        src={`https://image.tmdb.org/t/p/original${image}`}
-                        alt="object-cover"
-                      />
-                    </Skeleton>
-                  </SwiperSlide>
+                index < 6 && (
+                  <SwiperSlide
+                    key={index}
+                    style={{
+                      background: `url('https://image.tmdb.org/t/p/original${image}')`,
+                      backgroundPosition: "center",
+                      backgroundSize: "cover",
+                      backgroundRepeat: "no-repeat",
+                      height: "100%",
+                    }}
+                  ></SwiperSlide>
                 )
             )}
         </Swiper>
