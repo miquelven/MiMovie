@@ -53,7 +53,17 @@ export default function CarouselVideosImages({
   }
 
   return (
-    <Box mt="280px" mb="200px">
+    <Box
+      mt={{
+        base: "140px",
+        sm: "270px",
+        md: "180px",
+        lg: "330px",
+        xl: "200px",
+        "2xl": "280px",
+      }}
+      mb={{ base: "150px", md: "200px" }}
+    >
       <Skeleton
         isLoaded={!isLoadingVideo && !isLoadingImage}
         startColor="#2d323f"
