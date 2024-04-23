@@ -15,6 +15,7 @@ import { Link } from "react-router-dom";
 import { FaFacebookF } from "react-icons/fa6";
 import { FaTwitter } from "react-icons/fa";
 import { FaInstagram } from "react-icons/fa6";
+import { useLocalStorage } from "usehooks-ts";
 
 interface genreType {
   id: number;
@@ -36,8 +37,17 @@ const socialMedia = [
   },
 ];
 
+interface selectedGenreType {
+  id: number;
+  name: string;
+}
+
 export default function Footer() {
   const { data, isPending } = useGetAllGenres();
+
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [selectedGenre, setSelectedGenre] =
+    useLocalStorage<selectedGenreType | null>("selectedGenre", null);
 
   return (
     <footer className="bg-[#0a0d14] pt-10">
@@ -89,7 +99,12 @@ export default function Footer() {
                   color="#fff9"
                   _hover={{ color: "#fff" }}
                 >
-                  <Link to={`/${genre.name.split(" ").join("-")}`}>
+                  <Link
+                    onClick={() =>
+                      setSelectedGenre({ id: genre.id, name: genre.name })
+                    }
+                    to={`/categorias/${genre.name.split(" ").join("-")}`}
+                  >
                     {genre.name}
                   </Link>
                 </GridItem>
