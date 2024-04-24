@@ -31,3 +31,20 @@ main {
 .swiper-button-prev {
   padding: 30px;
 }
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #131722;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 20px;
+  background: #005282;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #23a7d7;
+}
