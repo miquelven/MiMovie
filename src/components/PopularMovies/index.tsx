@@ -13,6 +13,7 @@ import useGetMovies from "../../hooks/useGetMovies";
 import CardMovie from "../CardMovie";
 
 interface itemType {
+  id: number;
   poster_path: string;
   title: string;
   release_date: string;
@@ -46,6 +47,7 @@ export default function PopularMovies() {
               "2xl": "repeat(7, 1fr)",
             }}
             gap="24px"
+            rowGap={"60px"}
             maxH={{ base: "2370px", sm: "auto" }}
             overflow="hidden"
           >
