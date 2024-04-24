@@ -23,9 +23,9 @@ const options = {
   },
 };
 
-const getTrailerMovieData = async (): Promise<videosDataProp[]> => {
-  const ids = JSON.parse(localStorage.getItem("idsForTrailers")!);
-
+const getTrailerMovieData = async (
+  ids: number[]
+): Promise<videosDataProp[]> => {
   const dataArray: videosDataProp[] = [];
 
   for (let i = 0; i < ids.length; i++) {
@@ -36,10 +36,10 @@ const getTrailerMovieData = async (): Promise<videosDataProp[]> => {
   return dataArray;
 };
 
-const useGetTrailers = () => {
+const useGetTrailers = (ids: number[]) => {
   return useQuery({
-    queryKey: ["trailer-data"],
-    queryFn: () => getTrailerMovieData(),
+    queryKey: ["trailer-data", ids],
+    queryFn: () => getTrailerMovieData(ids),
   });
 };
 
