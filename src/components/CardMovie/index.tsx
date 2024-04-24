@@ -1,9 +1,11 @@
-import { Box, Flex, GridItem, Heading, Text } from "@chakra-ui/react";
+import { Center, Flex, GridItem, Heading, Text } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
+import setCurrentMovie from "../../helpers/setCurrentMovie";
 
 interface dataType {
   data: {
+    id: number;
     poster_path: string;
     title: string;
     release_date: string;
@@ -13,16 +15,19 @@ interface dataType {
 
 export default function CardMovie({ data, isLoading }: dataType) {
   return (
-    <GridItem>
+    <GridItem _hover={{ background: "#1c212e" }}>
       {!isLoading ? (
-        <Link to={`/${data.title.split(" ").join("-")}`}>
-          <Box>
+        <Link
+          onClick={() => setCurrentMovie(data.id)}
+          to={`/${data.title.split(" ").join("-")}`}
+        >
+          <Center>
             <Flex
               flexDir={"column"}
               justifyContent={"center"}
               alignItems={"center"}
             >
-              <div className="w-full min-h-[336px]">
+              <div className="w-full">
                 <img
                   width="80%"
                   src={`https://image.tmdb.org/t/p/original${data.poster_path}`}
@@ -43,7 +48,7 @@ export default function CardMovie({ data, isLoading }: dataType) {
                 {data.release_date.split("-")[0]}
               </Text>
             </Flex>
-          </Box>
+          </Center>
         </Link>
       ) : (
         <motion.div
