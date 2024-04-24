@@ -11,8 +11,10 @@ import {
 import { Link } from "react-router-dom";
 import { useLocalStorage } from "usehooks-ts";
 import TopListMovieInfoItem from "./TopListMovieInfoItem";
+import setCurrentMovie from "../../../helpers/setCurrentMovie";
 
 interface currentItemProp {
+  id: number;
   title: string;
   poster_path: string;
   overview: string;
@@ -24,6 +26,7 @@ export default function TopListMovieInfo() {
     "weekCurrentItem",
     null
   );
+
   const [gridItems] = useLocalStorage("weekItems", []);
 
   return (
@@ -51,8 +54,9 @@ export default function TopListMovieInfo() {
                     {currentItem.overview}
                   </Text>
                   <Link
+                    onClick={() => setCurrentMovie(currentItem.id)}
                     to={`/${currentItem.title.split(" ").join("-")}`}
-                    className="text-sm md:text-sm xl:text-base text-[#fff8] hover:text-[#eee] hover:underline"
+                    className="text-sm md:text-sm xl:text-base text-[#23a7d7] hover:text-[#005282] hover:underline"
                   >
                     Ver Mais Informações
                   </Link>
