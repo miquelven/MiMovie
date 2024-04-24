@@ -1,6 +1,11 @@
 import { Container, Flex, Heading, Text } from "@chakra-ui/react";
+import { ReactNode } from "react";
 
-export default function BannerTrailers({ children }) {
+interface typeProp {
+  children: ReactNode;
+}
+
+export default function BannerTrailers({ children }: typeProp) {
   return (
     <section className="pt-20 pb-32 w-full bg-[#0a0d14] max-md:pb-20 max-sm:pb-0 max-sm:pt-28">
       <Container

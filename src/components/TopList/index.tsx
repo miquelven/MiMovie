@@ -2,6 +2,7 @@ import { Box, Divider, Flex, Heading } from "@chakra-ui/react";
 import TopListItem from "./TopListItem";
 
 interface itemType {
+  id: number;
   title: string;
   release_date: string;
   overview: string;

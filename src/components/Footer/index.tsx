@@ -49,6 +49,8 @@ export default function Footer() {
   const [selectedGenre, setSelectedGenre] =
     useLocalStorage<selectedGenreType | null>("selectedGenre", null);
 
+  console.log(selectedGenre);
+
   return (
     <footer className="bg-[#0a0d14] pt-10">
       <Container
