@@ -10,7 +10,6 @@ interface propType {
 }
 
 export default function ListMovies({ title, desc, url }: propType) {
-  console.log(url);
   const [currentPage, setCurrentPage] = useState(1);
 
   const setPage = (newValue: number) => {
