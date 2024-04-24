@@ -28,25 +28,20 @@ interface imagesDataProp {
 }
 
 interface propType {
-  videoData: videosDataProp[];
-  isLoadingVideo: boolean;
-  isLoadingImage: boolean;
+  videoData: videosDataProp;
+  isLoading: boolean;
   imagesData: imagesDataProp;
 }
 
 export default function CarouselVideosImages({
   videoData,
-  isLoadingVideo,
-  isLoadingImage,
+  isLoading,
   imagesData,
 }: propType) {
   let videos: videoDataProp[] | null = null;
-  if (!isLoadingVideo) {
-    videos = videoData[0].results.filter((video) => video.type == "Trailer");
-  }
-
   const images = [];
-  if (!isLoadingImage) {
+  if (!isLoading) {
+    videos = videoData.results.filter((video) => video.type == "Trailer");
     for (let i = 0; i < imagesData.backdrops.length; i++) {
       images.push(imagesData.backdrops[i].file_path);
     }
@@ -65,10 +60,10 @@ export default function CarouselVideosImages({
       mb={{ base: "150px", md: "200px" }}
     >
       <Skeleton
-        isLoaded={!isLoadingVideo && !isLoadingImage}
+        isLoaded={!isLoading}
         startColor="#2d323f"
         endColor="#131722"
-        height={isLoadingVideo && isLoadingImage ? 300 : ""}
+        height={isLoading ? 300 : ""}
         width="100%"
       >
         <Swiper
