@@ -1,4 +1,4 @@
-import { useQuery } from "@tanstack/react-query";
+import { keepPreviousData, useQuery } from "@tanstack/react-query";
 
 import http from "../helpers/http";
 
@@ -38,7 +38,6 @@ const getMovieData = async (
 
   if (data !== null) {
     dataValue = data.data;
-    // setLocalStorage genreIds value
     const genresData: number[][] = [];
     data.data.results.map((item: itemType) => {
       genresData.push(item.genre_ids);
@@ -51,8 +50,9 @@ const getMovieData = async (
 
 const useGetMovies = (url: string, page?: number) => {
   return useQuery({
-    queryKey: ["movie-data", page],
+    queryKey: ["movie-data", url, page],
     queryFn: () => getMovieData(url, page),
+    placeholderData: keepPreviousData,
   });
 };
 
