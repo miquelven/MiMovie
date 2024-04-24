@@ -4,8 +4,10 @@ import { useState, useEffect } from "react";
 
 import { useLocalStorage } from "usehooks-ts";
 import { Link } from "react-router-dom";
+import setCurrentMovie from "../../../helpers/setCurrentMovie";
 
 interface itemType {
+  id: number;
   title: string;
   release_date: string;
   overview: string;
@@ -115,7 +117,13 @@ export default function TopListItem({ item, ranked }: PropsType) {
             </Hide>
             {/* redirect for movie path */}
             <Hide above="lg">
-              <Link className="absolute inset-0" to={`#${item.title}`}></Link>
+              <Link
+                onClick={() => setCurrentMovie(item.id)}
+                className="absolute inset-0"
+                to={`/${item.title}`}
+              >
+                {" "}
+              </Link>
             </Hide>
           </Flex>
           <Divider pt="20px" borderColor={"#fff4"} />
