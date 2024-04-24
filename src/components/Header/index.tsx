@@ -14,7 +14,7 @@ import {
   Slide,
 } from "@chakra-ui/react";
 import { Input } from "@chakra-ui/react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 
 export default function Header() {
@@ -22,6 +22,15 @@ export default function Header() {
 
   const location = useLocation();
   const { pathname } = location;
+
+  // hidden scrollbar
+  useEffect(() => {
+    if (isOpen) {
+      document.querySelector("body")!.style.overflow = "hidden";
+    } else {
+      document.querySelector("body")!.style.overflow = "auto";
+    }
+  }, [isOpen]);
 
   return (
     <header className="relative">
@@ -99,7 +108,7 @@ export default function Header() {
                 icon={<CloseIcon />}
                 position={"absolute"}
                 top="0"
-                left="0"
+                right="0"
               />
             </Fade>
           </Button>
