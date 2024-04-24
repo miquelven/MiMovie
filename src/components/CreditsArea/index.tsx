@@ -32,7 +32,7 @@ export default function CreditsArea({ credits }: propType) {
       <Heading mb="32px" as="h4">
         Elenco
       </Heading>
-      <Divider mb="80px" />
+      <Divider mb={{ base: "60px", sm: "80px" }} />
       <Grid
         templateColumns={"repeat(2,1fr)"}
         mx="auto"
@@ -46,15 +46,23 @@ export default function CreditsArea({ credits }: propType) {
               <GridItem mx="auto" key={index}>
                 <Flex flexDir={"column"} gap="8px">
                   <Flex flexDir="column" alignItems={"center"} gap="16px">
-                    <Text fontSize="xl" fontWeight={"bold"} color="#fff">
+                    <Text
+                      fontSize={{ base: "lg", sm: "xl" }}
+                      fontWeight={"bold"}
+                      color="#fff"
+                    >
                       {cast.name}
                     </Text>
                     <Avatar
-                      size="2xl"
+                      size={{ base: "xl", sm: "2xl" }}
                       src={`https://image.tmdb.org/t/p/original/${cast.profile_path}`}
                     ></Avatar>
                   </Flex>
-                  <Text color="#fffa" textAlign={"center"}>
+                  <Text
+                    color="#fffa"
+                    textAlign={"center"}
+                    fontSize={{ base: "smaller", sm: "medium" }}
+                  >
                     Ator
                   </Text>
                 </Flex>
@@ -69,15 +77,21 @@ export default function CreditsArea({ credits }: propType) {
             gap="8px"
           >
             <Flex flexDir="column" alignItems={"center"} gap="16px">
-              <Text fontSize="xl" fontWeight={"bold"} color="#fff">
+              <Text
+                fontSize={{ base: "lg", sm: "xl" }}
+                fontWeight={"bold"}
+                color="#fff"
+              >
                 {credits?.crew[0].name}{" "}
               </Text>
               <Avatar
-                size="2xl"
+                size={{ base: "xl", sm: "2xl" }}
                 src={`https://image.tmdb.org/t/p/original/${credits?.crew[0].profile_path}`}
               ></Avatar>
             </Flex>
-            <Text color="#fffa">Diretor</Text>
+            <Text color="#fffa" fontSize={{ base: "smaller", sm: "medium" }}>
+              Diretor
+            </Text>
           </Flex>
         </GridItem>
       </Grid>
