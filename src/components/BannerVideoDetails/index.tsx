@@ -72,7 +72,7 @@ export default function BannerVideoDetails({ data, isLoading }: propType) {
           position={"absolute"}
           zIndex={10}
           left={{ base: "0", xl: "10%" }}
-          mt={{ base: "30%", sm: "25%", md: "18%", lg: "24%", xl: "15%" }}
+          mt={{ base: "26%", sm: "25%", md: "", lg: "24%", xl: "15%" }}
           maxW="1580px"
         >
           <Flex
@@ -127,7 +127,7 @@ export default function BannerVideoDetails({ data, isLoading }: propType) {
                 <Text
                   fontSize={{ base: "smaller", sm: "medium", md: "large" }}
                   lineHeight={{ base: "28px", xl: "34px" }}
-                  color="#fffd"
+                  color="#ddd"
                   w={"100%"}
                 >
                   <Skeleton
@@ -145,7 +145,7 @@ export default function BannerVideoDetails({ data, isLoading }: propType) {
                   </Skeleton>
                 </Text>
                 <Box
-                  mt={{ base: "20px", md: "2%" }}
+                  mt={{ base: "20px", md: "10px" }}
                   fontSize={{ base: "smaller", xl: "medium" }}
                 >
                   <Skeleton
@@ -163,7 +163,7 @@ export default function BannerVideoDetails({ data, isLoading }: propType) {
                       }}
                       listStyleType={{ base: "none", md: "disc" }}
                       gap={{ base: "20px", md: "40px" }}
-                      color="#fffd"
+                      color="#aaab"
                     >
                       <ListItem style={{ listStyle: "none" }}>
                         {data?.runtime && (
@@ -182,12 +182,15 @@ export default function BannerVideoDetails({ data, isLoading }: propType) {
                         <span> de {data?.release_date.split("-")[0]}</span>
                       </ListItem>
                       <ListItem>
-                        {data?.genres.map((genre, index) => (
-                          <span key={index}>
-                            {genre.name}
-                            {index < data?.genres.length - 1 && ", "}
-                          </span>
-                        ))}
+                        {data?.genres.map(
+                          (genre, index) =>
+                            index < 3 && (
+                              <span key={index}>
+                                {genre.name}
+                                {index !== data.genres.length - 1 && ", "}
+                              </span>
+                            )
+                        )}
                       </ListItem>
                     </UnorderedList>
                   </Skeleton>
@@ -200,7 +203,11 @@ export default function BannerVideoDetails({ data, isLoading }: propType) {
                   endColor="#131722"
                   width={isLoading ? "90%" : ""}
                   height={isLoading ? 50 : "100%"}
-                  mt={!isLoading ? { base: "30px", sm: "0" } : { md: "70px" }}
+                  mt={
+                    !isLoading
+                      ? { base: "30px", sm: "30px", md: "20px" }
+                      : { md: "70px" }
+                  }
                 >
                   <Flex
                     alignItems={{
@@ -224,17 +231,19 @@ export default function BannerVideoDetails({ data, isLoading }: propType) {
                         }}
                         gap={{ sm: "40px", md: "60px" }}
                       >
-                        <a href={data.homepage} target="_blank">
-                          <Flex
-                            alignItems={{ base: "flex-start", xl: "center" }}
-                            gap="16px"
-                            color="#23a7d7"
-                            _hover={{ textDecor: "underline" }}
-                          >
-                            <span>Assistir o filme</span>
-                            <FaExternalLinkAlt className="sm:text-xl xl:text-xl" />
-                          </Flex>
-                        </a>
+                        {data.homepage && (
+                          <a href={data.homepage} target="_blank">
+                            <Flex
+                              alignItems={{ base: "flex-start", xl: "center" }}
+                              gap="16px"
+                              color="#23a7d7"
+                              _hover={{ textDecor: "underline" }}
+                            >
+                              <span>Assistir o filme</span>
+                              <FaExternalLinkAlt className="sm:text-xl xl:text-xl" />
+                            </Flex>
+                          </a>
+                        )}
                         <span className="sm:text-3xl xl:text-4xl">
                           {data.vote_average.toFixed(1)}/10
                         </span>
