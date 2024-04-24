@@ -36,14 +36,15 @@ const options = {
   },
 };
 
-const getMovieDetail = async (): Promise<dataProp | undefined> => {
-  const urlActual = window.location.href;
-  const urlParts = urlActual.split("/");
-  const movieName = urlParts[urlParts.length - 1].split("-").join("%20");
+const getMovieDetail = async (
+  movieName: string
+): Promise<dataProp | undefined> => {
+  const movieNameParts = movieName.split("/");
+  const name = movieNameParts[movieNameParts.length - 1].split("-").join("%20");
 
   try {
     const data = await http(
-      `search/movie?query=${movieName}&language=pt-BR&page=1`,
+      `search/movie?query=${name}&language=pt-BR&page=1`,
       options
     );
 
@@ -58,10 +59,10 @@ const getMovieDetail = async (): Promise<dataProp | undefined> => {
   }
 };
 
-const useGetMoviesDetail = () => {
+const useGetMoviesDetail = (movieName: string) => {
   return useQuery({
-    queryKey: ["movie-detail"],
-    queryFn: () => getMovieDetail(),
+    queryKey: ["movie-detail", movieName],
+    queryFn: () => getMovieDetail(movieName),
   });
 };
 
