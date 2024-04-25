@@ -56,16 +56,18 @@ export default function PopularMovies() {
               mb={{ base: "32px" }}
             >
               <Center h="100%">
-                <Flex flexDir={"column"} gap="52px" color="#fff9">
+                <Flex flexDir={"column"} gap="52px">
                   <Box>
-                    <Heading as="h3" color="#fff">
+                    <Heading as="h3">
                       Filmes Populares para Assistir Agora
                     </Heading>
-                    <Text mt="16px">Filmes mais assistidos</Text>
+                    <Text mt="16px" color="#fff9">
+                      Filmes mais assistidos
+                    </Text>
                   </Box>
 
                   <Link
-                    className="transition-all duration-300 border-t block border-white/30 hover:text-white max-sm:hidden"
+                    className="text-[#23a7d7] transition-all duration-300 border-t block border-white/30 pt-2 max-sm:hidden hover:text-[#005282] hover:underline"
                     to={`/populares`}
                   >
                     Ver Mais
@@ -77,13 +79,11 @@ export default function PopularMovies() {
               data &&
               data.results.map(
                 (item: itemType, index: number) =>
-                  index < 12 && (
-                    <CardMovie key={index} data={item} isLoading={isPending} />
-                  )
+                  index < 12 && <CardMovie key={index} data={item} />
               )}
           </Grid>
           <Link
-            className="transition-all duration-300 text-white/60 mt-14 hover:text-white hover:underline  sm:hidden"
+            className="transition-all text-[#23a7d7] duration-300  mt-14 hover:text-[#005282] hover:underline  sm:hidden"
             to="/populares"
           >
             Ver Mais
