@@ -7,5 +7,5 @@ interface currentPagintionButtonType {
 export default function CurrentPaginationButton({
   children,
 }: currentPagintionButtonType) {
-  return <button className="text-[#fff9]">{children}</button>;
+  return <button className="text-[#fff9] px-3">{children}</button>;
 }

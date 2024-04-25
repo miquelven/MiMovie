@@ -30,7 +30,7 @@ export default function PaginationButton({
 
   return (
     <button
-      className="transition-all duration-300 hover:text-[#fff9]"
+      className="transition-all duration-300 hover:text-[#fff9] px-3"
       disabled={infos.isPending}
       onClick={handleClick}
     >
