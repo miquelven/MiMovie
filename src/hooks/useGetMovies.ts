@@ -1,4 +1,4 @@
-import { keepPreviousData, useQuery } from "@tanstack/react-query";
+import { useQuery } from "@tanstack/react-query";
 
 import http from "../helpers/http";
 
@@ -52,7 +52,6 @@ const useGetMovies = (url: string, page?: number) => {
   return useQuery({
     queryKey: ["movie-data", url, page],
     queryFn: () => getMovieData(url, page),
-    placeholderData: keepPreviousData,
   });
 };
 
