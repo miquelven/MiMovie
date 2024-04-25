@@ -1,4 +1,12 @@
-import { Box, Center, Flex, Grid, Heading, Text } from "@chakra-ui/react";
+import {
+  Box,
+  Center,
+  Flex,
+  Grid,
+  Heading,
+  Spinner,
+  Text,
+} from "@chakra-ui/react";
 import useGetMovies from "../../hooks/useGetMovies";
 import CardMovie from "../CardMovie";
 import { useState } from "react";
@@ -17,9 +25,19 @@ export default function ListMovies({ title, desc, url }: propType) {
   };
 
   const { data, isPending } = useGetMovies(url, currentPage);
-
   return (
-    <section className="h-[calc(100vh+550px)] relative">
+    <section className="min-h-[calc(100vh+550px)] relative">
+      {isPending && (
+        <div className="fixed inset-0 bg-black/70 flex z-20 justify-center items-center scale-150">
+          <Spinner
+            thickness="4px"
+            speed="0.65s"
+            emptyColor="gray.200"
+            color="blue.500"
+            size="xl"
+          />
+        </div>
+      )}
       <Box>
         <Center>
           <Flex flexDir={"column"} textAlign={"center"} gap="24px">
@@ -47,14 +65,12 @@ export default function ListMovies({ title, desc, url }: propType) {
         mt="80px"
       >
         {!isPending &&
-          data &&
-          data.results.map(
+          data?.results.map(
             (item, index: number) =>
-              index < 12 && (
-                <CardMovie key={index} data={item} isLoading={isPending} />
-              )
+              index < 12 && <CardMovie key={index} data={item} />
           )}
       </Grid>
+
       <PaginationArea
         infos={{ setPage, pageSelected: currentPage, isPending }}
       />
