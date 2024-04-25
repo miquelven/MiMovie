@@ -13,6 +13,8 @@ import BestWeek from "./routes/BestWeeks.tsx";
 import Categories from "./routes/Categories.tsx";
 import CategoryItems from "./routes/CategoryItems.tsx";
 import MovieInfo from "./routes/MovieInfo.tsx";
+import Favorites from "./routes/Favorites.tsx";
+import WatchLater from "./routes/WatchLater.tsx";
 
 const router = createBrowserRouter([
   {
@@ -20,8 +22,10 @@ const router = createBrowserRouter([
     element: <App />,
     children: [
       { path: "/", element: <Home /> },
-      { path: "populares", element: <Popular /> },
+      { path: "/populares", element: <Popular /> },
       { path: "/melhores", element: <BestWeek /> },
+      { path: "/favoritos", element: <Favorites /> },
+      { path: "/assistirMaisTarde", element: <WatchLater /> },
       {
         path: "/categorias",
         element: <Categories />,
