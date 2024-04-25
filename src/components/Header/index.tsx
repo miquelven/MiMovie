@@ -164,7 +164,7 @@ export default function Header() {
                           left={pathname == "/melhores" ? "-12px" : "-100vw"}
                           top="50%"
                           borderWidth={
-                            pathname == "/assistirMaisTarde"
+                            pathname == "/melhores"
                               ? ["2px", null, null, "3px"]
                               : ""
                           }
