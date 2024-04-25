@@ -12,7 +12,10 @@ import {
 
 import { FaExternalLinkAlt } from "react-icons/fa";
 import { CiHeart } from "react-icons/ci";
-// import { FaHeart } from "react-icons/fa";
+import { FaHeart } from "react-icons/fa";
+import { useEffect, useState } from "react";
+import { useFavoriteMoviesStore } from "../../stores/favoriteStore";
+import { useWatchLaterStore } from "../../stores/watchLaterStore";
 
 interface genreProp {
   name: string;
@@ -20,6 +23,7 @@ interface genreProp {
 
 interface propType {
   data?: {
+    id: number;
     backdrop_path: string;
     poster_path: string;
     title: string;
@@ -49,6 +53,50 @@ const months = [
 ];
 
 export default function BannerVideoDetails({ data, isLoading }: propType) {
+  const [isFavorited, setIsFavorited] = useState(false);
+  const [showWatchLaterBtn, setShowWatchLaterBtn] = useState(false);
+  const favoriteStore = useFavoriteMoviesStore();
+  const watchLaterStore = useWatchLaterStore();
+
+  const HandleClickWatchLater = () => {
+    if (data) {
+      const videoData = {
+        poster_path: data.poster_path,
+        title: data.title,
+        id: data.id,
+      };
+      showWatchLaterBtn
+        ? watchLaterStore.removeWatchLater(data.id)
+        : watchLaterStore.addWatchLater(videoData);
+    }
+    setShowWatchLaterBtn((old) => !old);
+  };
+
+  const HandleClickFavoriteMovie = () => {
+    if (data) {
+      const videoData = {
+        poster_path: data.poster_path,
+        title: data.title,
+        id: data.id,
+      };
+      isFavorited
+        ? favoriteStore.removefavoriteMovie(data.id)
+        : favoriteStore.addFavorites(videoData);
+    }
+    setIsFavorited((old) => !old);
+  };
+
+  useEffect(() => {
+    if (!isLoading)
+      setIsFavorited(
+        favoriteStore.favoriteMovie.some((movie) => movie.id == data?.id)
+      );
+    setShowWatchLaterBtn(
+      watchLaterStore.watchLaterMovie.some((movie) => movie.id == data?.id)
+    );
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isLoading]);
+
   return (
     <>
       <Box
@@ -260,24 +308,42 @@ export default function BannerVideoDetails({ data, isLoading }: propType) {
                       w={{ base: "100%", md: "auto" }}
                     >
                       <Button
-                        colorScheme="gray"
-                        _hover={{ color: "#fff", background: "#ccc2" }}
+                        onClick={HandleClickWatchLater}
+                        colorScheme={!showWatchLaterBtn ? "gray" : "blackAlpha"}
+                        _hover={
+                          !showWatchLaterBtn
+                            ? { color: "#fff", background: "#0c0f16" }
+                            : { color: "black", background: "#c7c7c7" }
+                        }
                       >
-                        Assistir mais Tarde
+                        {!showWatchLaterBtn
+                          ? "Assistir mais Tarde"
+                          : "Retirar Assistir Mais Tarde"}
                       </Button>
                       <Button
+                        onClick={HandleClickFavoriteMovie}
                         variant="ghost"
                         colorScheme="gray"
                         px={{ base: 0, md: "10px" }}
                         _hover={{ background: "#ccc2" }}
                       >
-                        <IconButton
-                          fontSize="4xl"
-                          colorScheme="transparent"
-                          aria-label="Search"
-                          color="#c7c7c7"
-                          icon={<CiHeart />}
-                        />
+                        {!isFavorited ? (
+                          <IconButton
+                            fontSize="4xl"
+                            colorScheme="transparent"
+                            aria-label="Search"
+                            color="#c7c7c7"
+                            icon={<CiHeart />}
+                          />
+                        ) : (
+                          <IconButton
+                            fontSize="4xl"
+                            colorScheme="transparent"
+                            aria-label="Search"
+                            color="#c7c7c7"
+                            icon={<FaHeart />}
+                          />
+                        )}
                       </Button>
                     </Flex>
                   </Flex>
