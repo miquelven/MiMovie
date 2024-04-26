@@ -7,6 +7,7 @@ interface infosType {
     setPage: (value: number) => void;
     pageSelected: number;
     isPending: boolean;
+    totalPages: number;
   };
 }
 
@@ -28,14 +29,15 @@ export default function PaginationArea({ infos }: infosType) {
           <CurrentPaginationButton>
             {infos.pageSelected}
           </CurrentPaginationButton>
-          {infos.pageSelected < 500 && (
-            <>
-              <PaginationButton infos={infos}>
-                {infos.pageSelected + 1}
-              </PaginationButton>
-              <PaginationButton infos={infos}>Próximo</PaginationButton>
-            </>
-          )}
+          {infos.pageSelected < infos.totalPages &&
+            infos.pageSelected < 500 && (
+              <>
+                <PaginationButton infos={infos}>
+                  {infos.pageSelected + 1}
+                </PaginationButton>
+                <PaginationButton infos={infos}>Próximo</PaginationButton>
+              </>
+            )}
         </Flex>
       </Center>
     </Box>
