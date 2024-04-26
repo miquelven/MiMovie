@@ -14,7 +14,11 @@ interface dataType {
 
 export default function CardMovie({ data }: dataType) {
   return (
-    <GridItem _hover={{ background: "#1c212e" }} minHeight={"230px"}>
+    <GridItem
+      _hover={{ background: "#1c212e" }}
+      minHeight={"230px"}
+      className="cardMovie"
+    >
       <Link
         onClick={() => setCurrentMovie(data?.id)}
         to={`/${data?.title.split(" ").join("-")}`}
