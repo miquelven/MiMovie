@@ -15,6 +15,7 @@ import CategoryItems from "./routes/CategoryItems.tsx";
 import MovieInfo from "./routes/MovieInfo.tsx";
 import Favorites from "./routes/Favorites.tsx";
 import WatchLater from "./routes/WatchLater.tsx";
+import Search from "./routes/Search.tsx";
 
 const router = createBrowserRouter([
   {
@@ -24,6 +25,7 @@ const router = createBrowserRouter([
       { path: "/", element: <Home /> },
       { path: "/populares", element: <Popular /> },
       { path: "/melhores", element: <BestWeek /> },
+      { path: "/search/:name", element: <Search /> },
       { path: "/favoritos", element: <Favorites /> },
       { path: "/assistirMaisTarde", element: <WatchLater /> },
       {
