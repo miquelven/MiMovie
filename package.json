@@ -16,6 +16,7 @@
     "@emotion/styled": "^11.11.5",
     "@reduxjs/toolkit": "^2.2.3",
     "@tanstack/react-query": "^5.28.14",
+    "@uidotdev/usehooks": "^2.4.1",
     "axios": "^1.6.8",
     "framer-motion": "^11.0.25",
     "react": "^18.2.0",
@@ -30,6 +31,7 @@
     "zustand": "^4.5.2"
   },
   "devDependencies": {
+    "@types/lodash.debounce": "^4.0.9",
     "@types/node": "^20.12.4",
     "@types/react": "^18.2.66",
     "@types/react-dom": "^18.2.22",
