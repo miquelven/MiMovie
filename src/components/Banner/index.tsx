@@ -107,9 +107,7 @@ export default function Banner() {
             draggable
             autoplaySpeed={4000}
           >
-            {!isPending &&
-              data &&
-              data.results &&
+            {data?.results &&
               [0, 1, 2].map((vIndex) => (
                 <>
                   <Box
@@ -185,7 +183,7 @@ export default function Banner() {
                             to={`/${data.results[vIndex].title
                               .split(" ")
                               .join("-")}`}
-                            className="text-sm sm:text-base text-[#cfcfcf] hover:text-[#eee] hover:underline"
+                            className="text-sm sm:text-base mb-5 text-[#cfcfcf] hover:text-[#eee] hover:underline"
                           >
                             Ver Mais Informações
                           </Link>
@@ -195,7 +193,6 @@ export default function Banner() {
                         </Flex>
                       </Center>
                     </Container>
-                    {/* rating */}
                   </Box>
                 </>
               ))}
