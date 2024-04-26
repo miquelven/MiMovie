@@ -1,4 +1,4 @@
-import { Box, Divider, Flex, Heading } from "@chakra-ui/react";
+import { Box, Divider, Flex, Heading, Skeleton } from "@chakra-ui/react";
 import TopListItem from "./TopListItem";
 
 interface itemType {
@@ -19,15 +19,15 @@ interface PropsType {
 export default function TopList({ data, isPending }: PropsType) {
   return (
     <>
-      {!isPending && (
-        <Box
-          flex={"1"}
-          bg="#1c212e"
-          p="20px"
-          maxH={"100%"}
-          maxW="700px"
-          mx="auto"
-        >
+      <Skeleton
+        flex={"1"}
+        isLoaded={!isPending}
+        startColor="#2d323f"
+        endColor="#131722"
+        maxH={"100%"}
+        maxW="700px"
+      >
+        <Box bg="#1c212e" p="20px" mx="auto">
           <Flex alignItems={"center"} justifyContent={"space-between"}>
             <Heading
               as="h4"
@@ -41,14 +41,15 @@ export default function TopList({ data, isPending }: PropsType) {
             </span>
           </Flex>
           <Divider mt="16px" mb="32px" borderColor={"#fff4"} />
-          {data?.results.map(
-            (item: itemType, index: number) =>
-              index < 10 && (
-                <TopListItem item={item} key={index} ranked={index + 1} />
-              )
-          )}
+          {!isPending &&
+            data?.results.map(
+              (item: itemType, index: number) =>
+                index < 10 && (
+                  <TopListItem item={item} key={index} ranked={index + 1} />
+                )
+            )}
         </Box>
-      )}
+      </Skeleton>
     </>
   );
 }
