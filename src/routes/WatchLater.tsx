@@ -22,6 +22,7 @@ export default function WatchLater() {
           <Box minH={"400px"} mt={{ base: "40px", md: "80px" }}>
             <Grid
               bg="#0a0d14"
+              borderRadius={"16px"}
               p="20px"
               templateColumns={{ base: "repeat(1,1fr)", md: "repeat(2,1fr)" }}
               rowGap={{ base: "18px", md: "28px" }}
