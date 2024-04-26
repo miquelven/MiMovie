@@ -27,6 +27,7 @@ interface movieType {
 
 interface moviesType {
   results: movieType[];
+  total_pages: number;
 }
 
 const getMovieData = async (
