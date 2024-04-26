@@ -1,4 +1,4 @@
-import { CloseIcon, HamburgerIcon, SearchIcon } from "@chakra-ui/icons";
+import { CloseIcon, HamburgerIcon } from "@chakra-ui/icons";
 import {
   Box,
   Button,
@@ -9,13 +9,11 @@ import {
   Flex,
   Heading,
   IconButton,
-  InputGroup,
-  InputRightElement,
   Slide,
 } from "@chakra-ui/react";
-import { Input } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
+import InputSearchArea from "./InputSearchArea";
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
@@ -56,26 +54,8 @@ export default function Header() {
               MiMovies
             </Heading>
           </Link>
-          <InputGroup
-            width={[1 / 3, null, null, 5 / 12]}
-            size={["sm", null, null, "md"]}
-          >
-            <Input
-              rounded="xl"
-              variant="outline"
-              borderColor="#c7c7c7"
-              focusBorderColor="#777"
-            />
-            <InputRightElement>
-              <IconButton
-                size="md"
-                colorScheme="transparent"
-                aria-label="Search"
-                color="#c7c7c7"
-                icon={<SearchIcon />}
-              />
-            </InputRightElement>
-          </InputGroup>
+
+          <InputSearchArea />
           <Button
             variant="unstyle"
             onClick={() => setIsOpen(!isOpen)}
