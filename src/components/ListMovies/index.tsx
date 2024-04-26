@@ -1,7 +1,7 @@
 import { Grid, Spinner } from "@chakra-ui/react";
 import useGetMovies from "../../hooks/useGetMovies";
 import CardMovie from "../CardMovie";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import PaginationArea from "../PaginationArea";
 import TitleDescription from "../TitleDescription";
 interface propType {
@@ -18,6 +18,9 @@ export default function ListMovies({ title, desc, url }: propType) {
   };
 
   const { data, isPending } = useGetMovies(url, currentPage);
+
+  useEffect(() => setCurrentPage(1), [url]);
+
   return (
     <section className="min-h-[calc(100vh+550px)] relative">
       {isPending && (
@@ -50,9 +53,16 @@ export default function ListMovies({ title, desc, url }: propType) {
           )}
       </Grid>
 
-      <PaginationArea
-        infos={{ setPage, pageSelected: currentPage, isPending }}
-      />
+      {!isPending && data && (
+        <PaginationArea
+          infos={{
+            setPage,
+            pageSelected: currentPage,
+            isPending,
+            totalPages: data.total_pages,
+          }}
+        />
+      )}
     </section>
   );
 }
