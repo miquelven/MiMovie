@@ -40,6 +40,7 @@ export default function ScrollTopButton() {
         opacity: showScroll ? "1" : "0",
         zIndex: showScroll ? "10" : "-1",
       }}
+      _hover={{ transform: "scale(1.1)" }}
       icon={<FaArrowCircleUp />}
     />
   );
