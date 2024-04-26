@@ -1,0 +1,16 @@
+#searchVideosResults::-webkit-scrollbar {
+  width: 5px;
+}
+
+#searchVideosResults::-webkit-scrollbar-track {
+  background: #131722;
+}
+
+#searchVideosResults::-webkit-scrollbar-thumb {
+  border-radius: 4px;
+  background: #bbb;
+}
+
+#searchVideosResults::-webkit-scrollbar-thumb:hover {
+  background: #ddd;
+}
