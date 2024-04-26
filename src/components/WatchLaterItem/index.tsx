@@ -1,7 +1,8 @@
-import { Box, Flex, Heading, Text } from "@chakra-ui/react";
+import { Box, Flex, Heading, Slide } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 
 import setCurrentMovie from "../../helpers/setCurrentMovie";
+import { useState } from "react";
 
 interface propType {
   data: {
@@ -12,40 +13,45 @@ interface propType {
 }
 
 export default function WatchLaterItem({ data }: propType) {
+  const [showTitle, setShowTitle] = useState(false);
+
   return (
     <Box
       background={`url(https://image.tmdb.org/t/p/original${data.backdrop_path})`}
       backgroundPosition={"center"}
       backgroundRepeat="no-repeat"
       backgroundSize="cover"
+      borderRadius={"8px"}
       height={{ base: "200px", lg: "400px" }}
       position={"relative"}
+      onMouseEnter={() => setShowTitle(true)}
+      onMouseLeave={() => setShowTitle(false)}
     >
-      {/* <div className="absolute bg-black/50 inset-0"></div> */}
-      <Flex
-        position={"absolute"}
-        zIndex={10}
-        inset={0}
-        p="5%"
-        flexDir="column"
-        justifyContent={"space-between"}
-        background={"#0007"}
-        transition={"all ease 300ms"}
-        _hover={{ background: "#0004" }}
-      >
-        <Heading as="h3" fontSize={{ base: "large", md: "xl", xl: "2xl" }}>
-          {data.title}
-        </Heading>
-        <Link onClick={() => setCurrentMovie(data.id)} to={`/${data.title}`}>
-          <Text
-            fontSize={{ base: "12px", md: "16px" }}
-            _hover={{ textDecor: "underline", color: "#ccc" }}
-            textAlign={"center"}
+      <Link onClick={() => setCurrentMovie(data.id)} to={`/${data.title}`}>
+        <Flex
+          position={"absolute"}
+          zIndex={10}
+          inset={0}
+          p="5%"
+          flexDir="column"
+          justifyContent={"space-between"}
+          background={"#0001"}
+          transition={"all ease 300ms"}
+          _hover={{ background: "#0008" }}
+          cursor="pointer"
+          overflow={"hidden"}
+        >
+          <Slide
+            direction="bottom"
+            in={showTitle}
+            style={{ zIndex: 10, position: "absolute", padding: "8px" }}
           >
-            Ver Informações
-          </Text>
-        </Link>
-      </Flex>
+            <Heading as="h3" fontSize={{ base: "large", md: "xl", xl: "2xl" }}>
+              {data.title}
+            </Heading>
+          </Slide>
+        </Flex>
+      </Link>
     </Box>
   );
 }
