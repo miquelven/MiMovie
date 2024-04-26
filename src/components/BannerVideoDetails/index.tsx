@@ -1,6 +1,7 @@
 import {
   Box,
   Button,
+  Collapse,
   Flex,
   Heading,
   IconButton,
@@ -61,7 +62,7 @@ export default function BannerVideoDetails({ data, isLoading }: propType) {
   const HandleClickWatchLater = () => {
     if (data) {
       const videoData = {
-        poster_path: data.poster_path,
+        backdrop_path: data.backdrop_path,
         title: data.title,
         id: data.id,
       };
@@ -312,13 +313,16 @@ export default function BannerVideoDetails({ data, isLoading }: propType) {
                         colorScheme={!showWatchLaterBtn ? "gray" : "blackAlpha"}
                         _hover={
                           !showWatchLaterBtn
-                            ? { color: "#fff", background: "#0c0f16" }
-                            : { color: "black", background: "#c7c7c7" }
+                            ? { color: "#000", background: "#a5a5a5" }
+                            : { color: "#fff", background: "#2e2f38" }
                         }
                       >
-                        {!showWatchLaterBtn
-                          ? "Assistir mais Tarde"
-                          : "Retirar Assistir Mais Tarde"}
+                        <Collapse in={!showWatchLaterBtn}>
+                          {!showWatchLaterBtn && "Assistir mais Tarde"}
+                        </Collapse>
+                        <Collapse in={showWatchLaterBtn}>
+                          {showWatchLaterBtn && "Retirar Assistir Mais Tarde"}
+                        </Collapse>
                       </Button>
                       <Button
                         onClick={HandleClickFavoriteMovie}
@@ -327,23 +331,28 @@ export default function BannerVideoDetails({ data, isLoading }: propType) {
                         px={{ base: 0, md: "10px" }}
                         _hover={{ background: "#ccc2" }}
                       >
-                        {!isFavorited ? (
-                          <IconButton
-                            fontSize="4xl"
-                            colorScheme="transparent"
-                            aria-label="Search"
-                            color="#c7c7c7"
-                            icon={<CiHeart />}
-                          />
-                        ) : (
-                          <IconButton
-                            fontSize="4xl"
-                            colorScheme="transparent"
-                            aria-label="Search"
-                            color="#c7c7c7"
-                            icon={<FaHeart />}
-                          />
-                        )}
+                        <Collapse in={!isFavorited} animateOpacity>
+                          {!isFavorited && (
+                            <IconButton
+                              fontSize="4xl"
+                              colorScheme="transparent"
+                              aria-label="Search"
+                              color="#c7c7c7"
+                              icon={<CiHeart />}
+                            />
+                          )}
+                        </Collapse>
+                        <Collapse in={isFavorited} animateOpacity>
+                          {isFavorited && (
+                            <IconButton
+                              fontSize="4xl"
+                              colorScheme="transparent"
+                              aria-label="Search"
+                              color="#c7c7c7"
+                              icon={<FaHeart />}
+                            />
+                          )}
+                        </Collapse>
                       </Button>
                     </Flex>
                   </Flex>
