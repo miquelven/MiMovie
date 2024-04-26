@@ -73,7 +73,11 @@ export default function SimilarMoviesArea({ similarMoviesData }: propType) {
                 }}
                 to={`/${movie.title.split(" ").join("-")}`}
               >
-                <Box>
+                <Box
+                  py="3"
+                  transition={"all ease 700ms"}
+                  _hover={{ background: "#1c212e" }}
+                >
                   <Center>
                     <img
                       src={`https://image.tmdb.org/t/p/w300/${movie.poster_path}`}
