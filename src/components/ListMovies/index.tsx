@@ -1,16 +1,9 @@
-import {
-  Box,
-  Center,
-  Flex,
-  Grid,
-  Heading,
-  Spinner,
-  Text,
-} from "@chakra-ui/react";
+import { Grid, Spinner } from "@chakra-ui/react";
 import useGetMovies from "../../hooks/useGetMovies";
 import CardMovie from "../CardMovie";
 import { useState } from "react";
 import PaginationArea from "../PaginationArea";
+import TitleDescription from "../TitleDescription";
 interface propType {
   title: string;
   desc: string;
@@ -38,21 +31,7 @@ export default function ListMovies({ title, desc, url }: propType) {
           />
         </div>
       )}
-      <Box>
-        <Center>
-          <Flex flexDir={"column"} textAlign={"center"} gap="24px">
-            <Heading as="h1" fontSize={{ base: "xl", sm: "3xl", md: "4xl" }}>
-              {title}
-            </Heading>
-            <Text
-              color="#fff9"
-              fontSize={{ base: "xs", sm: "sm", md: "medium" }}
-            >
-              {desc}
-            </Text>
-          </Flex>
-        </Center>
-      </Box>
+      <TitleDescription title={title} description={desc} />
       <Grid
         templateColumns={{
           base: "repeat(2, 1fr)",
