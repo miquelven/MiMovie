@@ -12,6 +12,8 @@ import { Link } from "react-router-dom";
 import useGetMovies from "../../hooks/useGetMovies";
 import CardMovie from "../CardMovie";
 
+import "./style.css";
+
 interface itemType {
   id: number;
   poster_path: string;
@@ -38,6 +40,7 @@ export default function PopularMovies() {
           flexDir={"column"}
         >
           <Grid
+            id="popularMoviesGrid"
             templateColumns={{
               base: "repeat(1, 300px)",
               sm: "repeat(2, 200px)",
@@ -48,7 +51,6 @@ export default function PopularMovies() {
             }}
             gap="24px"
             rowGap={"60px"}
-            maxH={{ base: "2370px", sm: "auto" }}
             overflow="hidden"
           >
             <GridItem
