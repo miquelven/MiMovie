@@ -4,7 +4,7 @@ import { persist } from "zustand/middleware";
 interface movieType {
   id: number;
   title: string;
-  poster_path: string;
+  backdrop_path: string;
 }
 
 interface watchLaterType {
