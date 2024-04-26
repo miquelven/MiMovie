@@ -23,10 +23,7 @@ interface typeProp {
 }
 
 export default function CarouselTrailers({ ids }: typeProp) {
-  console.log(ids);
   const { data, isPending } = useGetTrailers(ids);
-
-  if (!isPending) console.log(data);
 
   return (
     <>
@@ -42,25 +39,27 @@ export default function CarouselTrailers({ ids }: typeProp) {
           data &&
           data.map((itemData, index) => (
             <SwiperSlide data-swiperSlideTrailer key={index}>
-              {itemData.results.map(
-                (item) =>
-                  item.type == "Trailer" && (
-                    <iframe
-                      key={item.key}
-                      width="100%"
-                      height="100%"
-                      src={`https://www.youtube.com/embed/${item.key}`}
-                      title="YouTube video player"
-                      allow="accelerometer; 
+              <div className="bg-[#1c212e] h-full">
+                {itemData.results.map(
+                  (item) =>
+                    item.type == "Trailer" && (
+                      <iframe
+                        key={item.key}
+                        width="100%"
+                        height="100%"
+                        src={`https://www.youtube.com/embed/${item.key}`}
+                        title="YouTube video player"
+                        allow="accelerometer; 
                     autoplay; 
                     clipboard-write; 
                     encrypted-media; 
                     gyroscope; 
                     picture-in-picture; 
                     web-share"
-                    ></iframe>
-                  )
-              )}
+                      ></iframe>
+                    )
+                )}
+              </div>
             </SwiperSlide>
           ))}
       </Swiper>
