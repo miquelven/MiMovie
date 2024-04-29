@@ -13,7 +13,7 @@ export default function MovieInfo() {
   const { name } = useParams();
   const { data: movieDetails, isPending: isLoading } = useGetExamples(name!);
 
-  useTitle(`${name}`);
+  useTitle(`${name?.split("-").join(" ")}`);
 
   return (
     <main>
