@@ -5,6 +5,7 @@ import useGetMovies from "../hooks/useGetMovies";
 import TopListMovieInfo from "../components/TopList/TopListMovieInfo";
 import { useEffect } from "react";
 import { useLocalStorage } from "usehooks-ts";
+import useTitle from "../hooks/useTitle";
 
 interface movieType {
   id: number;
@@ -36,6 +37,8 @@ export default function BestWeek() {
   }, [isPending]);
 
   console.log(currentItem);
+
+  useTitle("Melhores");
 
   return (
     <main>

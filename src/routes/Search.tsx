@@ -1,9 +1,12 @@
 import { Container } from "@chakra-ui/react";
 import ListMovies from "../components/ListMovies";
 import { useParams } from "react-router-dom";
+import useTitle from "../hooks/useTitle";
 
 export default function Search() {
   const params = useParams();
+
+  useTitle(`${params.name}`);
 
   return (
     <main>

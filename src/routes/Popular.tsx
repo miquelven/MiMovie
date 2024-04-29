@@ -1,7 +1,10 @@
 import { Container } from "@chakra-ui/react";
 import ListMovies from "../components/ListMovies";
+import useTitle from "../hooks/useTitle";
 
 export default function Popular() {
+  useTitle("Populares");
+
   return (
     <main>
       <Container

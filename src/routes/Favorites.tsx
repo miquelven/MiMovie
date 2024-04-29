@@ -2,9 +2,12 @@ import { Box, Center, Container, Grid, Heading } from "@chakra-ui/react";
 import { useFavoriteMoviesStore } from "../stores/favoriteStore";
 import FavoriteItem from "../components/FavoriteItem";
 import TitleDescription from "../components/TitleDescription";
+import useTitle from "../hooks/useTitle";
 
 export default function Favorites() {
   const favoritesMovie = useFavoriteMoviesStore((state) => state.favoriteMovie);
+
+  useTitle("Favoritos");
 
   return (
     <main>

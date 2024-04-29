@@ -2,9 +2,12 @@ import { Box, Container, Grid } from "@chakra-ui/react";
 import { useWatchLaterStore } from "../stores/watchLaterStore";
 import WatchLaterItem from "../components/WatchLaterItem";
 import TitleDescription from "../components/TitleDescription";
+import useTitle from "../hooks/useTitle";
 
 export default function WatchLater() {
   const watchLaterMovie = useWatchLaterStore((state) => state.watchLaterMovie);
+
+  useTitle("Assistir mais tarde");
 
   return (
     <main>

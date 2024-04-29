@@ -1,6 +1,7 @@
 import { Container } from "@chakra-ui/react";
 import ListMovies from "../components/ListMovies";
 import { useLocalStorage } from "usehooks-ts";
+import useTitle from "../hooks/useTitle";
 
 interface selectedGenreProp {
   id: number;
@@ -12,6 +13,8 @@ export default function CategoryItems() {
     "selectedGenre",
     null
   );
+
+  useTitle(`Categoria ${selectedGenre!.name}`);
 
   return (
     <main>

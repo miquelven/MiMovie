@@ -1,8 +1,11 @@
 import { Container } from "@chakra-ui/react";
 import ListCategories from "../components/ListCategories";
 import TitleDescription from "../components/TitleDescription";
+import useTitle from "../hooks/useTitle";
 
 export default function Categories() {
+  useTitle("Categorias");
+
   return (
     <main>
       <Container
