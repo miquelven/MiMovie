@@ -35,21 +35,23 @@ export default function Favorites() {
           )}
 
           {/* favorite list */}
-          <Grid
-            mt={{ base: "80px", md: "80px" }}
-            templateColumns={{
-              base: "repeat(2,1fr)",
-              sm: "repeat(3,1fr)",
-              md: "repeat(4,1fr)",
-            }}
-            gap={{ base: "20px", md: "80px" }}
-            rowGap={{ base: "40px", md: "120px" }}
-          >
-            {favoritesMovie.length > 0 &&
-              favoritesMovie.map((item, index) => (
-                <FavoriteItem key={index} index={index} data={item} />
-              ))}
-          </Grid>
+          <section>
+            <Grid
+              mt={{ base: "80px", md: "80px" }}
+              templateColumns={{
+                base: "repeat(2,1fr)",
+                sm: "repeat(3,1fr)",
+                md: "repeat(4,1fr)",
+              }}
+              gap={{ base: "20px", md: "80px" }}
+              rowGap={{ base: "40px", md: "120px" }}
+            >
+              {favoritesMovie.length > 0 &&
+                favoritesMovie.map((item, index) => (
+                  <FavoriteItem key={index} index={index} data={item} />
+                ))}
+            </Grid>
+          </section>
         </Box>
       </Container>
     </main>

@@ -95,7 +95,7 @@ export default function TopListItem({ item, ranked }: PropsType) {
                 >
                   {item.release_date.split("-")[0]}
                 </Text>
-                <Heading as="h5" fontSize={{ sm: "lg" }}>
+                <Heading as="h2" fontSize={{ sm: "lg" }}>
                   {item.title}
                 </Heading>
                 <Flex gap="8px" flexWrap={"wrap"}>

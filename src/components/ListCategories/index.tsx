@@ -31,40 +31,42 @@ export default function ListCategories() {
   }, []);
 
   return (
-    <Box mt="60px">
-      <Grid
-        templateColumns={{
-          base: "repeat(1, 300px)",
-          sm: "repeat(2,250px)",
-          md: "repeat(3,1fr)",
-        }}
-        rowGap={{ base: "50px", sm: "60p", lg: "80px" }}
-        justifyContent={"center"}
-        alignItems={"center"}
-      >
-        {!isPending &&
-          allGenres.genres.map((genre: genreType) => (
-            <GridItem
-              key={genre.id}
-              className="transition-all duration-700 hover:brightness-[.4]"
-            >
-              {categoryData.map(
-                (category) =>
-                  category.genreName == genre.name && (
-                    <Link
-                      onClick={() =>
-                        setSelectedGenre({ id: genre.id, name: genre.name })
-                      }
-                      to={`/categorias/${genre.name.split(" ").join("-")}`}
-                      key={category.genreName}
-                    >
-                      <ListCategoriesItem category={category} />
-                    </Link>
-                  )
-              )}
-            </GridItem>
-          ))}
-      </Grid>
-    </Box>
+    <section>
+      <Box mt="60px">
+        <Grid
+          templateColumns={{
+            base: "repeat(1, 300px)",
+            sm: "repeat(2,250px)",
+            md: "repeat(3,1fr)",
+          }}
+          rowGap={{ base: "50px", sm: "60p", lg: "80px" }}
+          justifyContent={"center"}
+          alignItems={"center"}
+        >
+          {!isPending &&
+            allGenres.genres.map((genre: genreType) => (
+              <GridItem
+                key={genre.id}
+                className="transition-all duration-700 hover:brightness-[.4]"
+              >
+                {categoryData.map(
+                  (category) =>
+                    category.genreName == genre.name && (
+                      <Link
+                        onClick={() =>
+                          setSelectedGenre({ id: genre.id, name: genre.name })
+                        }
+                        to={`/categorias/${genre.name.split(" ").join("-")}`}
+                        key={category.genreName}
+                      >
+                        <ListCategoriesItem category={category} />
+                      </Link>
+                    )
+                )}
+              </GridItem>
+            ))}
+        </Grid>
+      </Box>
+    </section>
   );
 }

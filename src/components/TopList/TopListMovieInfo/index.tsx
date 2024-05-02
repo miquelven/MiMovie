@@ -56,7 +56,7 @@ export default function TopListMovieInfo({ isLoading }: propType) {
                     <Text fontSize={"14px"} color="#fff8">
                       {currentItem?.release_date.split("-")[0]}
                     </Text>
-                    <Heading as="h3" fontSize={{ md: "2xl", xl: "4xl" }}>
+                    <Heading as="h2" fontSize={{ md: "2xl", xl: "4xl" }}>
                       {currentItem?.title}
                     </Heading>
                   </Box>

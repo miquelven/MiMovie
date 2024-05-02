@@ -30,7 +30,7 @@ export default function TopList({ data, isPending }: PropsType) {
         <Box bg="#1c212e" p="20px" mx="auto">
           <Flex alignItems={"center"} justifyContent={"space-between"}>
             <Heading
-              as="h4"
+              as="h3"
               fontSize={{ base: "xl", sm: "2xl", xl: "3xl" }}
               fontWeight={"medium"}
             >
