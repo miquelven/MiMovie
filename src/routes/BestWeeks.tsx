@@ -22,16 +22,12 @@ export default function BestWeek() {
     1
   );
 
-  const [items, setItems] = useLocalStorage<movieType[] | never[]>(
-    "weekItems",
-    []
-  );
+  const [, setItems] = useLocalStorage<movieType[] | never[]>("weekItems", []);
   const [currentItem] = useLocalStorage("weekCurrentItem", []);
 
   useEffect(() => {
     if (!isPending && data) {
       setItems(data.results);
-      console.log(items);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isPending]);
@@ -48,10 +44,12 @@ export default function BestWeek() {
         mt={{ base: "170px", sm: "200px" }}
         mb="150px"
       >
-        <Flex maxW="1320px" mx="auto" gap={{ md: "40px", "2xl": "80px" }}>
-          <TopList data={data} isPending={isPending} />
-          <TopListMovieInfo isLoading={isPending} />
-        </Flex>
+        <section>
+          <Flex maxW="1320px" mx="auto" gap={{ md: "40px", "2xl": "80px" }}>
+            <TopList data={data} isPending={isPending} />
+            <TopListMovieInfo isLoading={isPending} />
+          </Flex>
+        </section>
       </Container>
     </main>
   );
