@@ -2,7 +2,7 @@ import Banner from "../components/Banner/index.tsx";
 import LatestMovies from "../components/home/LatestMovies/index.tsx";
 import FeaturesArea from "../components/home/FeaturesArea/index.tsx";
 import PopularMovies from "../components/home/PopularMovies/index.tsx";
-import useTitle from "../hooks/useTitle.tsx";
+import useTitle from "../hooks/useTitle.ts";
 
 export default function Home() {
   useTitle("Home");
