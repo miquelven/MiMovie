@@ -1,8 +1,8 @@
 import { Container, Flex } from "@chakra-ui/react";
 
-import TopList from "../components/TopList";
+import TopList from "../components/bestweeks/TopList";
 import useGetMovies from "../hooks/useGetMovies";
-import TopListMovieInfo from "../components/TopList/TopListMovieInfo";
+import TopListMovieInfo from "../components/bestweeks/TopList/TopListMovieInfo";
 import { useEffect } from "react";
 import { useLocalStorage } from "usehooks-ts";
 import useTitle from "../hooks/useTitle";

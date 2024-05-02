@@ -1,8 +1,8 @@
 import { Outlet } from "react-router-dom";
-import Header from "./components/Header";
-import Footer from "./components/Footer";
-import ScrollToTop from "./components/ScrollToTop";
-import ScrollTopButton from "./components/ScrollTopButton";
+import Header from "./components/ui/Header";
+import Footer from "./components/ui/Footer";
+import ScrollToTop from "./components/ui/ScrollToTop";
+import ScrollTopButton from "./components/ui/ScrollTopButton";
 
 function App() {
   return (

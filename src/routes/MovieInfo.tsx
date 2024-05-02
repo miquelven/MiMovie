@@ -2,9 +2,9 @@ import { Container } from "@chakra-ui/react";
 
 import BannerVideoDetails from "../components/Banner/BannerVideoDetails";
 import CarouselVideosImages from "../components/Carousel/CarouselVideosImages";
-import ReviewsArea from "../components/ReviewsArea";
-import CreditsArea from "../components/CreditsArea";
-import SimilarMoviesArea from "../components/SimilarMoviesArea";
+import ReviewsArea from "../components/videoDetails/ReviewsArea";
+import CreditsArea from "../components/videoDetails/CreditsArea";
+import SimilarMoviesArea from "../components/videoDetails/SimilarMoviesArea";
 import { useParams } from "react-router-dom";
 import useGetMovieInfo from "../hooks/useGetMovieInfos";
 import useTitle from "../hooks/useTitle";
