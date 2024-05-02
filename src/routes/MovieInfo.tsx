@@ -6,12 +6,12 @@ import ReviewsArea from "../components/ReviewsArea";
 import CreditsArea from "../components/CreditsArea";
 import SimilarMoviesArea from "../components/SimilarMoviesArea";
 import { useParams } from "react-router-dom";
-import useGetExamples from "../hooks/useGetExample";
+import useGetMovieInfo from "../hooks/useGetMovieInfos";
 import useTitle from "../hooks/useTitle";
 
 export default function MovieInfo() {
   const { name } = useParams();
-  const { data: movieDetails, isPending: isLoading } = useGetExamples(name!);
+  const { data: movieDetails, isPending: isLoading } = useGetMovieInfo(name!);
 
   useTitle(`${name?.split("-").join(" ")}`);
 
