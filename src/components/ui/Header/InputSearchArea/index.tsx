@@ -9,12 +9,12 @@ import {
 } from "@chakra-ui/react";
 import { KeyboardEvent, useEffect, useRef, useState } from "react";
 import { useDebounce } from "@uidotdev/usehooks";
-import useGetSearchMovie from "../../../hooks/useGetSearchMovie";
+import useGetSearchMovie from "../../../../hooks/useGetSearchMovie";
 import { useOutsideClick } from "@chakra-ui/react";
 
 import "./style.css";
 import { Link, useNavigate } from "react-router-dom";
-import setCurrentMovie from "../../../helpers/setCurrentMovie";
+import setCurrentMovie from "../../../../helpers/setCurrentMovie";
 
 export default function InputSearchArea() {
   const inputArea = useRef<HTMLInputElement>(null);

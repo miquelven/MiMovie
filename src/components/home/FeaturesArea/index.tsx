@@ -6,7 +6,7 @@ import {
   Heading,
   Text,
 } from "@chakra-ui/react";
-import { featureData } from "../../data/featuresData";
+import { featureData } from "../../../data/featuresData";
 
 export default function FeaturesArea() {
   return (

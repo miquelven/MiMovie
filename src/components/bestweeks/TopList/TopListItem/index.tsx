@@ -1,10 +1,10 @@
 import { Box, Divider, Flex, Heading, Hide, Text } from "@chakra-ui/react";
-import useGetAllGenres from "../../../hooks/useGetAllGenres";
+import useGetAllGenres from "../../../../hooks/useGetAllGenres";
 import { useState, useEffect } from "react";
 
 import { useLocalStorage } from "usehooks-ts";
 import { Link } from "react-router-dom";
-import setCurrentMovie from "../../../helpers/setCurrentMovie";
+import setCurrentMovie from "../../../../helpers/setCurrentMovie";
 
 interface itemType {
   id: number;

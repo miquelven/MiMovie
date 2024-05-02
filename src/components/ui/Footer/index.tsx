@@ -9,7 +9,7 @@ import {
   Icon,
   Text,
 } from "@chakra-ui/react";
-import useGetAllGenres from "../../hooks/useGetAllGenres";
+import useGetAllGenres from "../../../hooks/useGetAllGenres";
 import { Link } from "react-router-dom";
 
 import { FaFacebookF } from "react-icons/fa6";

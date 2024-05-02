@@ -1,7 +1,7 @@
 import { Container } from "@chakra-ui/react";
 
-import BannerVideoDetails from "../components/BannerVideoDetails";
-import CarouselVideosImages from "../components/CarouselVideosImages";
+import BannerVideoDetails from "../components/Banner/BannerVideoDetails";
+import CarouselVideosImages from "../components/Carousel/CarouselVideosImages";
 import ReviewsArea from "../components/ReviewsArea";
 import CreditsArea from "../components/CreditsArea";
 import SimilarMoviesArea from "../components/SimilarMoviesArea";

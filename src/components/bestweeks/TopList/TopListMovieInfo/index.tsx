@@ -12,7 +12,7 @@ import {
 import { Link } from "react-router-dom";
 import { useLocalStorage } from "usehooks-ts";
 import TopListMovieInfoItem from "./TopListMovieInfoItem";
-import setCurrentMovie from "../../../helpers/setCurrentMovie";
+import setCurrentMovie from "../../../../helpers/setCurrentMovie";
 
 interface currentItemProp {
   id: number;

@@ -9,8 +9,8 @@ import {
   Text,
 } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
-import useGetMovies from "../../hooks/useGetMovies";
-import CardMovie from "../CardMovie";
+import useGetMovies from "../../../hooks/useGetMovies";
+import CardMovie from "../../CardMovie";
 
 import "./style.css";
 

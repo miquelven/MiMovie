@@ -1,5 +1,5 @@
 import { Center, Container, Flex, Heading, Text } from "@chakra-ui/react";
-import CarouselMovies from "../CarouselMovies";
+import CarouselMovies from "../../Carousel/CarouselMovies";
 
 export default function LatestMovies() {
   return (

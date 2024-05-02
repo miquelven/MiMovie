@@ -1,5 +1,5 @@
 import { Box, Flex, GridItem, Heading, Text } from "@chakra-ui/react";
-import useGetAllGenres from "../../../../hooks/useGetAllGenres";
+import useGetAllGenres from "../../../../../hooks/useGetAllGenres";
 import { useState } from "react";
 import { useLocalStorage } from "usehooks-ts";
 

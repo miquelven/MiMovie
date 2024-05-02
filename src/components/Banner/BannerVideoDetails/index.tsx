@@ -15,8 +15,8 @@ import { FaExternalLinkAlt } from "react-icons/fa";
 import { CiHeart } from "react-icons/ci";
 import { FaHeart } from "react-icons/fa";
 import { useEffect, useState } from "react";
-import { useFavoriteMoviesStore } from "../../stores/favoriteStore";
-import { useWatchLaterStore } from "../../stores/watchLaterStore";
+import { useFavoriteMoviesStore } from "../../../stores/favoriteStore";
+import { useWatchLaterStore } from "../../../stores/watchLaterStore";
 
 interface genreProp {
   name: string;

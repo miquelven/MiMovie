@@ -9,9 +9,9 @@ import "./style.css";
 
 // import required modules
 import { Pagination } from "swiper/modules";
-import useGetMovies from "../../hooks/useGetMovies";
+import useGetMovies from "../../../hooks/useGetMovies";
 
-import LatestMoviesCard from "../LatestMoviesCard";
+import LatestMoviesCard from "../../home/LatestMovies/LatestMoviesCard";
 
 interface movieType {
   id: number;

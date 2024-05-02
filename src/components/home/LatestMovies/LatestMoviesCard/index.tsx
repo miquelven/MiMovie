@@ -1,7 +1,7 @@
 import { AspectRatio, Flex, Heading, Image, Slide } from "@chakra-ui/react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import setCurrentMovie from "../../helpers/setCurrentMovie";
+import setCurrentMovie from "../../../../helpers/setCurrentMovie";
 
 interface typeProp {
   data: {
