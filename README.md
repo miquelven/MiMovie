@@ -1,4 +1,8 @@
-# 🎬 MiMovies
+<div align='center'>
+   
+   # 🎬 MiMovies
+   
+</div>
 
 </br>
 </br>
@@ -15,12 +19,12 @@
 
 </br>
 
-- React
-- TypeScript
-- Tailwind
-- Tanstack Query
-- Zustand
-- Lodash
+- 🔵 React
+- 📘 TypeScript
+- 🎨 Tailwind
+- 🔍 Tanstack Query
+- 🔮 Zustand
+- 🔧 Lodash
 
 
 </br>
@@ -30,11 +34,11 @@
 
 </br>
 
-- Pesquisar por filme específico
-- filtrar por categorias
-- Visualizar dos melhores da semana
-- Favoritar filmes
-- Salvar para assistir mais tarde
+- 🔍 Pesquisar por filme específico
+- 🔖 Filtrar por categorias
+- 🌟 Visualizar os melhores da semana
+- ❤️ Favoritar filmes
+- 📥 Salvar para assistir mais tarde
 
 </br>
 </br>
