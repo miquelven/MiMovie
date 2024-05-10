@@ -25,10 +25,7 @@ export default function Favorites() {
         <Box minH={"400px"} mt={{ base: "60px", md: "100px" }}>
           {favoritesMovie.length == 0 && (
             <Center minH={"400px"} bg="#1c212e" borderRadius={"12px"}>
-              <Heading
-                fontSize={{ base: "large", md: "xl", xl: "3xl" }}
-                as="h5"
-              >
+              <Heading fontSize={{ base: "sm", md: "xl", xl: "3xl" }} as="h5">
                 Favorite filmes para poder vê-los aqui!
               </Heading>
             </Center>

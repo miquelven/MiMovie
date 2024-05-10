@@ -1,4 +1,4 @@
-import { Box, Container, Grid } from "@chakra-ui/react";
+import { Box, Center, Container, Grid, Text } from "@chakra-ui/react";
 import { useWatchLaterStore } from "../stores/watchLaterStore";
 import WatchLaterItem from "../components/WatchLaterItem";
 import TitleDescription from "../components/TitleDescription";
@@ -31,9 +31,18 @@ export default function WatchLater() {
                 templateColumns={{ base: "repeat(1,1fr)", md: "repeat(2,1fr)" }}
                 rowGap={{ base: "18px", md: "28px" }}
               >
-                {watchLaterMovie.map((item, index) => (
-                  <WatchLaterItem data={item} key={index} />
-                ))}
+                {watchLaterMovie ? (
+                  watchLaterMovie.map((item, index) => (
+                    <WatchLaterItem data={item} key={index} />
+                  ))
+                ) : (
+                  <Center>
+                    <Text fontSize={{ base: "sm", sm: "base", md: "lg" }}>
+                      Selecione filmes para assistir mais tarde para eles
+                      aparecerem aqui
+                    </Text>
+                  </Center>
+                )}
               </Grid>
             </Box>
           </section>
