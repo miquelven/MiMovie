@@ -15,7 +15,7 @@ import {
   Text,
 } from "@chakra-ui/react";
 import { useState } from "react";
-// And react-slick as our Carousel Lib
+
 import Slider from "react-slick";
 import useGetMovies from "../../hooks/useGetMovies";
 import { Link } from "react-router-dom";
@@ -24,7 +24,6 @@ import BannerTrailers from "./BannerTrailers";
 import CarouselTrailers from "./BannerTrailers/CarouselTrailers";
 import setCurrentMovie from "../../helpers/setCurrentMovie";
 
-// Settings for the slider
 const settings = {
   dots: true,
   arrows: false,

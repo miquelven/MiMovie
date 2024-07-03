@@ -21,7 +21,6 @@ export default function Header() {
   const location = useLocation();
   const { pathname } = location;
 
-  // hidden scrollbar
   useEffect(() => {
     if (isOpen) {
       document.querySelector("body")!.style.overflow = "hidden";
