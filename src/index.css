@@ -1,9 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
 @import url("https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap");
-
 #root {
   overflow-x: hidden;
   max-width: 100vw;
@@ -22,29 +20,23 @@ body {
   padding: 0;
   box-sizing: border-box;
 }
-
 main {
   min-height: 100vh;
 }
-
 .swiper-button-next,
 .swiper-button-prev {
   padding: 30px;
 }
-
 ::-webkit-scrollbar {
   width: 8px;
 }
-
 ::-webkit-scrollbar-track {
   background: #131722;
 }
-
 ::-webkit-scrollbar-thumb {
   border-radius: 20px;
   background: #005282;
 }
-
 ::-webkit-scrollbar-thumb:hover {
   background: #23a7d7;
 }
