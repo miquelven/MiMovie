@@ -72,7 +72,7 @@ export default function InputSearchArea() {
       position={"relative"}
     >
       <InputGroup width={"100%"} size={["sm", null, null, "md"]}>
-        <label htmlFor="Search">
+        <label htmlFor="Search" className="w-full h-full">
           <Input
             name="Search"
             rounded="xl"
