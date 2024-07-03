@@ -72,16 +72,19 @@ export default function InputSearchArea() {
       position={"relative"}
     >
       <InputGroup width={"100%"} size={["sm", null, null, "md"]}>
-        <Input
-          rounded="xl"
-          variant="outline"
-          borderColor="#c7c7c7"
-          focusBorderColor="#777"
-          value={inputSearch ? inputSearch : ""}
-          onFocus={() => setShowSearchResults(true)}
-          onChange={(e) => setInputSearch(e.target.value)}
-          onKeyUp={handleKeyUp}
-        />
+        <label htmlFor="Search">
+          <Input
+            name="Search"
+            rounded="xl"
+            variant="outline"
+            borderColor="#c7c7c7"
+            focusBorderColor="#777"
+            value={inputSearch ? inputSearch : ""}
+            onFocus={() => setShowSearchResults(true)}
+            onChange={(e) => setInputSearch(e.target.value)}
+            onKeyUp={handleKeyUp}
+          />
+        </label>
         <InputRightElement>
           <IconButton
             size="md"

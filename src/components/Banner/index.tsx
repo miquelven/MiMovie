@@ -142,6 +142,7 @@ export default function Banner() {
                           >
                             <Flex flexDir="column" gap="40px">
                               <Heading
+                                as="h2"
                                 textAlign="center"
                                 fontSize={{ base: "3xl", md: "4xl", lg: "5xl" }}
                                 color="#eee"

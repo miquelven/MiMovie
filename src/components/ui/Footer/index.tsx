@@ -91,28 +91,26 @@ export default function Footer() {
         >
           Categorias
         </Heading>
-        <ul>
-          <Grid templateColumns={"repeat(3, 1fr)"} gap="16px" mb="80px">
-            {!isPending &&
-              data.genres.map((genre: genreType) => (
-                <GridItem
-                  key={genre.id}
-                  fontSize={{ base: "xs", sm: "sm" }}
-                  color="#fff9"
-                  _hover={{ color: "#fff" }}
+        <Grid templateColumns={"repeat(3, 1fr)"} gap="16px" mb="80px">
+          {!isPending &&
+            data.genres.map((genre: genreType) => (
+              <GridItem
+                key={genre.id}
+                fontSize={{ base: "xs", sm: "sm" }}
+                color="#fff9"
+                _hover={{ color: "#fff" }}
+              >
+                <Link
+                  onClick={() =>
+                    setSelectedGenre({ id: genre.id, name: genre.name })
+                  }
+                  to={`/categorias/${genre.name.split(" ").join("-")}`}
                 >
-                  <Link
-                    onClick={() =>
-                      setSelectedGenre({ id: genre.id, name: genre.name })
-                    }
-                    to={`/categorias/${genre.name.split(" ").join("-")}`}
-                  >
-                    {genre.name}
-                  </Link>
-                </GridItem>
-              ))}
-          </Grid>
-        </ul>
+                  {genre.name}
+                </Link>
+              </GridItem>
+            ))}
+        </Grid>
         <Divider />
         <Center w="100%">
           <Text my="16px" color="#fff9" fontSize={{ base: "xs", sm: "sm" }}>

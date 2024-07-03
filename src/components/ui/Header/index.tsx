@@ -50,7 +50,7 @@ export default function Header() {
           }}
         >
           <Link to="/">
-            <Heading as="h1" size={["xs", null, null, "lg"]} color="#c7c7c7">
+            <Heading as="h1" size={["sm", null, null, "lg"]} color="#c7c7c7">
               MiMovies
             </Heading>
           </Link>
