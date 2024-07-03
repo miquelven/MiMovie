@@ -71,10 +71,11 @@ export default function InputSearchArea() {
       width={[1 / 3, null, null, 5 / 12]}
       position={"relative"}
     >
-      <InputGroup width={"100%"} size={["sm", null, null, "md"]}>
-        <label htmlFor="Search" className="w-full h-full">
+      <label htmlFor="Search">
+        <InputGroup width={"100%"} size={["sm", null, null, "md"]}>
           <Input
             name="Search"
+            id="Search"
             rounded="xl"
             variant="outline"
             borderColor="#c7c7c7"
@@ -84,18 +85,18 @@ export default function InputSearchArea() {
             onChange={(e) => setInputSearch(e.target.value)}
             onKeyUp={handleKeyUp}
           />
-        </label>
-        <InputRightElement>
-          <IconButton
-            size="md"
-            colorScheme="transparent"
-            aria-label="Search"
-            color="#c7c7c7"
-            icon={<SearchIcon />}
-            onClick={redirectToSearchMovieResults}
-          />
-        </InputRightElement>
-      </InputGroup>
+          <InputRightElement>
+            <IconButton
+              size="md"
+              colorScheme="transparent"
+              aria-label="Search"
+              color="#c7c7c7"
+              icon={<SearchIcon />}
+              onClick={redirectToSearchMovieResults}
+            />
+          </InputRightElement>
+        </InputGroup>
+      </label>
 
       <Box pos={"relative"} width="100%">
         <Collapse
