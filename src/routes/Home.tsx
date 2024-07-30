@@ -3,6 +3,7 @@ import LatestMovies from "../components/home/LatestMovies/index.tsx";
 import FeaturesArea from "../components/home/FeaturesArea/index.tsx";
 import PopularMovies from "../components/home/PopularMovies/index.tsx";
 import { Helmet } from "react-helmet";
+import ContactArea from "../components/home/ContactArea/index.tsx";
 
 export default function Home() {
   return (
@@ -25,6 +26,7 @@ export default function Home() {
         <LatestMovies />
         <FeaturesArea />
         <PopularMovies />
+        <ContactArea />
       </main>
     </>
   );
