@@ -3,7 +3,7 @@ import useGetAllGenres from "../../../../hooks/useGetAllGenres";
 import { useState, useEffect } from "react";
 
 import { useLocalStorage } from "usehooks-ts";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import setCurrentMovie from "../../../../helpers/setCurrentMovie";
 import TmdbImage from "../../../ui/TmdbImage";
 
@@ -35,6 +35,7 @@ export default function TopListItem({ item, ranked }: PropsType) {
     "weekCurrentItem",
     null
   );
+  const navigate = useNavigate();
 
   const { data, isPending } = useGetAllGenres();
 
@@ -52,6 +53,8 @@ export default function TopListItem({ item, ranked }: PropsType) {
 
   const handleClick = () => {
     setCurrentItem(item);
+    setCurrentMovie(item.id);
+    navigate(`/${item.title.split(" ").join("-")}`);
   };
 
   useEffect(() => {
@@ -65,7 +68,11 @@ export default function TopListItem({ item, ranked }: PropsType) {
       {currentItem && (
         <Box
           pt="16px"
-          className={`hover:bg-[#2d323f] cursor-pointer ${
+          rounded="xl"
+          mb="4"
+          transition="all 0.2s"
+          _hover={{ transform: "scale(1.02)", bg: "#2d323f" }}
+          className={`cursor-pointer ${
             currentItem!.title == item.title ? "bg-[#2d323f]" : "bg-[#1c212e]"
           }`}
           onClick={handleClick}
@@ -81,6 +88,7 @@ export default function TopListItem({ item, ranked }: PropsType) {
                 fontSize={{ sm: "2xl", xl: "4xl" }}
                 p="14px"
                 fontWeight={"bold"}
+                color={currentItem!.title == item.title ? "#23a7d7" : "white"}
               >
                 {ranked}
               </Text>
@@ -117,17 +125,6 @@ export default function TopListItem({ item, ranked }: PropsType) {
                 className="object-cover w-20 self-center"
                 sizes="80px"
               />
-            </Hide>
-            {/* redirect for movie path */}
-            <Hide above="lg">
-              <Link
-                onClick={() => setCurrentMovie(item.id)}
-                className="absolute inset-0"
-                to={`/${item.title}`}
-                aria-label={`Ver detalhes de ${item.title}`}
-              >
-                {" "}
-              </Link>
             </Hide>
           </Flex>
           <Divider pt="20px" borderColor={"#fff4"} />

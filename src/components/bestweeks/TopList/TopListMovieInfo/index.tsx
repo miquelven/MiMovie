@@ -69,9 +69,37 @@ export default function TopListMovieInfo({ isLoading }: propType) {
                   <Link
                     onClick={() => setCurrentMovie(currentItem!.id)}
                     to={`/${currentItem?.title.split(" ").join("-")}`}
-                    className="text-sm md:text-sm xl:text-base text-[#23a7d7] hover:text-[#005282] hover:underline"
                   >
-                    Ver Mais Informações
+                    <Box
+                      as="button"
+                      px={{ base: 7, md: 8 }}
+                      py={{ base: 2.5, md: 3 }}
+                      borderRadius="full"
+                      bg="rgba(10, 13, 20, 0.9)"
+                      borderWidth="1px"
+                      borderColor="#23a7d733"
+                      fontWeight="semibold"
+                      fontSize={{ base: "xs", md: "sm" }}
+                      letterSpacing="0.06em"
+                      textTransform="uppercase"
+                      transition="all 0.2s ease"
+                      color="#e5e7eb"
+                      boxShadow="0 18px 45px rgba(5, 5, 9, 0.9)"
+                      backdropFilter="blur(10px)"
+                      _hover={{
+                        color: "#0a0d14",
+                        bg: "#1f9bc9",
+                        borderColor: "#38bdf8",
+                        transform: "translateY(-2px)",
+                      }}
+                      _active={{
+                        bg: "#1a88b0",
+                        borderColor: "#23a7d7",
+                        transform: "translateY(0)",
+                      }}
+                    >
+                      Ver Mais Informações
+                    </Box>
                   </Link>
                 </Flex>
               </Center>
