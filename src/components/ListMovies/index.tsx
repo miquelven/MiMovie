@@ -324,6 +324,7 @@ export default function ListMovies({ title, desc, url }: propType) {
                 borderColor: "#23a7d7",
                 boxShadow: "0 0 0 1px #23a7d7",
               }}
+              sx={{ option: { color: "black" } }}
             >
               <option value="all">Todos os idiomas</option>
               {languageOptions.map((lang) => (
@@ -348,6 +349,7 @@ export default function ListMovies({ title, desc, url }: propType) {
                 borderColor: "#23a7d7",
                 boxShadow: "0 0 0 1px #23a7d7",
               }}
+              sx={{ option: { color: "black" } }}
             >
               <option value="all">Qualquer duração</option>
               <option value="60">Até 1h</option>
@@ -372,6 +374,7 @@ export default function ListMovies({ title, desc, url }: propType) {
                 borderColor: "#23a7d7",
                 boxShadow: "0 0 0 1px #23a7d7",
               }}
+              sx={{ option: { color: "black" } }}
             >
               <option value="popularity">Mais populares</option>
               <option value="rating">Melhor avaliados</option>
