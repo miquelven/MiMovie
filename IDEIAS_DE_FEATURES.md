@@ -22,5 +22,5 @@ Este arquivo lista sugestões de melhorias e novas funcionalidades para deixar o
 
 - [x] Transformar o projeto em PWA completo (service worker, manifest revisado, tela de instalação).
 - [x] Otimizar imagens (lazy loading mais agressivo, resolução adaptativa para mobile/desktop).
-- [ ] Paginação com infinite scroll opcional em algumas seções, mantendo a paginação tradicional como fallback.
+- [x] Paginação com infinite scroll opcional em algumas seções, mantendo a paginação tradicional como fallback.
 - [ ] Adicionar testes básicos de componentes chave (Banner, Header, CardMovie, rotas principais) com React Testing Library.
