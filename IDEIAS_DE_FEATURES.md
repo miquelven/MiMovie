@@ -13,18 +13,12 @@ Este arquivo lista sugestões de melhorias e novas funcionalidades para deixar o
 
 ## Descoberta e organização de conteúdo
 
-- [ ] Filtros avançados nas listagens: ano de lançamento, nota mínima, idioma e duração.
+- [x] Filtros avançados nas listagens: ano de lançamento, nota mínima, idioma e duração.
 - [ ] Ordenação nas listas (mais populares, melhor avaliados, mais recentes, A-Z).
 - [ ] Seção de “Tendências de hoje / em alta” consumindo endpoints específicos da API.
 - [ ] Páginas de pessoas (atores/diretores) com biografia, filmes em que atuaram e carrossel de títulos relacionados.
 - [ ] Seção “Continuar assistindo” baseada nos últimos filmes acessados (armazenados em localStorage).
 - [ ] Área “Para você” com recomendações baseadas nos gêneros mais recorrentes entre os favoritos do usuário.
-
-## Personalização e perfil do usuário (client-side)
-
-- [ ] Perfis locais (ex.: Perfil 1, Perfil 2) com listas de favoritos e assistir mais tarde independentes.
-- [ ] Listas personalizadas nomeadas (ex.: “Filmes para maratonar”, “Clássicos de terror”), salvas em localStorage.
-- [ ] Possibilidade de adicionar notas pessoais e tags aos filmes (ex.: “assistir com amigos”, “rever depois”).
 
 ## Performance, qualidade e boas práticas
 
@@ -38,5 +32,4 @@ Este arquivo lista sugestões de melhorias e novas funcionalidades para deixar o
 
 - [ ] Refinar SEO das rotas (title, description, keywords) e revisar todos os Helmet já existentes.
 - [ ] Adicionar marcação estruturada (JSON-LD) para filmes individuais, melhorando destaque em buscadores.
-- [ ] Criar página “Sobre o MiMovies” explicando proposta, stack usada e principais features.
 - [ ] Criar seção de “Depoimentos” ou “Perguntas Frequentes” na Home para deixar o produto com cara de app real.
