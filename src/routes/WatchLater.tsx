@@ -103,7 +103,7 @@ export default function WatchLater() {
                   rowGap={{ base: "18px", md: "28px" }}
                 >
                   {sortedWatchLater && sortedWatchLater.length > 0 ? (
-                    sortedWatchLater.map((item, index) => (
+                    sortedWatchLater.map((item) => (
                       <WatchLaterItem data={item} key={item.id} />
                     ))
                   ) : (
