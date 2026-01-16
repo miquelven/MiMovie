@@ -145,11 +145,12 @@ export default function Banner() {
                             objectPosition={["left", null, "center"]}
                             zIndex={0}
                             sizes="100vw"
+                            filter="brightness(0.7)"
                           />
                           {/* opacity */}
                           <div className="absolute inset-0 bg-black/20 z-10 "></div>
                           <div className="absolute h-[5%] w-full top-[0] bg-gradient-to-b from-[#0a0d1445] via-white/0 to-white/0 z-20"></div>
-                          <div className="absolute h-[20%] w-full bottom-0 bg-gradient-to-t  from-[#0a0d14] via-[#0a0d14] to-white/0 z-50"></div>
+                          <div className="absolute h-[30%] w-full bottom-0 bg-gradient-to-t from-[#050509] via-[#0a0d14] to-white/0 z-20"></div>
 
                           <Container
                             height="100vh"
