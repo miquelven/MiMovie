@@ -9,6 +9,7 @@ import {
   Skeleton,
   Text,
   UnorderedList,
+  useToast,
 } from "@chakra-ui/react";
 
 import { FaExternalLinkAlt } from "react-icons/fa";
@@ -17,6 +18,7 @@ import { FaHeart } from "react-icons/fa";
 import { useEffect, useState } from "react";
 import { useFavoriteMoviesStore } from "../../../stores/favoriteStore";
 import { useWatchLaterStore } from "../../../stores/watchLaterStore";
+import { motion, AnimatePresence } from "framer-motion";
 
 interface genreProp {
   name: string;
@@ -58,6 +60,7 @@ export default function BannerVideoDetails({ data, isLoading }: propType) {
   const [showWatchLaterBtn, setShowWatchLaterBtn] = useState(false);
   const favoriteStore = useFavoriteMoviesStore();
   const watchLaterStore = useWatchLaterStore();
+  const toast = useToast();
 
   const HandleClickWatchLater = () => {
     if (data) {
@@ -66,9 +69,28 @@ export default function BannerVideoDetails({ data, isLoading }: propType) {
         title: data.title,
         id: data.id,
       };
-      showWatchLaterBtn
-        ? watchLaterStore.removeWatchLater(data.id)
-        : watchLaterStore.addWatchLater(videoData);
+
+      if (showWatchLaterBtn) {
+        watchLaterStore.removeWatchLater(data.id);
+        toast({
+          title: "Removido!",
+          description: "Filme removido da sua lista de assistir mais tarde.",
+          status: "info",
+          duration: 3000,
+          isClosable: true,
+          position: "top-right",
+        });
+      } else {
+        watchLaterStore.addWatchLater(videoData);
+        toast({
+          title: "Adicionado!",
+          description: "Filme adicionado à sua lista de assistir mais tarde.",
+          status: "success",
+          duration: 3000,
+          isClosable: true,
+          position: "top-right",
+        });
+      }
     }
     setShowWatchLaterBtn((old) => !old);
   };
@@ -80,9 +102,27 @@ export default function BannerVideoDetails({ data, isLoading }: propType) {
         title: data.title,
         id: data.id,
       };
-      isFavorited
-        ? favoriteStore.removefavoriteMovie(data.id)
-        : favoriteStore.addFavorites(videoData);
+
+      if (isFavorited) {
+        favoriteStore.removefavoriteMovie(data.id);
+        toast({
+          title: "Removido dos favoritos",
+          status: "info",
+          duration: 3000,
+          isClosable: true,
+          position: "top-right",
+        });
+      } else {
+        favoriteStore.addFavorites(videoData);
+        toast({
+          title: "Favoritado!",
+          description: "Filme adicionado aos seus favoritos.",
+          status: "success",
+          duration: 3000,
+          isClosable: true,
+          position: "top-right",
+        });
+      }
     }
     setIsFavorited((old) => !old);
   };
@@ -316,6 +356,9 @@ export default function BannerVideoDetails({ data, isLoading }: propType) {
                             ? { color: "#000", background: "#a5a5a5" }
                             : { color: "#fff", background: "#2e2f38" }
                         }
+                        as={motion.button}
+                        whileTap={{ scale: 0.95 }}
+                        transition="all 0.2s"
                       >
                         <Collapse in={!showWatchLaterBtn}>
                           {!showWatchLaterBtn && "Assistir mais Tarde"}
@@ -330,29 +373,46 @@ export default function BannerVideoDetails({ data, isLoading }: propType) {
                         colorScheme="gray"
                         px={{ base: 0, md: "10px" }}
                         _hover={{ background: "#ccc2" }}
+                        as={motion.button}
+                        whileTap={{ scale: 0.8 }}
                       >
-                        <Collapse in={!isFavorited} animateOpacity>
-                          {!isFavorited && (
-                            <IconButton
-                              fontSize="4xl"
-                              colorScheme="transparent"
-                              aria-label="Search"
-                              color="#c7c7c7"
-                              icon={<CiHeart />}
-                            />
+                        <AnimatePresence mode="wait" initial={false}>
+                          {!isFavorited ? (
+                            <motion.div
+                              key="not-favorited"
+                              initial={{ scale: 0.5, opacity: 0 }}
+                              animate={{ scale: 1, opacity: 1 }}
+                              exit={{ scale: 0.5, opacity: 0 }}
+                              transition={{ duration: 0.2 }}
+                            >
+                              <IconButton
+                                fontSize="4xl"
+                                colorScheme="transparent"
+                                aria-label="Adicionar aos favoritos"
+                                color="#c7c7c7"
+                                icon={<CiHeart />}
+                                isRound
+                              />
+                            </motion.div>
+                          ) : (
+                            <motion.div
+                              key="favorited"
+                              initial={{ scale: 0.5, opacity: 0 }}
+                              animate={{ scale: 1, opacity: 1 }}
+                              exit={{ scale: 0.5, opacity: 0 }}
+                              transition={{ duration: 0.2 }}
+                            >
+                              <IconButton
+                                fontSize="4xl"
+                                colorScheme="transparent"
+                                aria-label="Remover dos favoritos"
+                                color="#e50914"
+                                icon={<FaHeart />}
+                                isRound
+                              />
+                            </motion.div>
                           )}
-                        </Collapse>
-                        <Collapse in={isFavorited} animateOpacity>
-                          {isFavorited && (
-                            <IconButton
-                              fontSize="4xl"
-                              colorScheme="transparent"
-                              aria-label="Search"
-                              color="#c7c7c7"
-                              icon={<FaHeart />}
-                            />
-                          )}
-                        </Collapse>
+                        </AnimatePresence>
                       </Button>
                     </Flex>
                   </Flex>
