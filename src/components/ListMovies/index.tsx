@@ -13,7 +13,9 @@ import {
   FormLabel,
   Center,
   Spinner,
+  Tooltip,
 } from "@chakra-ui/react";
+import { InfoOutlineIcon } from "@chakra-ui/icons";
 import useGetMovies from "../../hooks/useGetMovies";
 import useGetMoviesInfinite from "../../hooks/useGetMoviesInfinite";
 import CardMovie from "../CardMovie";
@@ -257,6 +259,18 @@ export default function ListMovies({ title, desc, url }: propType) {
         borderRadius="16px"
         p={{ base: "16px", md: "24px" }}
       >
+        <Flex align="center" gap="8px" mb="20px">
+          <Text fontSize="lg" fontWeight="bold" color="white">
+            Filtros
+          </Text>
+          <Tooltip
+            label="Este filtro é aplicado apenas aos filmes listados abaixo e não realiza uma nova busca na API."
+            hasArrow
+            placement="top"
+          >
+            <InfoOutlineIcon color="gray.400" cursor="help" />
+          </Tooltip>
+        </Flex>
         <Flex
           direction={{ base: "column", md: "row" }}
           gap={{ base: "16px", md: "20px" }}
