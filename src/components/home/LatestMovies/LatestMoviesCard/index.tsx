@@ -1,6 +1,7 @@
 import { AspectRatio, Flex, Heading, Image, Slide } from "@chakra-ui/react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 import setCurrentMovie from "../../../../helpers/setCurrentMovie";
 
 interface typeProp {
@@ -11,13 +12,23 @@ interface typeProp {
   };
 }
 
+const MotionAspectRatio = motion(AspectRatio);
+
 export default function LatestMoviesCard({
   data: { backdrop_path, title, id },
 }: typeProp) {
   const [showDetails, setShowDetails] = useState(false);
 
   return (
-    <AspectRatio className="h-[300px] relative z-10" ratio={4 / 3}>
+    <MotionAspectRatio
+      className="h-[300px] relative z-10"
+      ratio={4 / 3}
+      initial={{ opacity: 0, scale: 0.97, y: 10 }}
+      whileInView={{ opacity: 1, scale: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.3 }}
+      transition={{ duration: 0.4, ease: "easeOut" }}
+      whileHover={{ y: -4 }}
+    >
       <>
         <Image
           src={`https://image.tmdb.org/t/p/original${backdrop_path}`}
@@ -54,6 +65,6 @@ export default function LatestMoviesCard({
           </Slide>
         </div>
       </>
-    </AspectRatio>
+    </MotionAspectRatio>
   );
 }

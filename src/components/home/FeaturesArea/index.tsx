@@ -1,12 +1,8 @@
-import {
-  Container,
-  Flex,
-  Grid,
-  GridItem,
-  Heading,
-  Text,
-} from "@chakra-ui/react";
+import { Container, Flex, Grid, GridItem, Heading, Text } from "@chakra-ui/react";
+import { motion } from "framer-motion";
 import { featureData } from "../../../data/featuresData";
+
+const MotionGridItem = motion(GridItem);
 
 export default function FeaturesArea() {
   return (
@@ -26,11 +22,15 @@ export default function FeaturesArea() {
           mx="auto"
         >
           {featureData.map((item, index) => (
-            <GridItem
+            <MotionGridItem
               w="300px"
               mx="auto"
               key={index}
               className="lg:last:col-start-2 lg:last:mt-10 2xl:last:col-start-4 2xl:last:mt-0"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.35, delay: index * 0.05, ease: "easeOut" }}
             >
               <Flex
                 flexDir={"column"}
@@ -53,7 +53,7 @@ export default function FeaturesArea() {
                   </Text>
                 </Flex>
               </Flex>
-            </GridItem>
+            </MotionGridItem>
           ))}
         </Grid>
       </Container>

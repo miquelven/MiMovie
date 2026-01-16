@@ -1,4 +1,5 @@
 import { Box, Center, Flex, GridItem, Heading, Text } from "@chakra-ui/react";
+import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 
 import setCurrentMovie from "../../helpers/setCurrentMovie";
@@ -12,12 +13,19 @@ interface dataType {
   };
 }
 
+const MotionGridItem = motion(GridItem);
+
 export default function CardMovie({ data }: dataType) {
   return (
-    <GridItem
+    <MotionGridItem
       _hover={{ background: "#1c212e" }}
       minHeight={"230px"}
       className="cardMovie"
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.2 }}
+      transition={{ duration: 0.35, ease: "easeOut" }}
+      whileHover={{ y: -6, scale: 1.02 }}
     >
       <Link
         onClick={() => setCurrentMovie(data?.id)}
@@ -60,6 +68,6 @@ export default function CardMovie({ data }: dataType) {
           </Flex>
         </Center>
       </Link>
-    </GridItem>
+    </MotionGridItem>
   );
 }
