@@ -25,12 +25,9 @@ export default function LatestMovies() {
               fontSize={{ base: "xs", sm: "md" }}
               px={{ base: "30px", xl: "0px" }}
             >
-              Descubra o que há de mais recente no entretenimento com as nossas
-              principais escolhas de filmes! De blockbusters emocionantes a
-              dramas cativantes, entregue-se a um mundo de possibilidades
-              infinitas. Mantenha-se atualizado com nossa coleção constantemente
-              atualizada e mergulhe na experiência de visualização definitiva.
-              Não perca!
+              Confira os filmes que acabaram de chegar ao catálogo. Aqui você
+              encontra as estreias mais recentes e novidades selecionadas para
+              você acompanhar tudo o que está em alta no mundo do cinema.
             </Text>
           </Flex>
         </Center>

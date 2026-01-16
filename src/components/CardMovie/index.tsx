@@ -20,7 +20,17 @@ const MotionGridItem = motion(GridItem);
 export default function CardMovie({ data }: dataType) {
   return (
     <MotionGridItem
-      _hover={{ background: "#1c212e" }}
+      role="group"
+      borderRadius="12px"
+      borderWidth="1px"
+      borderColor="transparent"
+      bg="transparent"
+      _hover={{
+        background: "#1c212e",
+        borderColor: "#23a7d733",
+        boxShadow: "0 18px 45px rgba(5, 5, 9, 0.9)",
+        cursor: "pointer",
+      }}
       minHeight={"230px"}
       className="cardMovie"
       initial={{ opacity: 0, y: 60, scale: 0.9 }}
@@ -47,6 +57,10 @@ export default function CardMovie({ data }: dataType) {
               w={"100%"}
               minH={"190px"}
               maxH={"350px"}
+              borderRadius="md"
+              overflow="hidden"
+              transition="transform 0.3s ease"
+              _groupHover={{ transform: "scale(1.03)" }}
             >
               <TmdbImage
                 path={data.poster_path}

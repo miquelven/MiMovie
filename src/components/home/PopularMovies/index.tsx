@@ -56,7 +56,7 @@ export default function PopularMovies() {
             }}
             gap="24px"
             rowGap={"60px"}
-            overflow="hidden"
+            overflow="visible"
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.3 }}
@@ -81,11 +81,36 @@ export default function PopularMovies() {
                     </Text>
                   </Box>
 
-                  <Link
-                    className="text-[#23a7d7] transition-all duration-300 border-t block border-white/30 pt-2 max-sm:hidden hover:text-[#005282] hover:underline"
-                    to={`/populares`}
-                  >
-                    Ver Mais
+                  <Link to="/populares" className="max-sm:hidden">
+                    <Box
+                      as="button"
+                      px={{ base: 6, md: 7 }}
+                      py={{ base: 2, md: 2.5 }}
+                      borderRadius="full"
+                      bg="rgba(10, 13, 20, 0.9)"
+                      borderWidth="1px"
+                      borderColor="#23a7d733"
+                      fontWeight="semibold"
+                      fontSize={{ base: "xs", md: "sm" }}
+                      letterSpacing="0.06em"
+                      textTransform="uppercase"
+                      transition="all 0.2s ease"
+                      color="#e5e7eb"
+                      backdropFilter="blur(10px)"
+                      _hover={{
+                        color: "#0a0d14",
+                        bg: "#1f9bc9",
+                        borderColor: "#38bdf8",
+                        transform: "translateY(-2px)",
+                      }}
+                      _active={{
+                        bg: "#1a88b0",
+                        borderColor: "#23a7d7",
+                        transform: "translateY(0)",
+                      }}
+                    >
+                      Ver mais
+                    </Box>
                   </Link>
                 </Flex>
               </Center>
@@ -108,11 +133,37 @@ export default function PopularMovies() {
                   index < 12 && <CardMovie key={index} data={item} />
               )}
           </MotionGrid>
-          <Link
-            className="transition-all text-[#23a7d7] duration-300  mt-14 hover:text-[#005282] hover:underline  sm:hidden"
-            to="/populares"
-          >
-            Ver Mais
+          <Link to="/populares" className="sm:hidden">
+            <Box
+              as="button"
+              mt="14"
+              px={7}
+              py={2.5}
+              borderRadius="full"
+              bg="rgba(10, 13, 20, 0.9)"
+              borderWidth="1px"
+              borderColor="#23a7d733"
+              fontWeight="semibold"
+              fontSize="xs"
+              letterSpacing="0.06em"
+              textTransform="uppercase"
+              transition="all 0.2s ease"
+              color="#e5e7eb"
+              backdropFilter="blur(10px)"
+              _hover={{
+                color: "#0a0d14",
+                bg: "#1f9bc9",
+                borderColor: "#38bdf8",
+                transform: "translateY(-2px)",
+              }}
+              _active={{
+                bg: "#1a88b0",
+                borderColor: "#23a7d7",
+                transform: "translateY(0)",
+              }}
+            >
+              Ver mais
+            </Box>
           </Link>
         </Flex>
       </Container>

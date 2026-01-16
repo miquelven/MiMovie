@@ -1,6 +1,6 @@
 import { AspectRatio, Flex, Heading, Slide } from "@chakra-ui/react";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import setCurrentMovie from "../../../../helpers/setCurrentMovie";
 import TmdbImage from "../../../ui/TmdbImage";
@@ -19,16 +19,23 @@ export default function LatestMoviesCard({
   data: { backdrop_path, title, id },
 }: typeProp) {
   const [showDetails, setShowDetails] = useState(false);
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    setCurrentMovie(id);
+    navigate(`/${title}`);
+  };
 
   return (
     <MotionAspectRatio
-      className="h-[300px] relative z-10"
+      className="h-[300px] relative z-10 cursor-pointer"
       ratio={4 / 3}
       initial={{ opacity: 0, scale: 0.9, y: 40 }}
       whileInView={{ opacity: 1, scale: 1, y: 0 }}
       viewport={{ once: true, amount: 0.4 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
       whileHover={{ y: -10, scale: 1.03 }}
+      onClick={handleClick}
     >
       <>
         <TmdbImage
@@ -58,13 +65,6 @@ export default function LatestMoviesCard({
               <Heading as="h4" fontSize={"22px"}>
                 {title}
               </Heading>
-              <Link
-                onClick={() => setCurrentMovie(id)}
-                to={`/${title}`}
-                className="text-sm font-medium text-[#23a7d7]  hover:underline"
-              >
-                Ver Mais Informações
-              </Link>
             </Flex>
           </Slide>
         </div>
