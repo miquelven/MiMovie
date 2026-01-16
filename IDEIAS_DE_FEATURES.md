@@ -16,13 +16,11 @@ Este arquivo lista sugestões de melhorias e novas funcionalidades para deixar o
 - [x] Filtros avançados nas listagens: ano de lançamento, nota mínima, idioma e duração.
 - [x] Ordenação nas listas (mais populares, melhor avaliados, mais recentes, A-Z).
 - [x] Seção de “Tendências de hoje / em alta” consumindo endpoints específicos da API.
-- [ ] Páginas de pessoas (atores/diretores) com biografia, filmes em que atuaram e carrossel de títulos relacionados.
-- [ ] Seção “Continuar assistindo” baseada nos últimos filmes acessados (armazenados em localStorage).
-- [ ] Área “Para você” com recomendações baseadas nos gêneros mais recorrentes entre os favoritos do usuário.
+- [x] Páginas de pessoas (atores/diretores) com biografia, filmes em que atuaram e carrossel de títulos relacionados.
 
 ## Performance, qualidade e boas práticas
 
-- [ ] Transformar o projeto em PWA completo (service worker, manifest revisado, tela de instalação).
+- [x] Transformar o projeto em PWA completo (service worker, manifest revisado, tela de instalação).
 - [ ] Otimizar imagens (lazy loading mais agressivo, resolução adaptativa para mobile/desktop).
 - [ ] Paginação com infinite scroll opcional em algumas seções, mantendo a paginação tradicional como fallback.
 - [ ] Melhor tratamento de erros de rede e timeouts com mensagens amigáveis e opção de tentar novamente.
