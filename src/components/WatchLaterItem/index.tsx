@@ -21,6 +21,7 @@ export default function WatchLaterItem({ data }: propType) {
 
   return (
     <MotionBox
+      layout
       borderRadius={"8px"}
       height={{ base: "200px", lg: "400px" }}
       position={"relative"}

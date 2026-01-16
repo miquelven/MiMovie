@@ -104,7 +104,7 @@ export default function WatchLater() {
                 >
                   {sortedWatchLater && sortedWatchLater.length > 0 ? (
                     sortedWatchLater.map((item, index) => (
-                      <WatchLaterItem data={item} key={index} />
+                      <WatchLaterItem data={item} key={item.id} />
                     ))
                   ) : (
                     <Box gridColumn="1 / -1">

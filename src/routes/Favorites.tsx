@@ -116,7 +116,7 @@ export default function Favorites() {
               >
                 {sortedFavorites.length > 0 &&
                   sortedFavorites.map((item, index) => (
-                    <FavoriteItem key={index} index={index} data={item} />
+                    <FavoriteItem key={item.id} index={index} data={item} />
                   ))}
               </Grid>
             </section>

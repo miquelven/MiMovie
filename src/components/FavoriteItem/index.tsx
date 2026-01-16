@@ -19,6 +19,7 @@ const MotionGridItem = motion(GridItem);
 export default function FavoriteItem({ data, index }: propType) {
   return (
     <MotionGridItem
+      layout
       mx="auto"
       p="20px"
       background={index % 2 !== 0 ? "#1c212e" : ""}
