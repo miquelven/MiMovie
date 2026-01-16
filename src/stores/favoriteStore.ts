@@ -8,6 +8,7 @@ interface movieType {
   vote_average?: number;
   release_date?: string;
   popularity?: number;
+  genre_ids?: number[];
 }
 
 interface favoriteMovieIdStore {

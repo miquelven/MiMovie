@@ -21,6 +21,7 @@ import { useWatchLaterStore } from "../../../stores/watchLaterStore";
 import { motion, AnimatePresence } from "framer-motion";
 
 interface genreProp {
+  id: number;
   name: string;
 }
 
@@ -105,6 +106,7 @@ export default function BannerVideoDetails({ data, isLoading }: propType) {
         vote_average: data.vote_average,
         release_date: data.release_date,
         popularity: data.popularity,
+        genre_ids: data.genres.map((g) => g.id),
       };
 
       if (isFavorited) {
