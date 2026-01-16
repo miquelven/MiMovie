@@ -39,6 +39,7 @@ export default function ListMovies({ title, desc, url }: propType) {
   const [minRating, setMinRating] = useState<number>(0);
   const [language, setLanguage] = useState<string>("all");
   const [maxRuntime, setMaxRuntime] = useState<string>("all");
+  const [sortBy, setSortBy] = useState<string>("popularity");
   const [runtimes, setRuntimes] = useState<Record<number, number>>({});
   const [isFetchingRuntime, setIsFetchingRuntime] = useState(false);
 
@@ -157,8 +158,26 @@ export default function ListMovies({ title, desc, url }: propType) {
       }
     }
 
+    // Sorting
+    results.sort((a, b) => {
+      switch (sortBy) {
+        case "rating":
+          return b.vote_average - a.vote_average;
+        case "date":
+          return (
+            new Date(b.release_date).getTime() -
+            new Date(a.release_date).getTime()
+          );
+        case "az":
+          return a.title.localeCompare(b.title);
+        case "popularity":
+        default:
+          return b.popularity - a.popularity;
+      }
+    });
+
     return results;
-  }, [data, language, maxRuntime, minRating, releaseYear, runtimes]);
+  }, [data, language, maxRuntime, minRating, releaseYear, runtimes, sortBy]);
 
   const isLoadingList =
     isPending || (isFetchingRuntime && maxRuntime !== "all");
@@ -274,6 +293,28 @@ export default function ListMovies({ title, desc, url }: propType) {
               <option value="120">Até 2h</option>
               <option value="150">Até 2h30</option>
               <option value="180">Até 3h</option>
+            </Select>
+          </Box>
+
+          <Box flex="1" minW={{ base: "100%", md: "160px" }}>
+            <Text mb="6px" fontSize="sm" color="#fff9">
+              Ordenar por
+            </Text>
+            <Select
+              value={sortBy}
+              onChange={(event) => setSortBy(event.target.value)}
+              bg="#131722"
+              borderColor="#2d323f"
+              _hover={{ borderColor: "#4a5163" }}
+              _focus={{
+                borderColor: "#23a7d7",
+                boxShadow: "0 0 0 1px #23a7d7",
+              }}
+            >
+              <option value="popularity">Mais populares</option>
+              <option value="rating">Melhor avaliados</option>
+              <option value="date">Mais recentes</option>
+              <option value="az">A-Z</option>
             </Select>
           </Box>
         </Flex>

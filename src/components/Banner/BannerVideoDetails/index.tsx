@@ -36,6 +36,7 @@ interface propType {
     runtime: number;
     homepage: string;
     vote_average: number;
+    popularity: number;
   };
   isLoading: boolean;
 }
@@ -101,6 +102,9 @@ export default function BannerVideoDetails({ data, isLoading }: propType) {
         poster_path: data.poster_path,
         title: data.title,
         id: data.id,
+        vote_average: data.vote_average,
+        release_date: data.release_date,
+        popularity: data.popularity,
       };
 
       if (isFavorited) {

@@ -5,6 +5,9 @@ interface movieType {
   poster_path: string;
   title: string;
   id: number;
+  vote_average?: number;
+  release_date?: string;
+  popularity?: number;
 }
 
 interface favoriteMovieIdStore {

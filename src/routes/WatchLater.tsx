@@ -1,13 +1,40 @@
-import { Box, Container, Grid } from "@chakra-ui/react";
+import { Box, Container, Grid, Flex, Text, Select } from "@chakra-ui/react";
 import { useWatchLaterStore } from "../stores/watchLaterStore";
 import WatchLaterItem from "../components/WatchLaterItem";
 import TitleDescription from "../components/TitleDescription";
 import { Helmet } from "react-helmet";
 import EmptyState from "../components/EmptyState";
 import { MdWatchLater } from "react-icons/md";
+import { useState, useMemo } from "react";
 
 export default function WatchLater() {
   const watchLaterMovie = useWatchLaterStore((state) => state.watchLaterMovie);
+  const [sortBy, setSortBy] = useState<string>("date_added");
+
+  const sortedWatchLater = useMemo(() => {
+    const items = [...watchLaterMovie];
+
+    items.sort((a, b) => {
+      switch (sortBy) {
+        case "rating":
+          return (b.vote_average || 0) - (a.vote_average || 0);
+        case "date":
+          return (
+            new Date(b.release_date || 0).getTime() -
+            new Date(a.release_date || 0).getTime()
+          );
+        case "az":
+          return a.title.localeCompare(b.title);
+        case "popularity":
+          return (b.popularity || 0) - (a.popularity || 0);
+        case "date_added":
+        default:
+          return 0;
+      }
+    });
+
+    return items;
+  }, [watchLaterMovie, sortBy]);
 
   return (
     <>
@@ -36,7 +63,35 @@ export default function WatchLater() {
               description="Explore sua lista pessoal de filmes para assistir mais tarde."
             />
             <section>
-              <Box minH={"400px"} mt={{ base: "40px", md: "80px" }}>
+              {watchLaterMovie && watchLaterMovie.length > 0 && (
+                <Flex justifyContent="flex-end" mb="20px" mt="40px">
+                  <Box minW={{ base: "100%", md: "200px" }}>
+                    <Text mb="6px" fontSize="sm" color="#fff9">
+                      Ordenar por
+                    </Text>
+                    <Select
+                      value={sortBy}
+                      onChange={(event) => setSortBy(event.target.value)}
+                      bg="#131722"
+                      borderColor="#2d323f"
+                      _hover={{ borderColor: "#4a5163" }}
+                      _focus={{
+                        borderColor: "#23a7d7",
+                        boxShadow: "0 0 0 1px #23a7d7",
+                      }}
+                    >
+                      <option value="date_added">
+                        Adicionados recentemente
+                      </option>
+                      <option value="popularity">Mais populares</option>
+                      <option value="rating">Melhor avaliados</option>
+                      <option value="date">Mais recentes (Lançamento)</option>
+                      <option value="az">A-Z</option>
+                    </Select>
+                  </Box>
+                </Flex>
+              )}
+              <Box minH={"400px"} mt={{ base: "20px", md: "40px" }}>
                 <Grid
                   bg="#0a0d14"
                   borderRadius={"16px"}
@@ -47,8 +102,8 @@ export default function WatchLater() {
                   }}
                   rowGap={{ base: "18px", md: "28px" }}
                 >
-                  {watchLaterMovie && watchLaterMovie.length > 0 ? (
-                    watchLaterMovie.map((item, index) => (
+                  {sortedWatchLater && sortedWatchLater.length > 0 ? (
+                    sortedWatchLater.map((item, index) => (
                       <WatchLaterItem data={item} key={index} />
                     ))
                   ) : (

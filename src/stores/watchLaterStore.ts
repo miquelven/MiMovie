@@ -5,6 +5,9 @@ interface movieType {
   id: number;
   title: string;
   backdrop_path: string;
+  vote_average?: number;
+  release_date?: string;
+  popularity?: number;
 }
 
 interface watchLaterType {
