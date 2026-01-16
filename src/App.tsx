@@ -26,7 +26,6 @@ function App() {
         </motion.div>
       </AnimatePresence>
       <ScrollTopButton />
-      <PwaInstallBanner />
       <Footer />
     </>
   );
