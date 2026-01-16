@@ -8,10 +8,26 @@ import SimilarMoviesArea from "../components/videoDetails/SimilarMoviesArea";
 import { useParams } from "react-router-dom";
 import useGetMovieInfo from "../hooks/useGetMovieInfos";
 import { Helmet } from "react-helmet";
+import { useHistoryStore } from "../stores/historyStore";
+import { useEffect } from "react";
 
 export default function MovieInfo() {
   const { name } = useParams();
   const { data: movieDetails, isPending: isLoading } = useGetMovieInfo(name!);
+  const addToHistory = useHistoryStore((state) => state.addToHistory);
+
+  useEffect(() => {
+    if (movieDetails?.reqBannerInfo?.data) {
+      const data = movieDetails.reqBannerInfo.data;
+      addToHistory({
+        id: data.id,
+        title: data.title,
+        poster_path: data.poster_path,
+        backdrop_path: data.backdrop_path,
+        vote_average: data.vote_average,
+      });
+    }
+  }, [movieDetails, addToHistory]);
 
   return (
     <>

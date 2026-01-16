@@ -5,6 +5,7 @@ import PopularMovies from "../components/home/PopularMovies/index.tsx";
 import TrendingMovies from "../components/home/TrendingMovies/index.tsx";
 import { Helmet } from "react-helmet";
 import ContactArea from "../components/home/ContactArea/index.tsx";
+import ContinueWatching from "../components/home/ContinueWatching/index.tsx";
 
 export default function Home() {
   return (
@@ -23,7 +24,7 @@ export default function Home() {
       </Helmet>
       <main className="relative">
         <Banner />
-
+        <ContinueWatching />
         <LatestMovies />
         <TrendingMovies />
         <FeaturesArea />
