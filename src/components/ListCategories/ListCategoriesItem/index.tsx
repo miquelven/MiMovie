@@ -9,20 +9,40 @@ interface propType {
 
 export default function ListCategoriesItem({ category }: propType) {
   return (
-    <Box className="transition-all duration-700 px-10  cursor-pointer h-[200px] hover:p-0 max-sm:px-4 sm:h-[300px] md:h-[400px]">
-      <img
-        src={category.img}
-        alt={category.genreName}
-        loading="lazy"
-        decoding="async"
-        className="transition-all duration-700 object-cover h-[150px] w-full hover:h-5/6 sm:h-[200px] md:h-[300px]"
-      />
-      <Center>
+    <Box
+      role="group"
+      className="group cursor-pointer transition-all duration-300"
+      bg="#1c212e"
+      borderRadius="xl"
+      overflow="hidden"
+      _hover={{
+        transform: "translateY(-8px)",
+        boxShadow:
+          "0 20px 25px -5px rgba(0, 0, 0, 0.4), 0 10px 10px -5px rgba(0, 0, 0, 0.2)",
+        bg: "#2d323f",
+      }}
+      h="full"
+    >
+      <Box
+        overflow="hidden"
+        height={{ base: "180px", sm: "220px", md: "260px" }}
+      >
+        <img
+          src={category.img}
+          alt={category.genreName}
+          loading="lazy"
+          decoding="async"
+          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+        />
+      </Box>
+      <Center p="6">
         <Heading
           as="h5"
-          fontSize={{ sm: "lg", lg: "2xl" }}
+          fontSize={{ base: "lg", lg: "xl" }}
           fontWeight={"semibold"}
-          mt="20px"
+          color="white"
+          transition="color 0.3s"
+          _groupHover={{ color: "#23a7d7" }}
         >
           {category.genreName}
         </Heading>

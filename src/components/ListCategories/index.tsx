@@ -42,7 +42,8 @@ export default function ListCategories() {
             sm: "repeat(2,250px)",
             md: "repeat(3,1fr)",
           }}
-          rowGap={{ base: "50px", sm: "60p", lg: "80px" }}
+          rowGap={{ base: "50px", sm: "60px", lg: "80px" }}
+          columnGap={{ base: "0px", sm: "20px", lg: "40px" }}
           justifyContent={"center"}
           alignItems={"center"}
         >
@@ -50,7 +51,6 @@ export default function ListCategories() {
             allGenres.genres.map((genre: genreType, index: number) => (
               <MotionGridItem
                 key={genre.id}
-                className="transition-all duration-700 hover:brightness-[.4]"
                 initial={{ opacity: 0, y: 50, scale: 0.94 }}
                 whileInView={{ opacity: 1, y: 0, scale: 1 }}
                 viewport={{ once: true, amount: 0.4 }}
