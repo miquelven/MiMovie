@@ -4,7 +4,6 @@ import Header from "./components/ui/Header";
 import Footer from "./components/ui/Footer";
 import ScrollToTop from "./components/ui/ScrollToTop";
 import ScrollTopButton from "./components/ui/ScrollTopButton";
-import PwaInstallBanner from "./components/ui/PwaInstallBanner";
 
 function App() {
   const location = useLocation();
