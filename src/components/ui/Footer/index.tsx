@@ -45,7 +45,6 @@ interface selectedGenreType {
 export default function Footer() {
   const { data, isPending } = useGetAllGenres();
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [selectedGenre, setSelectedGenre] =
     useLocalStorage<selectedGenreType | null>("selectedGenre", null);
 
