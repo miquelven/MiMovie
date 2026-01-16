@@ -17,11 +17,14 @@ interface movieType {
   title: string;
 }
 
-export default function CarouselMovies() {
-  const { data, isPending } = useGetMovies(
-    "movie/upcoming?language=pt-BR&page=",
-    1
-  );
+interface CarouselMoviesProps {
+  endpoint?: string;
+}
+
+export default function CarouselMovies({
+  endpoint = "movie/upcoming?language=pt-BR&page=",
+}: CarouselMoviesProps) {
+  const { data, isPending } = useGetMovies(endpoint, 1);
 
   return (
     <>

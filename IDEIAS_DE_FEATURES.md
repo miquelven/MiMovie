@@ -15,7 +15,7 @@ Este arquivo lista sugestões de melhorias e novas funcionalidades para deixar o
 
 - [x] Filtros avançados nas listagens: ano de lançamento, nota mínima, idioma e duração.
 - [x] Ordenação nas listas (mais populares, melhor avaliados, mais recentes, A-Z).
-- [ ] Seção de “Tendências de hoje / em alta” consumindo endpoints específicos da API.
+- [x] Seção de “Tendências de hoje / em alta” consumindo endpoints específicos da API.
 - [ ] Páginas de pessoas (atores/diretores) com biografia, filmes em que atuaram e carrossel de títulos relacionados.
 - [ ] Seção “Continuar assistindo” baseada nos últimos filmes acessados (armazenados em localStorage).
 - [ ] Área “Para você” com recomendações baseadas nos gêneros mais recorrentes entre os favoritos do usuário.
