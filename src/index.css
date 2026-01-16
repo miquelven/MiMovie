@@ -40,3 +40,9 @@ main {
 ::-webkit-scrollbar-thumb:hover {
   background: #23a7d7;
 }
+
+/* Acessibilidade: Foco visível */
+:focus-visible {
+  outline: 2px solid #23a7d7;
+  outline-offset: 2px;
+}

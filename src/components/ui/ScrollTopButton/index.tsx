@@ -30,7 +30,7 @@ export default function ScrollTopButton() {
       onClick={scrollTop}
       fontSize={{ base: "28px", sm: "36px" }}
       colorScheme="transparent"
-      aria-label="To Top"
+      aria-label="Voltar ao topo"
       color="#fff9"
       position="fixed"
       bottom="32px"

@@ -32,12 +32,14 @@ export default function LatestMoviesCard({
       <>
         <Image
           src={`https://image.tmdb.org/t/p/original${backdrop_path}`}
-          alt="naruto"
+          alt={`Imagem do filme ${title}`}
           objectFit="cover"
         />
         <div
           onMouseEnter={() => setShowDetails(true)}
           onMouseLeave={() => setShowDetails(false)}
+          onFocus={() => setShowDetails(true)}
+          onBlur={() => setShowDetails(false)}
           className="transition-all duration-300 absolute inset-0 bg-black/30 hover:bg-black/60 "
         >
           <Slide

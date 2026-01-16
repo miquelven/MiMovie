@@ -4,7 +4,7 @@ import {
   Collapse,
   Flex,
   Heading,
-  IconButton,
+  Icon,
   ListItem,
   Skeleton,
   Text,
@@ -359,6 +359,11 @@ export default function BannerVideoDetails({ data, isLoading }: propType) {
                         as={motion.button}
                         whileTap={{ scale: 0.95 }}
                         transition="all 0.2s"
+                        aria-label={
+                          !showWatchLaterBtn
+                            ? "Adicionar a lista de assistir mais tarde"
+                            : "Remover da lista de assistir mais tarde"
+                        }
                       >
                         <Collapse in={!showWatchLaterBtn}>
                           {!showWatchLaterBtn && "Assistir mais Tarde"}
@@ -375,6 +380,11 @@ export default function BannerVideoDetails({ data, isLoading }: propType) {
                         _hover={{ background: "#ccc2" }}
                         as={motion.button}
                         whileTap={{ scale: 0.8 }}
+                        aria-label={
+                          !isFavorited
+                            ? "Adicionar aos favoritos"
+                            : "Remover dos favoritos"
+                        }
                       >
                         <AnimatePresence mode="wait" initial={false}>
                           {!isFavorited ? (
@@ -384,14 +394,16 @@ export default function BannerVideoDetails({ data, isLoading }: propType) {
                               animate={{ scale: 1, opacity: 1 }}
                               exit={{ scale: 0.5, opacity: 0 }}
                               transition={{ duration: 0.2 }}
+                              style={{
+                                display: "flex",
+                                alignItems: "center",
+                                justifyContent: "center",
+                              }}
                             >
-                              <IconButton
+                              <Icon
+                                as={CiHeart}
                                 fontSize="4xl"
-                                colorScheme="transparent"
-                                aria-label="Adicionar aos favoritos"
                                 color="#c7c7c7"
-                                icon={<CiHeart />}
-                                isRound
                               />
                             </motion.div>
                           ) : (
@@ -401,14 +413,16 @@ export default function BannerVideoDetails({ data, isLoading }: propType) {
                               animate={{ scale: 1, opacity: 1 }}
                               exit={{ scale: 0.5, opacity: 0 }}
                               transition={{ duration: 0.2 }}
+                              style={{
+                                display: "flex",
+                                alignItems: "center",
+                                justifyContent: "center",
+                              }}
                             >
-                              <IconButton
+                              <Icon
+                                as={FaHeart}
                                 fontSize="4xl"
-                                colorScheme="transparent"
-                                aria-label="Remover dos favoritos"
                                 color="#e50914"
-                                icon={<FaHeart />}
-                                isRound
                               />
                             </motion.div>
                           )}

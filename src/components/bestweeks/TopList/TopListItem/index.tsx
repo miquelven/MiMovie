@@ -121,6 +121,7 @@ export default function TopListItem({ item, ranked }: PropsType) {
                 onClick={() => setCurrentMovie(item.id)}
                 className="absolute inset-0"
                 to={`/${item.title}`}
+                aria-label={`Ver detalhes de ${item.title}`}
               >
                 {" "}
               </Link>

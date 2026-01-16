@@ -81,7 +81,7 @@ export default function Banner() {
             size="lg"
             variant="unstyled"
             _hover={{ backgroundColor: "#fff2" }}
-            aria-label="left-arrow"
+            aria-label="Slide anterior"
             position="absolute"
             left={side}
             top={top}
@@ -95,7 +95,7 @@ export default function Banner() {
             size="lg"
             variant="unstyled"
             _hover={{ backgroundColor: "#fff2" }}
-            aria-label="right-arrow"
+            aria-label="Próximo slide"
             position="absolute"
             right={side}
             top={top}
