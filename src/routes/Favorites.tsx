@@ -1,8 +1,10 @@
-import { Box, Center, Container, Grid, Heading } from "@chakra-ui/react";
+import { Box, Container, Grid } from "@chakra-ui/react";
 import { useFavoriteMoviesStore } from "../stores/favoriteStore";
 import FavoriteItem from "../components/FavoriteItem";
 import TitleDescription from "../components/TitleDescription";
 import { Helmet } from "react-helmet";
+import EmptyState from "../components/EmptyState";
+import { FaHeartBroken } from "react-icons/fa";
 
 export default function Favorites() {
   const favoritesMovie = useFavoriteMoviesStore((state) => state.favoriteMovie);
@@ -35,11 +37,13 @@ export default function Favorites() {
           {/* no favorites warning */}
           <Box minH={"400px"} mt={{ base: "60px", md: "100px" }}>
             {favoritesMovie.length == 0 && (
-              <Center minH={"400px"} bg="#1c212e" borderRadius={"12px"}>
-                <Heading fontSize={{ base: "sm", md: "xl", xl: "3xl" }} as="h5">
-                  Favorite filmes para poder vê-los aqui!
-                </Heading>
-              </Center>
+              <EmptyState
+                title="Você ainda não tem filmes favoritos"
+                description="Explore o catálogo e adicione filmes aos seus favoritos para vê-los aqui."
+                icon={FaHeartBroken}
+                actionText="Explorar Filmes"
+                actionLink="/"
+              />
             )}
 
             {/* favorite list */}

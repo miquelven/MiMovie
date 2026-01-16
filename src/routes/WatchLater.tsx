@@ -1,8 +1,10 @@
-import { Box, Center, Container, Grid, Text } from "@chakra-ui/react";
+import { Box, Container, Grid } from "@chakra-ui/react";
 import { useWatchLaterStore } from "../stores/watchLaterStore";
 import WatchLaterItem from "../components/WatchLaterItem";
 import TitleDescription from "../components/TitleDescription";
 import { Helmet } from "react-helmet";
+import EmptyState from "../components/EmptyState";
+import { MdWatchLater } from "react-icons/md";
 
 export default function WatchLater() {
   const watchLaterMovie = useWatchLaterStore((state) => state.watchLaterMovie);
@@ -45,17 +47,20 @@ export default function WatchLater() {
                   }}
                   rowGap={{ base: "18px", md: "28px" }}
                 >
-                  {watchLaterMovie ? (
+                  {watchLaterMovie && watchLaterMovie.length > 0 ? (
                     watchLaterMovie.map((item, index) => (
                       <WatchLaterItem data={item} key={index} />
                     ))
                   ) : (
-                    <Center>
-                      <Text fontSize={{ base: "sm", sm: "base", md: "lg" }}>
-                        Selecione filmes para assistir mais tarde para eles
-                        aparecerem aqui
-                      </Text>
-                    </Center>
+                    <Box gridColumn="1 / -1">
+                      <EmptyState
+                        title="Sua lista de assistir mais tarde está vazia"
+                        description="Encontrou algo interessante? Adicione à sua lista para não esquecer!"
+                        icon={MdWatchLater}
+                        actionText="Ver Filmes Populares"
+                        actionLink="/populares"
+                      />
+                    </Box>
                   )}
                 </Grid>
               </Box>

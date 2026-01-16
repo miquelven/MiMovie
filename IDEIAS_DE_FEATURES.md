@@ -7,7 +7,7 @@ Este arquivo lista sugestões de melhorias e novas funcionalidades para deixar o
 - [ ] Tema claro/escuro com toggle fixo no header usando o theming do Chakra UI.
 - [x] Animações de transição entre páginas (React Router) com framer-motion.
 - [x] Estados de loading mais ricos (skeletons, shimmer) em todas as listas e banners.
-- [ ] Empty states dedicados para páginas sem resultados (busca, categorias, favoritos, assistir mais tarde).
+- [x] Empty states dedicados para páginas sem resultados (busca, categorias, favoritos, assistir mais tarde).
 - [ ] Feedback visual mais forte para ações de favoritar / assistir mais tarde (micro animações, toasts customizados).
 - [ ] Melhorar acessibilidade: navegação por teclado, foco visível, alt text revisado e aria-labels em carrosséis e botões icônicos.
 

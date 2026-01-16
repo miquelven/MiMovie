@@ -4,6 +4,8 @@ import CardMovie from "../CardMovie";
 import { useEffect, useState } from "react";
 import PaginationArea from "../PaginationArea";
 import TitleDescription from "../TitleDescription";
+import EmptyState from "../EmptyState";
+
 interface propType {
   title: string;
   desc: string;
@@ -50,9 +52,12 @@ export default function ListMovies({ title, desc, url }: propType) {
               )}
           </Grid>
         ) : (
-          <span className="w-full text-center text-4xl font-medium block mt-60 text-white/70 max-sm:text-xl max-sm:mt-40">
-            Nenhum filme encontrado!
-          </span>
+          <EmptyState
+            title="Nenhum filme encontrado!"
+            description="Tente ajustar seus termos de pesquisa ou explore outras categorias."
+            actionText="Voltar para o Início"
+            actionLink="/"
+          />
         )}
       </Skeleton>
 
