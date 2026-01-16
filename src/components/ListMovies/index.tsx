@@ -24,6 +24,7 @@ import PaginationArea from "../PaginationArea";
 import TitleDescription from "../TitleDescription";
 import EmptyState from "../EmptyState";
 import http from "../../helpers/http";
+import movieType from "../../types/movieType";
 
 const value = import.meta.env.VITE_API_KEY;
 
@@ -39,6 +40,11 @@ interface propType {
   title: string;
   desc: string;
   url: string;
+}
+
+interface MovieDetails {
+  id: number;
+  runtime: number;
 }
 
 export default function ListMovies({ title, desc, url }: propType) {
@@ -113,7 +119,7 @@ export default function ListMovies({ title, desc, url }: propType) {
     if (!rawResults || maxRuntime === "all") return;
 
     const idsToFetch = rawResults
-      .map((item: any) => item.id)
+      .map((item: movieType) => item.id)
       .filter(
         (id: number) => typeof id === "number" && runtimes[id] === undefined
       );
@@ -136,8 +142,9 @@ export default function ListMovies({ title, desc, url }: propType) {
         const newMap: Record<number, number> = { ...runtimes };
 
         responses.forEach((response) => {
-          const movieId = response.data.id;
-          const runtime = response.data.runtime;
+          const data = response.data as MovieDetails;
+          const movieId = data.id;
+          const runtime = data.runtime;
 
           if (
             typeof movieId === "number" &&
@@ -168,7 +175,7 @@ export default function ListMovies({ title, desc, url }: propType) {
 
     const set = new Set<string>();
 
-    rawResults.forEach((item: any) => {
+    rawResults.forEach((item: movieType) => {
       if (item.original_language) {
         set.add(item.original_language);
       }
