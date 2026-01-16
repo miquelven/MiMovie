@@ -21,6 +21,12 @@ import WatchLater from "./routes/WatchLater.tsx";
 import Search from "./routes/Search.tsx";
 import PersonDetails from "./routes/PersonDetails.tsx";
 
+if ("serviceWorker" in navigator && import.meta.env.PROD) {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker.register("/sw.js").catch(() => undefined);
+  });
+}
+
 const router = createBrowserRouter([
   {
     path: "/",

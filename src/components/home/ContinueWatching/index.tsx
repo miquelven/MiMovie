@@ -47,7 +47,7 @@ export default function ContinueWatching() {
           modules={[Pagination]}
           className="w-[100vw] overflow-hidden hover:cursor-grab hover:active:cursor-grabbing"
         >
-          {history.map((movie, index) => (
+          {history.map((movie) => (
             <SwiperSlide data-swiperSlideMovie key={movie.id}>
               <LatestMoviesCard data={movie} />
             </SwiperSlide>
