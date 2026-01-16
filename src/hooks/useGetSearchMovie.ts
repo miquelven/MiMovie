@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 
 import http from "../helpers/http";
+import movieType from "../types/movieType";
 
 const value = import.meta.env.VITE_API_KEY;
 
@@ -12,13 +13,8 @@ const options = {
   },
 };
 
-interface searchMovieItem {
-  id: number;
-  title: string;
-}
-
 interface searchMovieType {
-  results: searchMovieItem[];
+  results: movieType[];
 }
 
 const getSearchMovie = async (
