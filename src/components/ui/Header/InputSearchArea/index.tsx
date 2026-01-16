@@ -1,10 +1,11 @@
-import { SearchIcon } from "@chakra-ui/icons";
+import { CloseIcon, SearchIcon } from "@chakra-ui/icons";
 import {
   Box,
   Collapse,
   IconButton,
   Input,
   InputGroup,
+  InputLeftElement,
   InputRightElement,
 } from "@chakra-ui/react";
 import { KeyboardEvent, useEffect, useRef, useState } from "react";
@@ -46,6 +47,11 @@ export default function InputSearchArea() {
     setShowSearchResults(false);
   };
 
+  const handleClearSearch = () => {
+    setInputSearch("");
+    setShowSearchResults(false);
+  };
+
   const handleKeyUp = (e: KeyboardEvent<HTMLInputElement>) => {
     if (e.key == "Enter" && inputSearch.trim().length > 0) {
       redirectToSearchMovieResults();
@@ -73,28 +79,61 @@ export default function InputSearchArea() {
     >
       <label htmlFor="Search">
         <InputGroup width={"100%"} size={["sm", null, null, "md"]}>
+          <InputLeftElement
+            pointerEvents="none"
+            pl="14px"
+            height="100%"
+            display="flex"
+            alignItems="center"
+            justifyContent="center"
+          >
+            <SearchIcon color="#9ca3af" boxSize={4} />
+          </InputLeftElement>
           <Input
             name="Search"
             id="Search"
-            rounded="xl"
-            variant="outline"
-            borderColor="#c7c7c7"
-            focusBorderColor="#777"
+            rounded="full"
+            variant="unstyled"
+            bg="rgba(10, 13, 20, 0.95)"
+            borderWidth="1px"
+            borderColor="#23a7d733"
+            focusBorderColor="#23a7d7"
+            _hover={{ borderColor: "#23a7d7aa" }}
+            _focus={{
+              borderColor: "#23a7d7",
+              boxShadow: "0 0 0 1px #23a7d7",
+            }}
+            color="#f3f4f6"
+            placeholder="Buscar filmes..."
+            _placeholder={{ color: "#9ca3af" }}
+            pl="44px"
+            pr="48px"
+            minH={{ base: "40px", md: "46px" }}
             value={inputSearch ? inputSearch : ""}
             onFocus={() => setShowSearchResults(true)}
             onChange={(e) => setInputSearch(e.target.value)}
             onKeyUp={handleKeyUp}
           />
-          <InputRightElement>
-            <IconButton
-              size="md"
-              colorScheme="transparent"
-              aria-label="Search"
-              color="#c7c7c7"
-              icon={<SearchIcon />}
-              onClick={redirectToSearchMovieResults}
-            />
-          </InputRightElement>
+          {inputSearch.length > 0 && (
+            <InputRightElement
+              pr="10px"
+              height="100%"
+              display="flex"
+              alignItems="center"
+              justifyContent="center"
+            >
+              <IconButton
+                size="sm"
+                variant="ghost"
+                bg="transparent"
+                _hover={{ bg: "whiteAlpha.100" }}
+                aria-label="Limpar busca"
+                color="#e5e7eb"
+                icon={<CloseIcon boxSize={3} />}
+                onClick={handleClearSearch}
+              />
+            </InputRightElement>
+          )}
         </InputGroup>
       </label>
 

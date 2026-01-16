@@ -28,10 +28,13 @@ export default function ScrollTopButton() {
   return (
     <IconButton
       onClick={scrollTop}
-      fontSize={{ base: "28px", sm: "36px" }}
-      colorScheme="transparent"
+      fontSize={{ base: "24px", sm: "30px" }}
+      variant="ghost"
+      bg="rgba(10, 13, 20, 0.9)"
       aria-label="Voltar ao topo"
-      color="#fff9"
+      color="#e5e7eb"
+      rounded="full"
+      borderWidth="1px"
       position="fixed"
       bottom="32px"
       right={{ base: "12px", lg: "32px" }}
@@ -40,7 +43,9 @@ export default function ScrollTopButton() {
         opacity: showScroll ? "1" : "0",
         zIndex: showScroll ? "10" : "-1",
       }}
-      _hover={{ transform: "scale(1.1)" }}
+      _hover={{
+        transform: "scale(1.05)",
+      }}
       icon={<FaArrowCircleUp />}
     />
   );

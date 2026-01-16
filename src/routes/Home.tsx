@@ -2,11 +2,7 @@ import Banner from "../components/Banner/index.tsx";
 import LatestMovies from "../components/home/LatestMovies/index.tsx";
 import FeaturesArea from "../components/home/FeaturesArea/index.tsx";
 import PopularMovies from "../components/home/PopularMovies/index.tsx";
-import TrendingMovies from "../components/home/TrendingMovies/index.tsx";
 import { Helmet } from "react-helmet";
-import ContactArea from "../components/home/ContactArea/index.tsx";
-import ContinueWatching from "../components/home/ContinueWatching/index.tsx";
-import ForYou from "../components/home/ForYou/index.tsx";
 
 export default function Home() {
   return (
@@ -25,13 +21,9 @@ export default function Home() {
       </Helmet>
       <main className="relative">
         <Banner />
-        <ContinueWatching />
-        <ForYou />
         <LatestMovies />
-        <TrendingMovies />
-        <FeaturesArea />
         <PopularMovies />
-        <ContactArea />
+        <FeaturesArea />
       </main>
     </>
   );

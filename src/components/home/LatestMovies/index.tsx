@@ -3,7 +3,7 @@ import CarouselMovies from "../../Carousel/CarouselMovies";
 
 export default function LatestMovies() {
   return (
-    <section className="relative min-h-72 pb-40 pt-40">
+    <section className="relative min-h-72 py-32">
       <div className="bg-[#131722] absolute left-0 top-[-30%] right-0 h-full max-xl:top-[-50%]"></div>
       <Container
         maxW="1580px"

@@ -8,26 +8,14 @@ import { ChakraProvider } from "@chakra-ui/react";
 vi.mock("../components/Banner", () => ({
   default: () => <div data-testid="banner" />,
 }));
-vi.mock("../components/home/ContinueWatching", () => ({
-  default: () => <div data-testid="continue-watching" />,
-}));
-vi.mock("../components/home/ForYou", () => ({
-  default: () => <div data-testid="for-you" />,
-}));
 vi.mock("../components/home/LatestMovies", () => ({
   default: () => <div data-testid="latest-movies" />,
-}));
-vi.mock("../components/home/TrendingMovies", () => ({
-  default: () => <div data-testid="trending-movies" />,
 }));
 vi.mock("../components/home/FeaturesArea", () => ({
   default: () => <div data-testid="features-area" />,
 }));
 vi.mock("../components/home/PopularMovies", () => ({
   default: () => <div data-testid="popular-movies" />,
-}));
-vi.mock("../components/home/ContactArea", () => ({
-  default: () => <div data-testid="contact-area" />,
 }));
 
 // Mock Helmet
@@ -46,12 +34,8 @@ describe("Home Route", () => {
     );
 
     expect(screen.getByTestId("banner")).toBeInTheDocument();
-    expect(screen.getByTestId("continue-watching")).toBeInTheDocument();
-    expect(screen.getByTestId("for-you")).toBeInTheDocument();
-    expect(screen.getByTestId("latest-movies")).toBeInTheDocument();
-    expect(screen.getByTestId("trending-movies")).toBeInTheDocument();
     expect(screen.getByTestId("features-area")).toBeInTheDocument();
+    expect(screen.getByTestId("latest-movies")).toBeInTheDocument();
     expect(screen.getByTestId("popular-movies")).toBeInTheDocument();
-    expect(screen.getByTestId("contact-area")).toBeInTheDocument();
   });
 });
