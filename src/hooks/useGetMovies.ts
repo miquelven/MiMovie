@@ -49,10 +49,11 @@ const getMovieData = async (
   return dataValue!;
 };
 
-const useGetMovies = (url: string, page?: number) => {
+const useGetMovies = (url: string, page?: number, options?: { enabled?: boolean }) => {
   return useQuery({
     queryKey: ["movie-data", url, page],
     queryFn: () => getMovieData(url, page),
+    enabled: options?.enabled,
   });
 };
 

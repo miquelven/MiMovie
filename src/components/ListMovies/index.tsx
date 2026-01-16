@@ -8,10 +8,16 @@ import {
   Select,
   NumberInput,
   NumberInputField,
+  Switch,
+  FormControl,
+  FormLabel,
+  Center,
+  Spinner,
 } from "@chakra-ui/react";
 import useGetMovies from "../../hooks/useGetMovies";
+import useGetMoviesInfinite from "../../hooks/useGetMoviesInfinite";
 import CardMovie from "../CardMovie";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import PaginationArea from "../PaginationArea";
 import TitleDescription from "../TitleDescription";
 import EmptyState from "../EmptyState";
@@ -43,18 +49,68 @@ export default function ListMovies({ title, desc, url }: propType) {
   const [runtimes, setRuntimes] = useState<Record<number, number>>({});
   const [isFetchingRuntime, setIsFetchingRuntime] = useState(false);
 
+  // Infinite Scroll State
+  const [useInfiniteScroll, setUseInfiniteScroll] = useState(false);
+  const observerTarget = useRef<HTMLDivElement>(null);
+
   const setPage = (newValue: number) => {
     setCurrentPage(newValue);
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
-  const { data, isPending } = useGetMovies(url, currentPage);
+  // Queries
+  const { data: traditionalData, isPending: isPendingTraditional } =
+    useGetMovies(url, currentPage, { enabled: !useInfiniteScroll });
+
+  const {
+    data: infiniteData,
+    fetchNextPage,
+    hasNextPage,
+    isFetchingNextPage,
+    status: infiniteStatus,
+  } = useGetMoviesInfinite(url, useInfiniteScroll);
+
+  // Derived Data
+  const rawResults = useMemo(() => {
+    if (useInfiniteScroll) {
+      return infiniteData?.pages.flatMap((page) => page.results) || [];
+    }
+    return traditionalData?.results || [];
+  }, [useInfiniteScroll, infiniteData, traditionalData]);
+
+  const isPending = useInfiniteScroll
+    ? infiniteStatus === "pending"
+    : isPendingTraditional;
+
+  const totalPages = traditionalData?.total_pages || 0;
 
   useEffect(() => setCurrentPage(1), [url]);
 
+  // Infinite Scroll Observer
   useEffect(() => {
-    if (!data || !data.results || maxRuntime === "all") return;
+    if (!useInfiniteScroll || !hasNextPage) return;
 
-    const idsToFetch = data.results
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          fetchNextPage();
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    if (observerTarget.current) {
+      observer.observe(observerTarget.current);
+    }
+
+    return () => observer.disconnect();
+  }, [useInfiniteScroll, hasNextPage, fetchNextPage]);
+
+  // Fetch Runtimes
+  useEffect(() => {
+    if (!rawResults || maxRuntime === "all") return;
+
+    const idsToFetch = rawResults
       .map((item: any) => item.id)
       .filter(
         (id: number) => typeof id === "number" && runtimes[id] === undefined
@@ -103,26 +159,26 @@ export default function ListMovies({ title, desc, url }: propType) {
     return () => {
       cancelled = true;
     };
-  }, [data, maxRuntime, runtimes]);
+  }, [rawResults, maxRuntime, runtimes]);
 
   const languageOptions = useMemo(() => {
-    if (!data || !data.results) return [];
+    if (!rawResults) return [];
 
     const set = new Set<string>();
 
-    data.results.forEach((item: any) => {
+    rawResults.forEach((item: any) => {
       if (item.original_language) {
         set.add(item.original_language);
       }
     });
 
     return Array.from(set.values()).sort();
-  }, [data]);
+  }, [rawResults]);
 
   const filteredResults = useMemo(() => {
-    if (!data || !data.results) return;
+    if (!rawResults) return;
 
-    let results = data.results as any[];
+    let results = [...rawResults];
 
     if (releaseYear) {
       results = results.filter(
@@ -150,9 +206,7 @@ export default function ListMovies({ title, desc, url }: propType) {
       if (!Number.isNaN(runtimeLimit)) {
         results = results.filter((item) => {
           const runtime = runtimes[item.id];
-
           if (typeof runtime !== "number") return false;
-
           return runtime <= runtimeLimit;
         });
       }
@@ -177,12 +231,20 @@ export default function ListMovies({ title, desc, url }: propType) {
     });
 
     return results;
-  }, [data, language, maxRuntime, minRating, releaseYear, runtimes, sortBy]);
+  }, [
+    rawResults,
+    language,
+    maxRuntime,
+    minRating,
+    releaseYear,
+    runtimes,
+    sortBy,
+  ]);
 
   const isLoadingList =
     isPending || (isFetchingRuntime && maxRuntime !== "all");
 
-  const hasBaseResults = !isLoadingList && data && data.results.length > 0;
+  const hasBaseResults = !isLoadingList && rawResults && rawResults.length > 0;
   const hasFilteredResults =
     hasBaseResults && filteredResults && filteredResults.length > 0;
 
@@ -317,6 +379,30 @@ export default function ListMovies({ title, desc, url }: propType) {
               <option value="az">A-Z</option>
             </Select>
           </Box>
+
+          <FormControl
+            display="flex"
+            alignItems="center"
+            width="auto"
+            minW={{ base: "100%", md: "auto" }}
+            mt={{ base: "10px", md: "0" }}
+          >
+            <FormLabel
+              htmlFor="infinite-scroll"
+              mb="0"
+              color="#fff9"
+              fontSize="sm"
+              mr={3}
+            >
+              Rolagem Infinita
+            </FormLabel>
+            <Switch
+              id="infinite-scroll"
+              isChecked={useInfiniteScroll}
+              onChange={(e) => setUseInfiniteScroll(e.target.checked)}
+              colorScheme="cyan"
+            />
+          </FormControl>
         </Flex>
       </Box>
       <Skeleton
@@ -328,21 +414,36 @@ export default function ListMovies({ title, desc, url }: propType) {
         minH="300px"
       >
         {hasFilteredResults ? (
-          <Grid
-            templateColumns={{
-              base: "repeat(2, 1fr)",
-              sm: "repeat(3, 1fr)",
-              md: "repeat(4, 1fr)",
-              lg: "repeat(5, 1fr)",
-            }}
-            gap={{ sm: "20px", lg: "40px" }}
-            rowGap={"80px"}
-          >
-            {filteredResults.map(
-              (item, index: number) =>
-                index < 12 && <CardMovie key={index} data={item} />
+          <Box>
+            <Grid
+              templateColumns={{
+                base: "repeat(2, 1fr)",
+                sm: "repeat(3, 1fr)",
+                md: "repeat(4, 1fr)",
+                lg: "repeat(5, 1fr)",
+              }}
+              gap={{ sm: "20px", lg: "40px" }}
+              rowGap={"80px"}
+            >
+              {filteredResults.map(
+                (item, index: number) =>
+                  (useInfiniteScroll || index < 12) && (
+                    <CardMovie key={`${item.id}-${index}`} data={item} />
+                  )
+              )}
+            </Grid>
+
+            {useInfiniteScroll && (
+              <Center mt="40px" ref={observerTarget} minH="50px">
+                {isFetchingNextPage && <Spinner color="cyan.400" />}
+                {!hasNextPage &&
+                  !isFetchingNextPage &&
+                  rawResults.length > 0 && (
+                    <Text color="gray.500">Você chegou ao fim da lista.</Text>
+                  )}
+              </Center>
             )}
-          </Grid>
+          </Box>
         ) : (
           <EmptyState
             title="Nenhum filme encontrado!"
@@ -357,13 +458,13 @@ export default function ListMovies({ title, desc, url }: propType) {
         )}
       </Skeleton>
 
-      {hasFilteredResults && (
+      {hasFilteredResults && !useInfiniteScroll && (
         <PaginationArea
           infos={{
             setPage,
             pageSelected: currentPage,
             isPending,
-            totalPages: data.total_pages,
+            totalPages: totalPages,
           }}
         />
       )}
