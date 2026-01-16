@@ -57,10 +57,11 @@ export default function MovieInfo() {
           {!isLoading && (
             <>
               <Container
-                mt="280px"
+                mt={{ base: "140px", md: "160px" }}
                 maxW="1580px"
                 px={{ base: "30px", md: "10px" }}
                 position="relative"
+                mb={{ base: "80px", md: "100px" }}
               >
                 {!isLoading && (
                   <ReviewsArea reviews={movieDetails?.reqReviews.data} />
@@ -69,9 +70,7 @@ export default function MovieInfo() {
                   <CreditsArea credits={movieDetails?.reqCredits.data} />
                 )}
               </Container>
-              <SimilarMoviesArea
-                similarMoviesData={movieDetails?.reqSimilar.data}
-              />
+              <SimilarMoviesArea />
             </>
           )}
         </Container>
