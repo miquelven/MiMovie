@@ -23,11 +23,11 @@ export default function LatestMoviesCard({
     <MotionAspectRatio
       className="h-[300px] relative z-10"
       ratio={4 / 3}
-      initial={{ opacity: 0, scale: 0.97, y: 10 }}
+      initial={{ opacity: 0, scale: 0.9, y: 40 }}
       whileInView={{ opacity: 1, scale: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.3 }}
-      transition={{ duration: 0.4, ease: "easeOut" }}
-      whileHover={{ y: -4 }}
+      viewport={{ once: true, amount: 0.4 }}
+      transition={{ duration: 0.6, ease: "easeOut" }}
+      whileHover={{ y: -10, scale: 1.03 }}
     >
       <>
         <Image

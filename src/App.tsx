@@ -17,10 +17,10 @@ function App() {
         <motion.div
           key={location.pathname}
           style={{ minHeight: "100vh" }}
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -20 }}
-          transition={{ duration: 0.35, ease: "easeInOut" }}
+          initial={{ opacity: 0, y: 60, scale: 0.96 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          exit={{ opacity: 0, y: -40, scale: 0.96 }}
+          transition={{ duration: 0.5, ease: "easeInOut" }}
         >
           {outlet}
         </motion.div>

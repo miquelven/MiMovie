@@ -1,4 +1,5 @@
 import { Box, Grid, GridItem } from "@chakra-ui/react";
+import { motion } from "framer-motion";
 import useGetAllGenres from "../../hooks/useGetAllGenres";
 
 import { categoryData } from "../../data/categoryData";
@@ -16,6 +17,8 @@ interface selectedGenreProp {
   id: number;
   name: string;
 }
+
+const MotionGridItem = motion(GridItem);
 
 export default function ListCategories() {
   const { data: allGenres, isPending } = useGetAllGenres();
@@ -44,10 +47,18 @@ export default function ListCategories() {
           alignItems={"center"}
         >
           {!isPending &&
-            allGenres.genres.map((genre: genreType) => (
-              <GridItem
+            allGenres.genres.map((genre: genreType, index: number) => (
+              <MotionGridItem
                 key={genre.id}
                 className="transition-all duration-700 hover:brightness-[.4]"
+                initial={{ opacity: 0, y: 50, scale: 0.94 }}
+                whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                viewport={{ once: true, amount: 0.4 }}
+                transition={{
+                  duration: 0.5,
+                  delay: index * 0.04,
+                  ease: "easeOut",
+                }}
               >
                 {categoryData.map(
                   (category) =>
@@ -63,7 +74,7 @@ export default function ListCategories() {
                       </Link>
                     )
                 )}
-              </GridItem>
+              </MotionGridItem>
             ))}
         </Grid>
       </Box>

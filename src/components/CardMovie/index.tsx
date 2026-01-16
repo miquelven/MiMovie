@@ -21,11 +21,11 @@ export default function CardMovie({ data }: dataType) {
       _hover={{ background: "#1c212e" }}
       minHeight={"230px"}
       className="cardMovie"
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.2 }}
-      transition={{ duration: 0.35, ease: "easeOut" }}
-      whileHover={{ y: -6, scale: 1.02 }}
+      initial={{ opacity: 0, y: 60, scale: 0.9 }}
+      whileInView={{ opacity: 1, y: 0, scale: 1 }}
+      viewport={{ once: true, amount: 0.3 }}
+      transition={{ duration: 0.5, ease: "easeOut" }}
+      whileHover={{ y: -10, scale: 1.06 }}
     >
       <Link
         onClick={() => setCurrentMovie(data?.id)}

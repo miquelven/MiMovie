@@ -1,4 +1,5 @@
 import { Flex, GridItem, Heading } from "@chakra-ui/react";
+import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 
 import setCurrentMovie from "../../helpers/setCurrentMovie";
@@ -12,18 +13,24 @@ interface propType {
   index: number;
 }
 
+const MotionGridItem = motion(GridItem);
+
 export default function FavoriteItem({ data, index }: propType) {
   return (
-    <GridItem
+    <MotionGridItem
       mx="auto"
       p="20px"
-      transition={"all ease 400ms"}
       background={index % 2 !== 0 ? "#1c212e" : ""}
       borderRadius={"12px"}
       _hover={{
         background: "#1c212e",
         cursor: "pointer",
       }}
+      initial={{ opacity: 0, y: 50, scale: 0.95 }}
+      whileInView={{ opacity: 1, y: 0, scale: 1 }}
+      viewport={{ once: true, amount: 0.4 }}
+      transition={{ duration: 0.5, ease: "easeOut" }}
+      whileHover={{ y: -10, scale: 1.04 }}
     >
       <Link onClick={() => setCurrentMovie(data.id)} to={`/${data.title}`}>
         <Flex
@@ -47,6 +54,6 @@ export default function FavoriteItem({ data, index }: propType) {
           </Heading>
         </Flex>
       </Link>
-    </GridItem>
+    </MotionGridItem>
   );
 }

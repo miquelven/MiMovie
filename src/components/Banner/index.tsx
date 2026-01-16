@@ -14,6 +14,7 @@ import {
   Center,
   Text,
 } from "@chakra-ui/react";
+import { motion } from "framer-motion";
 import { useState } from "react";
 
 import Slider from "react-slick";
@@ -33,6 +34,9 @@ const settings = {
   slidesToShow: 1,
   slidesToScroll: 1,
 };
+
+const MotionBox = motion(Box);
+const MotionFlex = motion(Flex);
 
 export default function Banner() {
   const [slider, setSlider] = useState<Slider | null>(null);
@@ -111,13 +115,16 @@ export default function Banner() {
                 (movieInfo, index) =>
                   index < 3 && (
                     <>
-                      <Box
+                      <MotionBox
                         height={"6xl"}
                         background={`url(https://image.tmdb.org/t/p/original${movieInfo["backdrop_path"]})`}
                         backgroundPosition={["left", null, "center"]}
                         backgroundRepeat="no-repeat"
                         backgroundSize="cover"
                         className="hover:cursor-grab hover:active:cursor-grabbing"
+                        initial={{ opacity: 0, scale: 1.05 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ duration: 0.8, ease: "easeOut" }}
                         key={index}
                       >
                         {/* opacity */}
@@ -139,7 +146,17 @@ export default function Banner() {
                             top="50%"
                             transform="translate(0, -50%)"
                           >
-                            <Flex flexDir="column" gap="40px">
+                            <MotionFlex
+                              flexDir="column"
+                              gap="40px"
+                              initial={{ opacity: 0, y: 60 }}
+                              animate={{ opacity: 1, y: 0 }}
+                              transition={{
+                                duration: 0.7,
+                                ease: "easeOut",
+                                delay: 0.25,
+                              }}
+                            >
                               <Heading
                                 as="h2"
                                 textAlign="center"
@@ -160,7 +177,7 @@ export default function Banner() {
                               >
                                 {movieInfo.overview}
                               </Text>
-                            </Flex>
+                            </MotionFlex>
                           </Stack>
 
                           <Center
@@ -191,7 +208,7 @@ export default function Banner() {
                             </Flex>
                           </Center>
                         </Container>
-                      </Box>
+                      </MotionBox>
                     </>
                   )
               )}

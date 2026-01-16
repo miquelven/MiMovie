@@ -27,10 +27,10 @@ export default function FeaturesArea() {
               mx="auto"
               key={index}
               className="lg:last:col-start-2 lg:last:mt-10 2xl:last:col-start-4 2xl:last:mt-0"
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.3 }}
-              transition={{ duration: 0.35, delay: index * 0.05, ease: "easeOut" }}
+              initial={{ opacity: 0, y: 60, scale: 0.92 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
+              viewport={{ once: true, amount: 0.4 }}
+              transition={{ duration: 0.55, delay: index * 0.06, ease: "easeOut" }}
             >
               <Flex
                 flexDir={"column"}

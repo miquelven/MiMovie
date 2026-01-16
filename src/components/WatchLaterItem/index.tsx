@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 
 import setCurrentMovie from "../../helpers/setCurrentMovie";
 import { useState } from "react";
+import { motion } from "framer-motion";
 
 interface propType {
   data: {
@@ -12,11 +13,13 @@ interface propType {
   };
 }
 
+const MotionBox = motion(Box);
+
 export default function WatchLaterItem({ data }: propType) {
   const [showTitle, setShowTitle] = useState(false);
 
   return (
-    <Box
+    <MotionBox
       background={`url(https://image.tmdb.org/t/p/original${data.backdrop_path})`}
       backgroundPosition={"center"}
       backgroundRepeat="no-repeat"
@@ -26,6 +29,10 @@ export default function WatchLaterItem({ data }: propType) {
       position={"relative"}
       onMouseEnter={() => setShowTitle(true)}
       onMouseLeave={() => setShowTitle(false)}
+      initial={{ opacity: 0, scale: 0.9, y: 40 }}
+      whileInView={{ opacity: 1, scale: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.4 }}
+      transition={{ duration: 0.6, ease: "easeOut" }}
     >
       <Link onClick={() => setCurrentMovie(data.id)} to={`/${data.title}`}>
         <Flex
@@ -52,6 +59,6 @@ export default function WatchLaterItem({ data }: propType) {
           </Slide>
         </Flex>
       </Link>
-    </Box>
+    </MotionBox>
   );
 }

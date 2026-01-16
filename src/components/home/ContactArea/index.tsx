@@ -10,6 +10,7 @@ import {
   FormErrorMessage,
   Text,
 } from "@chakra-ui/react";
+import { motion } from "framer-motion";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
@@ -22,6 +23,8 @@ interface IFormInput {
   email: string;
   message: string;
 }
+
+const MotionFlex = motion(Flex);
 
 const schema = yup.object().shape({
   name: yup.string().required("Nome é obrigatório"),
@@ -77,7 +80,7 @@ export default function ContactArea() {
           <Text mb={14} color="#23a7d7">
             Nos mande uma mensagem
           </Text>
-          <Flex
+          <MotionFlex
             as="form"
             direction="column"
             width={{ base: "100%", md: "40%" }}
@@ -87,6 +90,10 @@ export default function ContactArea() {
             rounded="md"
             bg="#0a0d14"
             onSubmit={handleSubmit(onSubmit)}
+            initial={{ opacity: 0, y: 60, scale: 0.94 }}
+            whileInView={{ opacity: 1, y: 0, scale: 1 }}
+            viewport={{ once: true, amount: 0.4 }}
+            transition={{ duration: 0.55, ease: "easeOut" }}
           >
             <FormControl id="name" isInvalid={!!errors.name}>
               <FormLabel>Nome</FormLabel>
@@ -120,7 +127,7 @@ export default function ContactArea() {
             >
               Email
             </Button>
-          </Flex>
+          </MotionFlex>
         </Flex>
       </Container>
     </section>
