@@ -19,6 +19,7 @@ import MovieInfo from "./routes/MovieInfo.tsx";
 import Favorites from "./routes/Favorites.tsx";
 import WatchLater from "./routes/WatchLater.tsx";
 import Search from "./routes/Search.tsx";
+import PersonDetails from "./routes/PersonDetails.tsx";
 
 const router = createBrowserRouter([
   {
@@ -29,6 +30,7 @@ const router = createBrowserRouter([
       { path: "/populares", element: <Popular /> },
       { path: "/melhores", element: <BestWeek /> },
       { path: "/search/:name", element: <Search /> },
+      { path: "/person/:id", element: <PersonDetails /> },
       { path: "/favoritos", element: <Favorites /> },
       { path: "/assistirMaisTarde", element: <WatchLater /> },
       {

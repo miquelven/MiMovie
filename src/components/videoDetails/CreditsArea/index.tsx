@@ -8,13 +8,16 @@ import {
   Heading,
   Text,
 } from "@chakra-ui/react";
+import { Link } from "react-router-dom";
 
 interface crewType {
+  id: number;
   name: string;
   profile_path: string;
 }
 
 interface castType {
+  id: number;
   name: string;
   profile_path: string;
 }
@@ -44,55 +47,62 @@ export default function CreditsArea({ credits }: propType) {
           (cast, index) =>
             index < 5 && (
               <GridItem mx="auto" key={index}>
-                <Flex flexDir={"column"} gap="8px">
-                  <Flex flexDir="column" alignItems={"center"} gap="16px">
+                <Link to={`/person/${cast.id}`}>
+                  <Flex flexDir={"column"} gap="8px" _hover={{ opacity: 0.8, transform: "scale(1.05)", transition: "all 0.3s" }}>
+                    <Flex flexDir="column" alignItems={"center"} gap="16px">
+                      <Text
+                        fontSize={{ base: "lg", sm: "xl" }}
+                        fontWeight={"bold"}
+                        color="#fff"
+                      >
+                        {cast.name}
+                      </Text>
+                      <Avatar
+                        size={{ base: "xl", sm: "2xl" }}
+                        src={`https://image.tmdb.org/t/p/original/${cast.profile_path}`}
+                      ></Avatar>
+                    </Flex>
                     <Text
-                      fontSize={{ base: "lg", sm: "xl" }}
-                      fontWeight={"bold"}
-                      color="#fff"
+                      color="#fffa"
+                      textAlign={"center"}
+                      fontSize={{ base: "smaller", sm: "medium" }}
                     >
-                      {cast.name}
+                      Ator
                     </Text>
-                    <Avatar
-                      size={{ base: "xl", sm: "2xl" }}
-                      src={`https://image.tmdb.org/t/p/original/${cast.profile_path}`}
-                    ></Avatar>
                   </Flex>
-                  <Text
-                    color="#fffa"
-                    textAlign={"center"}
-                    fontSize={{ base: "smaller", sm: "medium" }}
-                  >
-                    Ator
-                  </Text>
-                </Flex>
+                </Link>
               </GridItem>
             )
         )}
         <GridItem mx="auto">
-          <Flex
-            justifyContent={"center"}
-            flexDir={"column"}
-            alignItems={"center"}
-            gap="8px"
-          >
-            <Flex flexDir="column" alignItems={"center"} gap="16px">
-              <Text
-                fontSize={{ base: "lg", sm: "xl" }}
-                fontWeight={"bold"}
-                color="#fff"
+          {credits?.crew[0] && (
+            <Link to={`/person/${credits.crew[0].id}`}>
+              <Flex
+                justifyContent={"center"}
+                flexDir={"column"}
+                alignItems={"center"}
+                gap="8px"
+                _hover={{ opacity: 0.8, transform: "scale(1.05)", transition: "all 0.3s" }}
               >
-                {credits?.crew[0].name}{" "}
-              </Text>
-              <Avatar
-                size={{ base: "xl", sm: "2xl" }}
-                src={`https://image.tmdb.org/t/p/original/${credits?.crew[0].profile_path}`}
-              ></Avatar>
-            </Flex>
-            <Text color="#fffa" fontSize={{ base: "smaller", sm: "medium" }}>
-              Diretor
-            </Text>
-          </Flex>
+                <Flex flexDir="column" alignItems={"center"} gap="16px">
+                  <Text
+                    fontSize={{ base: "lg", sm: "xl" }}
+                    fontWeight={"bold"}
+                    color="#fff"
+                  >
+                    {credits?.crew[0].name}{" "}
+                  </Text>
+                  <Avatar
+                    size={{ base: "xl", sm: "2xl" }}
+                    src={`https://image.tmdb.org/t/p/original/${credits?.crew[0].profile_path}`}
+                  ></Avatar>
+                </Flex>
+                <Text color="#fffa" fontSize={{ base: "smaller", sm: "medium" }}>
+                  Diretor
+                </Text>
+              </Flex>
+            </Link>
+          )}
         </GridItem>
       </Grid>
     </Box>
