@@ -6,6 +6,7 @@ import {
   Grid,
   GridItem,
   Heading,
+  Skeleton,
   Text,
 } from "@chakra-ui/react";
 import { motion } from "framer-motion";
@@ -89,6 +90,17 @@ export default function PopularMovies() {
                 </Flex>
               </Center>
             </MotionGridItem>
+            {isPending &&
+              Array.from({ length: 7 }).map((_, index) => (
+                <GridItem key={`popular-skeleton-${index}`}>
+                  <Skeleton
+                    startColor="#2d323f"
+                    endColor="#131722"
+                    height="230px"
+                    borderRadius="md"
+                  />
+                </GridItem>
+              ))}
             {!isPending &&
               data &&
               data.results.map(

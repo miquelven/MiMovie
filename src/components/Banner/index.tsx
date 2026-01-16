@@ -12,6 +12,7 @@ import {
   Container,
   Flex,
   Center,
+  Skeleton,
   Text,
 } from "@chakra-ui/react";
 import { motion } from "framer-motion";
@@ -104,115 +105,123 @@ export default function Banner() {
           >
             <ArrowForwardIcon />
           </IconButton>
-          <Slider
-            {...settings}
-            ref={(slider) => setSlider(slider)}
-            draggable
-            autoplaySpeed={4000}
+          <Skeleton
+            isLoaded={!isPending}
+            startColor="#2d323f"
+            endColor="#131722"
+            height="100%"
+            width="100%"
           >
-            {data &&
-              data.results.map(
-                (movieInfo, index) =>
-                  index < 3 && (
-                    <>
-                      <MotionBox
-                        height={"6xl"}
-                        background={`url(https://image.tmdb.org/t/p/original${movieInfo["backdrop_path"]})`}
-                        backgroundPosition={["left", null, "center"]}
-                        backgroundRepeat="no-repeat"
-                        backgroundSize="cover"
-                        className="hover:cursor-grab hover:active:cursor-grabbing"
-                        initial={{ opacity: 0, scale: 1.05 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        transition={{ duration: 0.8, ease: "easeOut" }}
-                        key={index}
-                      >
-                        {/* opacity */}
-                        <div className="absolute inset-0 bg-black/20 z-10 "></div>
-                        <div className="absolute h-[5%] w-full top-[0] bg-gradient-to-b from-[#0a0d1445] via-white/0 to-white/0 z-20"></div>
-                        <div className="absolute h-[20%] w-full bottom-0 bg-gradient-to-t  from-[#0a0d14] via-[#0a0d14] to-white/0 z-50"></div>
-
-                        <Container
-                          height="100vh"
-                          px="0px !important"
-                          maxWidth={["300px", "700px", null, null, "1000px"]}
-                          position="relative"
-                          style={{ zIndex: 20 }}
+            <Slider
+              {...settings}
+              ref={(slider) => setSlider(slider)}
+              draggable
+              autoplaySpeed={4000}
+            >
+              {data &&
+                data.results.map(
+                  (movieInfo, index) =>
+                    index < 3 && (
+                      <>
+                        <MotionBox
+                          height={"6xl"}
+                          background={`url(https://image.tmdb.org/t/p/original${movieInfo["backdrop_path"]})`}
+                          backgroundPosition={["left", null, "center"]}
+                          backgroundRepeat="no-repeat"
+                          backgroundSize="cover"
+                          className="hover:cursor-grab hover:active:cursor-grabbing"
+                          initial={{ opacity: 0, scale: 1.05 }}
+                          animate={{ opacity: 1, scale: 1 }}
+                          transition={{ duration: 0.8, ease: "easeOut" }}
+                          key={index}
                         >
-                          <Stack
-                            height="400px"
-                            width="100%"
-                            position="absolute"
-                            top="50%"
-                            transform="translate(0, -50%)"
-                          >
-                            <MotionFlex
-                              flexDir="column"
-                              gap="40px"
-                              initial={{ opacity: 0, y: 60 }}
-                              animate={{ opacity: 1, y: 0 }}
-                              transition={{
-                                duration: 0.7,
-                                ease: "easeOut",
-                                delay: 0.25,
-                              }}
-                            >
-                              <Heading
-                                as="h2"
-                                textAlign="center"
-                                fontSize={{ base: "3xl", md: "4xl", lg: "5xl" }}
-                                color="#eee"
-                                mb="20px"
-                              >
-                                {movieInfo.title}
-                              </Heading>
-                              <Text
-                                lineHeight={"32px"}
-                                fontSize={{ base: "sm", xl: "lg" }}
-                                width={{ base: "100%", sm: "80%" }}
-                                mx="auto"
-                                textAlign="center"
-                                noOfLines={4}
-                                color="#cfcfcf"
-                              >
-                                {movieInfo.overview}
-                              </Text>
-                            </MotionFlex>
-                          </Stack>
+                          {/* opacity */}
+                          <div className="absolute inset-0 bg-black/20 z-10 "></div>
+                          <div className="absolute h-[5%] w-full top-[0] bg-gradient-to-b from-[#0a0d1445] via-white/0 to-white/0 z-20"></div>
+                          <div className="absolute h-[20%] w-full bottom-0 bg-gradient-to-t  from-[#0a0d14] via-[#0a0d14] to-white/0 z-50"></div>
 
-                          <Center
+                          <Container
+                            height="100vh"
+                            px="0px !important"
+                            maxWidth={["300px", "700px", null, null, "1000px"]}
+                            position="relative"
                             style={{ zIndex: 20 }}
-                            position="absolute"
-                            right="0"
-                            left="0"
-                            bottom="0"
                           >
-                            <Flex
-                              flexDir={"column"}
-                              alignItems={"center"}
-                              position={"relative"}
-                              style={{ zIndex: 30 }}
-                              height="100%"
-                              paddingBottom={{ base: "150px", sm: "80px" }}
+                            <Stack
+                              height="400px"
+                              width="100%"
+                              position="absolute"
+                              top="50%"
+                              transform="translate(0, -50%)"
                             >
-                              <Link
-                                onClick={() => setCurrentMovie(movieInfo.id)}
-                                to={`/${movieInfo.title.split(" ").join("-")}`}
-                                className="text-sm sm:text-base mb-5 text-[#cfcfcf] hover:text-[#eee] hover:underline"
+                              <MotionFlex
+                                flexDir="column"
+                                gap="40px"
+                                initial={{ opacity: 0, y: 60 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{
+                                  duration: 0.7,
+                                  ease: "easeOut",
+                                  delay: 0.25,
+                                }}
                               >
-                                Ver Mais Informações
-                              </Link>
-                              <Box opacity={{ base: 0, md: 1 }}>
-                                <ArrowRightIcon style={{ rotate: "90deg" }} />
-                              </Box>
-                            </Flex>
-                          </Center>
-                        </Container>
-                      </MotionBox>
-                    </>
-                  )
-              )}
-          </Slider>
+                                <Heading
+                                  as="h2"
+                                  textAlign="center"
+                                  fontSize={{ base: "3xl", md: "4xl", lg: "5xl" }}
+                                  color="#eee"
+                                  mb="20px"
+                                >
+                                  {movieInfo.title}
+                                </Heading>
+                                <Text
+                                  lineHeight={"32px"}
+                                  fontSize={{ base: "sm", xl: "lg" }}
+                                  width={{ base: "100%", sm: "80%" }}
+                                  mx="auto"
+                                  textAlign="center"
+                                  noOfLines={4}
+                                  color="#cfcfcf"
+                                >
+                                  {movieInfo.overview}
+                                </Text>
+                              </MotionFlex>
+                            </Stack>
+
+                            <Center
+                              style={{ zIndex: 20 }}
+                              position="absolute"
+                              right="0"
+                              left="0"
+                              bottom="0"
+                            >
+                              <Flex
+                                flexDir={"column"}
+                                alignItems={"center"}
+                                position={"relative"}
+                                style={{ zIndex: 30 }}
+                                height="100%"
+                                paddingBottom={{ base: "150px", sm: "80px" }}
+                              >
+                                <Link
+                                  onClick={() => setCurrentMovie(movieInfo.id)}
+                                  to={`/${movieInfo.title.split(" ").join("-")}`}
+                                  className="text-sm sm:text-base mb-5 text-[#cfcfcf] hover:text-[#eee] hover:underline"
+                                >
+                                  Ver Mais Informações
+                                </Link>
+                                <Box opacity={{ base: 0, md: 1 }}>
+                                  <ArrowRightIcon style={{ rotate: "90deg" }} />
+                                </Box>
+                              </Flex>
+                            </Center>
+                          </Container>
+                        </MotionBox>
+                      </>
+                    )
+                )}
+            </Slider>
+          </Skeleton>
         </Box>
       </Container>
       <BannerTrailers>
