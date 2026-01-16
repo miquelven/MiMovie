@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 
 import http from "../helpers/http";
+import movieType from "../types/movieType";
 
 const value = import.meta.env.VITE_API_KEY;
 
@@ -15,15 +16,6 @@ const options = {
     Authorization: `Bearer ${value}`,
   },
 };
-
-interface movieType {
-  id: number;
-  title: string;
-  poster_path: string;
-  overview: string;
-  backdrop_path: string;
-  release_date: string;
-}
 
 interface moviesType {
   results: movieType[];
@@ -49,7 +41,11 @@ const getMovieData = async (
   return dataValue!;
 };
 
-const useGetMovies = (url: string, page?: number, options?: { enabled?: boolean }) => {
+const useGetMovies = (
+  url: string,
+  page?: number,
+  options?: { enabled?: boolean }
+) => {
   return useQuery({
     queryKey: ["movie-data", url, page],
     queryFn: () => getMovieData(url, page),

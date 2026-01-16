@@ -1,5 +1,6 @@
 import { useInfiniteQuery } from "@tanstack/react-query";
 import http from "../helpers/http";
+import movieType from "../types/movieType";
 
 const value = import.meta.env.VITE_API_KEY;
 
@@ -10,19 +11,6 @@ const options = {
     Authorization: `Bearer ${value}`,
   },
 };
-
-export interface movieType {
-  id: number;
-  title: string;
-  poster_path: string;
-  overview: string;
-  backdrop_path: string;
-  release_date: string;
-  genre_ids: number[];
-  vote_average: number;
-  popularity: number;
-  original_language: string;
-}
 
 interface moviesType {
   results: movieType[];
