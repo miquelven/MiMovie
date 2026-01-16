@@ -7,6 +7,7 @@ import "swiper/css/navigation";
 
 import { Navigation } from "swiper/modules";
 import { Box, Skeleton } from "@chakra-ui/react";
+import TmdbImage from "../../ui/TmdbImage";
 
 interface videoDataProp {
   type: string;
@@ -114,16 +115,18 @@ export default function CarouselVideosImages({
             images.map(
               (image, index) =>
                 index < 6 && (
-                  <SwiperSlide
-                    key={index}
-                    style={{
-                      background: `url('https://image.tmdb.org/t/p/original${image}')`,
-                      backgroundPosition: "center",
-                      backgroundSize: "cover",
-                      backgroundRepeat: "no-repeat",
-                      height: "100%",
-                    }}
-                  ></SwiperSlide>
+                  <SwiperSlide key={index} style={{ height: "100%" }}>
+                    <Box position="relative" w="100%" h="100%">
+                      <TmdbImage
+                        path={image}
+                        type="backdrop"
+                        alt="Imagem do filme"
+                        w="100%"
+                        h="100%"
+                        objectFit="cover"
+                      />
+                    </Box>
+                  </SwiperSlide>
                 )
             )}
         </Swiper>

@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 import { useLocalStorage } from "usehooks-ts";
 import { Link } from "react-router-dom";
 import setCurrentMovie from "../../../../helpers/setCurrentMovie";
+import TmdbImage from "../../../ui/TmdbImage";
 
 interface itemType {
   id: number;
@@ -109,10 +110,12 @@ export default function TopListItem({ item, ranked }: PropsType) {
               </Flex>
             </Flex>
             <Hide above="lg">
-              <img
-                src={`https://image.tmdb.org/t/p/original${item.poster_path}`}
+              <TmdbImage
+                path={item.poster_path}
+                type="poster"
                 alt={`Imagem do filme ${item.title}`}
-                className=" object-cover w-20 self-center"
+                className="object-cover w-20 self-center"
+                sizes="80px"
               />
             </Hide>
             {/* redirect for movie path */}

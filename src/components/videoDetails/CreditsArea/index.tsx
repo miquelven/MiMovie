@@ -48,7 +48,15 @@ export default function CreditsArea({ credits }: propType) {
             index < 5 && (
               <GridItem mx="auto" key={index}>
                 <Link to={`/person/${cast.id}`}>
-                  <Flex flexDir={"column"} gap="8px" _hover={{ opacity: 0.8, transform: "scale(1.05)", transition: "all 0.3s" }}>
+                  <Flex
+                    flexDir={"column"}
+                    gap="8px"
+                    _hover={{
+                      opacity: 0.8,
+                      transform: "scale(1.05)",
+                      transition: "all 0.3s",
+                    }}
+                  >
                     <Flex flexDir="column" alignItems={"center"} gap="16px">
                       <Text
                         fontSize={{ base: "lg", sm: "xl" }}
@@ -59,7 +67,7 @@ export default function CreditsArea({ credits }: propType) {
                       </Text>
                       <Avatar
                         size={{ base: "xl", sm: "2xl" }}
-                        src={`https://image.tmdb.org/t/p/original/${cast.profile_path}`}
+                        src={`https://image.tmdb.org/t/p/w185/${cast.profile_path}`}
                       ></Avatar>
                     </Flex>
                     <Text
@@ -82,7 +90,11 @@ export default function CreditsArea({ credits }: propType) {
                 flexDir={"column"}
                 alignItems={"center"}
                 gap="8px"
-                _hover={{ opacity: 0.8, transform: "scale(1.05)", transition: "all 0.3s" }}
+                _hover={{
+                  opacity: 0.8,
+                  transform: "scale(1.05)",
+                  transition: "all 0.3s",
+                }}
               >
                 <Flex flexDir="column" alignItems={"center"} gap="16px">
                   <Text
@@ -94,10 +106,13 @@ export default function CreditsArea({ credits }: propType) {
                   </Text>
                   <Avatar
                     size={{ base: "xl", sm: "2xl" }}
-                    src={`https://image.tmdb.org/t/p/original/${credits?.crew[0].profile_path}`}
+                    src={`https://image.tmdb.org/t/p/w185/${credits?.crew[0].profile_path}`}
                   ></Avatar>
                 </Flex>
-                <Text color="#fffa" fontSize={{ base: "smaller", sm: "medium" }}>
+                <Text
+                  color="#fffa"
+                  fontSize={{ base: "smaller", sm: "medium" }}
+                >
                   Diretor
                 </Text>
               </Flex>

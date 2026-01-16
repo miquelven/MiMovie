@@ -25,6 +25,7 @@ import { Link } from "react-router-dom";
 import BannerTrailers from "./BannerTrailers";
 import CarouselTrailers from "./BannerTrailers/CarouselTrailers";
 import setCurrentMovie from "../../helpers/setCurrentMovie";
+import TmdbImage from "../ui/TmdbImage";
 
 const settings = {
   dots: true,
@@ -125,16 +126,26 @@ export default function Banner() {
                       <>
                         <MotionBox
                           height={"6xl"}
-                          background={`url(https://image.tmdb.org/t/p/original${movieInfo["backdrop_path"]})`}
-                          backgroundPosition={["left", null, "center"]}
-                          backgroundRepeat="no-repeat"
-                          backgroundSize="cover"
+                          position="relative"
                           className="hover:cursor-grab hover:active:cursor-grabbing"
                           initial={{ opacity: 0, scale: 1.05 }}
                           animate={{ opacity: 1, scale: 1 }}
                           transition={{ duration: 0.8, ease: "easeOut" }}
                           key={index}
                         >
+                          <TmdbImage
+                            path={movieInfo["backdrop_path"]}
+                            type="backdrop"
+                            alt={movieInfo.title}
+                            position="absolute"
+                            inset="0"
+                            w="full"
+                            h="full"
+                            objectFit="cover"
+                            objectPosition={["left", null, "center"]}
+                            zIndex={0}
+                            sizes="100vw"
+                          />
                           {/* opacity */}
                           <div className="absolute inset-0 bg-black/20 z-10 "></div>
                           <div className="absolute h-[5%] w-full top-[0] bg-gradient-to-b from-[#0a0d1445] via-white/0 to-white/0 z-20"></div>
@@ -168,7 +179,11 @@ export default function Banner() {
                                 <Heading
                                   as="h2"
                                   textAlign="center"
-                                  fontSize={{ base: "3xl", md: "4xl", lg: "5xl" }}
+                                  fontSize={{
+                                    base: "3xl",
+                                    md: "4xl",
+                                    lg: "5xl",
+                                  }}
                                   color="#eee"
                                   mb="20px"
                                 >
@@ -205,7 +220,9 @@ export default function Banner() {
                               >
                                 <Link
                                   onClick={() => setCurrentMovie(movieInfo.id)}
-                                  to={`/${movieInfo.title.split(" ").join("-")}`}
+                                  to={`/${movieInfo.title
+                                    .split(" ")
+                                    .join("-")}`}
                                   className="text-sm sm:text-base mb-5 text-[#cfcfcf] hover:text-[#eee] hover:underline"
                                 >
                                   Ver Mais Informações

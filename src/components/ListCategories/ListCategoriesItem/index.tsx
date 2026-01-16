@@ -12,7 +12,9 @@ export default function ListCategoriesItem({ category }: propType) {
     <Box className="transition-all duration-700 px-10  cursor-pointer h-[200px] hover:p-0 max-sm:px-4 sm:h-[300px] md:h-[400px]">
       <img
         src={category.img}
-        alt="sdf"
+        alt={category.genreName}
+        loading="lazy"
+        decoding="async"
         className="transition-all duration-700 object-cover h-[150px] w-full hover:h-5/6 sm:h-[200px] md:h-[300px]"
       />
       <Center>

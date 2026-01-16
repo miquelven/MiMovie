@@ -1,8 +1,9 @@
-import { AspectRatio, Flex, Heading, Image, Slide } from "@chakra-ui/react";
+import { AspectRatio, Flex, Heading, Slide } from "@chakra-ui/react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import setCurrentMovie from "../../../../helpers/setCurrentMovie";
+import TmdbImage from "../../../ui/TmdbImage";
 
 interface typeProp {
   data: {
@@ -30,8 +31,9 @@ export default function LatestMoviesCard({
       whileHover={{ y: -10, scale: 1.03 }}
     >
       <>
-        <Image
-          src={`https://image.tmdb.org/t/p/original${backdrop_path}`}
+        <TmdbImage
+          path={backdrop_path}
+          type="backdrop"
           alt={`Imagem do filme ${title}`}
           objectFit="cover"
         />

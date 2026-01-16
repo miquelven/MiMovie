@@ -21,13 +21,6 @@ Este arquivo lista sugestões de melhorias e novas funcionalidades para deixar o
 ## Performance, qualidade e boas práticas
 
 - [x] Transformar o projeto em PWA completo (service worker, manifest revisado, tela de instalação).
-- [ ] Otimizar imagens (lazy loading mais agressivo, resolução adaptativa para mobile/desktop).
+- [x] Otimizar imagens (lazy loading mais agressivo, resolução adaptativa para mobile/desktop).
 - [ ] Paginação com infinite scroll opcional em algumas seções, mantendo a paginação tradicional como fallback.
-- [ ] Melhor tratamento de erros de rede e timeouts com mensagens amigáveis e opção de tentar novamente.
 - [ ] Adicionar testes básicos de componentes chave (Banner, Header, CardMovie, rotas principais) com React Testing Library.
-
-## SEO e marketing do produto
-
-- [ ] Refinar SEO das rotas (title, description, keywords) e revisar todos os Helmet já existentes.
-- [ ] Adicionar marcação estruturada (JSON-LD) para filmes individuais, melhorando destaque em buscadores.
-- [ ] Criar seção de “Depoimentos” ou “Perguntas Frequentes” na Home para deixar o produto com cara de app real.

@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import setCurrentMovie from "../../helpers/setCurrentMovie";
 import { useState } from "react";
 import { motion } from "framer-motion";
+import TmdbImage from "../ui/TmdbImage";
 
 interface propType {
   data: {
@@ -20,13 +21,10 @@ export default function WatchLaterItem({ data }: propType) {
 
   return (
     <MotionBox
-      background={`url(https://image.tmdb.org/t/p/original${data.backdrop_path})`}
-      backgroundPosition={"center"}
-      backgroundRepeat="no-repeat"
-      backgroundSize="cover"
       borderRadius={"8px"}
       height={{ base: "200px", lg: "400px" }}
       position={"relative"}
+      overflow="hidden"
       onMouseEnter={() => setShowTitle(true)}
       onMouseLeave={() => setShowTitle(false)}
       initial={{ opacity: 0, scale: 0.9, y: 40 }}
@@ -34,6 +32,17 @@ export default function WatchLaterItem({ data }: propType) {
       viewport={{ once: true, amount: 0.4 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
     >
+      <TmdbImage
+        path={data.backdrop_path}
+        type="backdrop"
+        alt={`Imagem de ${data.title}`}
+        position="absolute"
+        inset="0"
+        w="full"
+        h="full"
+        objectFit="cover"
+        zIndex={0}
+      />
       <Link onClick={() => setCurrentMovie(data.id)} to={`/${data.title}`}>
         <Flex
           position={"absolute"}

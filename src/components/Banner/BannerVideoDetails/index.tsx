@@ -19,6 +19,7 @@ import { useEffect, useState } from "react";
 import { useFavoriteMoviesStore } from "../../../stores/favoriteStore";
 import { useWatchLaterStore } from "../../../stores/watchLaterStore";
 import { motion, AnimatePresence } from "framer-motion";
+import TmdbImage from "../../ui/TmdbImage";
 
 interface genreProp {
   id: number;
@@ -147,20 +148,25 @@ export default function BannerVideoDetails({ data, isLoading }: propType) {
   return (
     <>
       <Box
-        background={
-          isLoading
-            ? `#2d323f`
-            : `url(https://image.tmdb.org/t/p/original${
-                data!["backdrop_path"]
-              })`
-        }
-        backgroundPosition={"center"}
-        backgroundRepeat="no-repeat"
+        bg="#2d323f"
         position={"relative"}
-        backgroundSize="cover"
         height={{ base: "100vh", sm: "60vh", xl: "75vh", "2xl": "70vh" }}
         width={"full"}
       >
+        {!isLoading && data?.backdrop_path && (
+          <TmdbImage
+            path={data.backdrop_path}
+            type="backdrop"
+            alt="Background"
+            position="absolute"
+            inset="0"
+            w="full"
+            h="full"
+            objectFit="cover"
+            zIndex={0}
+            sizes="100vw"
+          />
+        )}
         <div className="absolute inset-0 bg-black/80 z-10 "></div>
         <Box
           h="100%"
@@ -185,10 +191,15 @@ export default function BannerVideoDetails({ data, isLoading }: propType) {
               alignSelf={"center"}
               className="hidden lg:block"
             >
-              <img
-                src={`https://image.tmdb.org/t/p/w500${data?.poster_path}`}
+              <TmdbImage
+                path={data?.poster_path || ""}
+                type="poster"
                 alt={`Imagem da capa do filme ${data?.title}`}
                 className="h-full"
+                h="full"
+                w="auto"
+                objectFit="cover"
+                sizes="(min-width: 1280px) 500px, 300px"
               />
             </Skeleton>
             <Flex flexDir="column" justifyContent={"space-between"} w="100%">

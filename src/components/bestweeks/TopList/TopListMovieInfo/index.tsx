@@ -13,6 +13,7 @@ import { Link } from "react-router-dom";
 import { useLocalStorage } from "usehooks-ts";
 import TopListMovieInfoItem from "./TopListMovieInfoItem";
 import setCurrentMovie from "../../../../helpers/setCurrentMovie";
+import TmdbImage from "../../../ui/TmdbImage";
 
 interface currentItemProp {
   id: number;
@@ -45,10 +46,12 @@ export default function TopListMovieInfo({ isLoading }: propType) {
             maxH="400px"
           >
             <Flex gap="40px" position={"relative"}>
-              <img
-                src={`https://image.tmdb.org/t/p/original${currentItem?.poster_path}`}
+              <TmdbImage
+                path={currentItem?.poster_path || ""}
+                type="poster"
                 alt={`Imagem do filme ${currentItem?.title}`}
                 className="max-w-[200px] w-10/12 object-cover"
+                sizes="200px"
               />
               <Center>
                 <Flex flexDir="column" gap="32px">

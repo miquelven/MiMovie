@@ -3,7 +3,6 @@ import {
   Container,
   Flex,
   Heading,
-  Image,
   Text,
   Skeleton,
   Stack,
@@ -13,6 +12,7 @@ import { useParams } from "react-router-dom";
 import useGetPersonInfo from "../hooks/useGetPersonInfo";
 import CarouselMovies from "../components/Carousel/CarouselMovies";
 import { Helmet } from "react-helmet";
+import TmdbImage from "../components/ui/TmdbImage";
 
 export default function PersonDetails() {
   const { id } = useParams();
@@ -50,17 +50,16 @@ export default function PersonDetails() {
                   minW={{ base: "100%", md: "300px" }}
                   maxW={{ base: "100%", md: "300px" }}
                 >
-                  <Image
-                    src={
-                      person.profile_path
-                        ? `https://image.tmdb.org/t/p/original/${person.profile_path}`
-                        : "https://via.placeholder.com/300x450?text=Sem+Imagem"
-                    }
+                  <TmdbImage
+                    path={person.profile_path}
+                    type="profile"
+                    fallbackSrc="https://via.placeholder.com/300x450?text=Sem+Imagem"
                     borderRadius="lg"
                     alt={person.name}
                     w="100%"
                     objectFit="cover"
                     boxShadow="lg"
+                    sizes="300px"
                   />
                 </Box>
                 <Box flex="1">

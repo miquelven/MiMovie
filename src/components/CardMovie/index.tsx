@@ -4,6 +4,8 @@ import { Link } from "react-router-dom";
 
 import setCurrentMovie from "../../helpers/setCurrentMovie";
 
+import TmdbImage from "../ui/TmdbImage";
+
 interface dataType {
   data: {
     id: number;
@@ -46,11 +48,12 @@ export default function CardMovie({ data }: dataType) {
               minH={"190px"}
               maxH={"350px"}
             >
-              <img
-                width="100%"
-                src={`https://image.tmdb.org/t/p/original${data.poster_path}`}
+              <TmdbImage
+                path={data.poster_path}
+                type="poster"
                 alt={`Imagem do filme ${data.title}`}
-                className="mx-auto "
+                w="100%"
+                className="mx-auto"
               />
             </Box>
             <Heading

@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 
 import setCurrentMovie from "../../helpers/setCurrentMovie";
+import TmdbImage from "../ui/TmdbImage";
 
 interface propType {
   data: {
@@ -39,8 +40,9 @@ export default function FavoriteItem({ data, index }: propType) {
           flexDir="column"
           gap="8px"
         >
-          <img
-            src={`https://image.tmdb.org/t/p/original${data.poster_path}`}
+          <TmdbImage
+            path={data.poster_path}
+            type="poster"
             alt={`Imagem do filme ${data.title}`}
             className="object-cover object-center rounded-md"
           />
