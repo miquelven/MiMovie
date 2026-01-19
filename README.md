@@ -13,7 +13,7 @@
 
 <br />
 
-![Preview do Projeto](https://github.com/miquelven/MiMovie/assets/67767211/a9fd1ffd-c6ef-472c-b338-f3aa6971209f)
+<img width="1910" height="991" alt="Image" src="https://github.com/user-attachments/assets/046b86f0-6cc9-445b-937a-e1e0c7ae38c0" />
 
 <br />
 
@@ -114,3 +114,4 @@ src/
 ├── types/         # Definições de tipos TypeScript
 └── ...
 ```
+
