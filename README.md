@@ -17,13 +17,13 @@
 
 <br />
 
-## 📖 Sobre o Projeto
+## Sobre o Projeto
 
 **MiMovies** é uma aplicação web moderna e responsiva desenvolvida para explorar o vasto mundo do cinema. Utilizando a API do The Movie Database (TMDB), o projeto permite aos usuários pesquisar filmes, visualizar detalhes, ver trailers, salvar favoritos e muito mais.
 
 O objetivo deste projeto é demonstrar o uso de tecnologias modernas do ecossistema React, incluindo gerenciamento de estado global, requisições de dados assíncronas e estilização baseada em utilitários.
 
-## 🛠️ Tecnologias Utilizadas
+## Tecnologias Utilizadas
 
 Este projeto foi desenvolvido com as seguintes tecnologias e bibliotecas:
 
@@ -38,20 +38,18 @@ Este projeto foi desenvolvido com as seguintes tecnologias e bibliotecas:
 - **Utilitários:** [Lodash](https://lodash.com/), [Axios](https://axios-http.com/)
 - **Testes:** [Vitest](https://vitest.dev/), [React Testing Library](https://testing-library.com/)
 
-## 💻 Funcionalidades
+## Funcionalidades
 
-- **🏠 Home Page:** Visualização de filmes em destaque, tendências e categorias.
-- **🔍 Pesquisa:** Busca eficiente de filmes por título.
-- **📂 Categorias:** Filtragem de filmes por gêneros (Ação, Comédia, Drama, etc.).
-- **�️ Detalhes do Filme:** Informações completas, incluindo sinopse, elenco, avaliações e filmes similares.
-- **▶️ Trailers:** Visualização de trailers diretamente na plataforma.
-- **❤️ Favoritos:** Lista personalizada de filmes favoritos (persistência local).
-- **⏰ Assistir Mais Tarde:** Lista de filmes salvos para ver depois.
-- **� Melhores da Semana:** Seção dedicada aos filmes mais populares da semana.
-- **📱 Responsividade:** Interface adaptável para dispositivos móveis e desktop.
-- **🌗 PWA:** Suporte a Progressive Web App (instalável).
+- ** Home Page:** Visualização de filmes em destaque, tendências e categorias.
+- ** Pesquisa:** Busca eficiente de filmes por título.
+- ** Categorias:** Filtragem de filmes por gêneros (Ação, Comédia, Drama, etc.).
+- ** Detalhes do Filme:** Informações completas, incluindo sinopse, elenco, avaliações e filmes similares.
+- ** Trailers:** Visualização de trailers diretamente na plataforma.
+- ** Favoritos:** Lista personalizada de filmes favoritos (persistência local).
+- ** Assistir Mais Tarde:** Lista de filmes salvos para ver depois.
+- ** Responsividade:** Interface adaptável para dispositivos móveis e desktop.
 
-## 🚀 Como Executar o Projeto
+## Como Executar o Projeto
 
 ### Pré-requisitos
 
@@ -94,7 +92,7 @@ Este projeto foi desenvolvido com as seguintes tecnologias e bibliotecas:
 5. **Acesse o projeto**
    Abra seu navegador em `http://localhost:5173`
 
-## 🧪 Rodando os Testes
+## Rodando os Testes
 
 Para executar os testes unitários e de integração:
 
@@ -102,7 +100,7 @@ Para executar os testes unitários e de integração:
 npm run test
 ```
 
-## 📂 Estrutura de Pastas
+## Estrutura de Pastas
 
 ```
 src/
